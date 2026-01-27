@@ -67,7 +67,6 @@ img {
     line-height: 1.6;
     color: var(--text-color);
     font-weight: 400;
-    text-align: center;
 }
 
 .text-highlight {
@@ -300,7 +299,30 @@ img {
     padding: 50px 0;
 }
 
+/* About Content - Center Alignment */
+.about-section .container {
+    text-align: center;
+}
+
+.about-section .about-content {
+    text-align: center !important;
+}
+
+.about-section .text-block {
+    text-align: center !important;
+}
+
+.about-section .text-block p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 .about-section .text-block p.desktop-only {
+    text-align: center !important;
+}
+
+.about-section .text-block .desktop-only {
     text-align: center !important;
 }
 
@@ -983,7 +1005,7 @@ display: none;
     
     /* Desktop Only Class */
     .desktop-only {
-        display: block;
+        display: flex;
     }
     
     /* QR Modal Styles */
