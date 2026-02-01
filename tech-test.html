@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신성테크 홈페이지 입니다.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 절대 경로 사용 -->
+    <link rel="stylesheet" href="/Sintc2013/css/style.css?v=2">
+    <link rel="stylesheet" href="/Sintc2013/css/dropdown.css">
+    <style>
+        /* Mobile/Desktop visibility */
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+        }
+        @media (min-width: 769px) {
+            .desktop-only { display: block !important; }
+            .mobile-only { display: none !important; }
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .tech-blog-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .tech-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            border-right: 2px solid #e0e0e0;
+            padding-right: 20px;
+            height: 244px;
+        }
+
+        .tech-sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0056b3;
+            margin-bottom: 0px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0056b3;
+            text-align: center;
+            width: 160px;
+            height: 50px;
+            line-height: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .category-tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 4px;
+        }
+
+        .category-tab {
+            margin-bottom: 0;
+            background: white;
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-tab a {
+            display: block;
+            padding: 8px 10px;
+            background: transparent;
+            color: #333;
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 500;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 1.2;
+        }
+
+        .category-tab a:hover,
+        .category-tab a.active {
+            background: #0056b3;
+            color: white;
+            padding: 8px 10px;
+            border-bottom: 1px solid #0056b3;
+        }
+
+        .tech-content {
+            flex: 1;
+        }
+
+        .post-table {
+            width: 900px;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .post-table thead {
+            background: #f0f0f0;
+        }
+
+        .post-table th {
+            padding: 0 10px;
+            height: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .post-table td {
+            padding: 0 10px;
+            height: 40px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .post-table .col-num {
+            width: 60px;
+            text-align: center;
+            color: #666;
+        }
+
+        .post-table .col-title {
+            width: 640px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .post-table .col-author {
+            width: 100px;
+            text-align: center;
+        }
+
+        .post-table .col-date {
+            width: 100px;
+            text-align: center;
+            color: #666;
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .tech-blog-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+
+            .tech-sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .post-table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/Sintc2013/index.html">
+                    <img src="/Sintc2013/images/logo.png" alt="SINSUNG" class="logo-image">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/Sintc2013/about.html">회사소개</a></li>
+                    <li><a href="/Sintc2013/Business.html">사업영역</a></li>
+                    <li><a href="/Sintc2013/process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="/Sintc2013/design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="/Sintc2013/design.html">디자인</a></li>
+                            <li><a href="/Sintc2013/mechanical.html">기구설계</a></li>
+                            <li><a href="/Sintc2013/prototype.html">시제품</a></li>
+                            <li><a href="/Sintc2013/machine.html">자동화기계</a></li>
+                            <li><a href="/Sintc2013/jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Sintc2013/tech.html">기술자료</a></li>
+                    <li><a href="/Sintc2013/contact.html">문의하기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 36px; margin: 0;">기술자료</h2>
+        </div>
+    </div>
+
+    <main>
+        <div class="tech-blog-container">
+            <aside class="tech-sidebar">
+                <h2 class="tech-sidebar-title">카테고리</h2>
+                <ul class="category-tabs">
+                    <li class="category-tab">
+                        <a href="#" class="active">공지사항</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#">디자인/기구설계</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#">자동화 기술</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#">산업 소재</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#">제어 기술</a>
+                    </li>
+                </ul>
+            </aside>
+
+            <div class="tech-content">
+                <table class="post-table">
+                    <thead>
+                        <tr>
+                            <th class="col-num">번호</th>
+                            <th class="col-title">제목</th>
+                            <th class="col-author">작성자</th>
+                            <th class="col-date">등록일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="no-posts">
+                            <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+                                <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+                                <p>등록된 글이 없습니다.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>
+                    인천광역시 서구 경서동 683 신성테크<br>
+                    Tel : 010-2188-2255 / Mail : sintc2013@naver.com
+                </p>
+                <p class="copyright">
+                    Copyrights &copy; 2013 by 신성테크. all rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/Sintc2013/js/main.js"></script>
+</body>
+</html>
