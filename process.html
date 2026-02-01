@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로세스 - SIntc</title>
+    <title>신성테크 홈페이지 입니다.</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,10 +68,15 @@
                 margin-left: 15px !important;
             }
         }
-        @media (min-width: 769px) {
-            .floating-buttons-stack.mobile-only { display: none !important; }
-            .floating-buttons-stack.desktop-only { display: flex !important; }
-        }
+                @media (min-width: 769px) {
+                    .floating-buttons-stack.mobile-only { display: none !important; }
+                    .floating-buttons-stack.desktop-only { display: flex !important; }
+                    
+                    /* 데스크톱: 통합 파티클 캔버스 숨김 */
+                    .mobile-particles-canvas {
+                        display: none !important;
+                    }
+                }
     </style>
 </head>
 
@@ -102,7 +107,7 @@
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
                         </ul>
                     </li>
-                    <li><a href="_pages/technology.html">기술자료</a></li>
+                    <li><a href="technology.html">기술자료</a></li>
 <li><a href="contact.html">문의하기</a></li>
 <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
 <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
@@ -129,7 +134,10 @@
         <!-- Interactive Split Screen Process Section -->
         <section class="section process-split-section" style="padding: 40px 0; height: 1300px; overflow: hidden;">
             <div class="split-container"
-                style="display: flex; height: 100%; width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden;">
+                style="display: flex; height: 100%; width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden; position: relative; z-index: 2;">
+                <!-- Mobile Combined Canvas for continuous particle animation - positioned inside container -->
+                <canvas class="mobile-particles-canvas" id="mobile-canvas"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; pointer-events: none; display: none;"></canvas>
 
                 <!-- Product Development Section -->
                 <div class="split-panel product-panel" id="product-panel"
@@ -374,30 +382,55 @@
                     const tabParam = urlParams.get('tab');
                     let activePanel = (tabParam === 'automation') ? 'automation' : 'product'; // URL 파라미터에 따라 초기 상태 설정
 
+                    // 모바일 여부 확인 함수
+                    function isMobile() {
+                        return window.innerWidth <= 768;
+                    }
+
                     // 패널 상태 적용 함수
                     function applyPanelState() {
-                        if (activePanel === 'product') {
-                            productPanel.style.width = '700px';
-                            automationPanel.style.width = '400px';
+                        if (isMobile()) {
+                            // 모바일: 두 패널 모두 동일한 스타일 적용
+                            productPanel.style.width = '100%';
+                            automationPanel.style.width = '100%';
                             productSteps.style.opacity = '1';
                             productSteps.classList.remove('inactive');
-                            automationSteps.style.opacity = '0.13';
-                            automationSteps.classList.add('inactive');
-                        } else {
-                            productPanel.style.width = '400px';
-                            automationPanel.style.width = '700px';
-                            productSteps.style.opacity = '0.13';
-                            productSteps.classList.add('inactive');
                             automationSteps.style.opacity = '1';
                             automationSteps.classList.remove('inactive');
+                        } else {
+                            // 데스크톱: 기존 로직 유지
+                            if (activePanel === 'product') {
+                                productPanel.style.width = '700px';
+                                automationPanel.style.width = '400px';
+                                productSteps.style.opacity = '1';
+                                productSteps.classList.remove('inactive');
+                                automationSteps.style.opacity = '0.13';
+                                automationSteps.classList.add('inactive');
+                            } else {
+                                productPanel.style.width = '400px';
+                                automationPanel.style.width = '700px';
+                                productSteps.style.opacity = '0.13';
+                                productSteps.classList.add('inactive');
+                                automationSteps.style.opacity = '1';
+                                automationSteps.classList.remove('inactive');
+                            }
                         }
                     }
 
                     // 패널 전환 함수
                     function switchPanel(panel) {
+                        if (isMobile()) return; // 모바일에서는 패널 전환하지 않음
                         if (activePanel === panel) return; // 이미 활성화된 패널이면 무시
                         activePanel = panel;
                         applyPanelState();
+                        // 데스크톱에서만 파티클 애니메이션 상태 변경
+                        if (panel === 'product') {
+                            productParticles.setActive(true);
+                            automationParticles.setActive(false);
+                        } else {
+                            productParticles.setActive(false);
+                            automationParticles.setActive(true);
+                        }
                     }
 
                     // 초기 실행
@@ -406,10 +439,32 @@
                     // 클릭 이벤트로 변경 (마우스 호버 제거)
                     productPanel.addEventListener('click', () => switchPanel('product'));
                     automationPanel.addEventListener('click', () => switchPanel('automation'));
+                    
+                    // 리사이즈 이벤트 처리
+                    window.addEventListener('resize', () => {
+                        const wasMobile = isMobile();
+                        applyPanelState();
+                        // 모바일/데스크톱 전환 시 파티클 상태 업데이트
+                        if (isMobile()) {
+                            productParticles.setActive(true);
+                            automationParticles.setActive(true);
+                        } else {
+                            // 데스크톱으로 전환 시 현재 활성 패널에 맞게 설정
+                            if (activePanel === 'product') {
+                                productParticles.setActive(true);
+                                automationParticles.setActive(false);
+                            } else {
+                                productParticles.setActive(false);
+                                automationParticles.setActive(true);
+                            }
+                        }
+                    });
 
                     // 입자 애니메이션 시스템
                     const productCanvas = document.getElementById('product-canvas');
                     const automationCanvas = document.getElementById('automation-canvas');
+                    const mobileCanvas = document.getElementById('mobile-canvas');
+                    const splitContainer = document.querySelector('.split-container');
                     
                     class ParticleSystem {
                         constructor(canvas, isActive) {
@@ -498,31 +553,129 @@
                         }
                     }
                     
+                    // 모바일용 통합 파티클 시스템 (두 패널을 하나로 연결)
+                    class MobileParticleSystem {
+                        constructor(canvas, container) {
+                            this.canvas = canvas;
+                            this.container = container;
+                            this.ctx = canvas.getContext('2d');
+                            this.isActive = false;
+                            this.particles = [];
+                            this.resize();
+                            this.init();
+                            this.animate();
+                            
+                            window.addEventListener('resize', () => this.resize());
+                        }
+                        
+                        resize() {
+                            this.canvas.width = this.container.offsetWidth;
+                            this.canvas.height = this.container.offsetHeight;
+                        }
+                        
+                        init() {
+                            // 150개 입자 생성 (더 많은 입자로 연속성 강화)
+                            for (let i = 0; i < 150; i++) {
+                                this.particles.push({
+                                    x: Math.random() * this.canvas.width,
+                                    y: Math.random() * this.canvas.height,
+                                    size: Math.random() * 2 + 1,
+                                    speedY: Math.random() * 1.5 + 0.5,
+                                    opacity: Math.random() * 0.3 + 0.1
+                                });
+                            }
+                        }
+                        
+                        animate() {
+                            if (!this.isActive) {
+                                requestAnimationFrame(() => this.animate());
+                                return;
+                            }
+                            
+                            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                            
+                            // 연결선 그리기
+                            this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                            this.ctx.lineWidth = 1;
+                            
+                            for (let i = 0; i < this.particles.length; i++) {
+                                for (let j = i + 1; j < this.particles.length; j++) {
+                                    const dx = this.particles[i].x - this.particles[j].x;
+                                    const dy = this.particles[i].y - this.particles[j].y;
+                                    const distance = Math.sqrt(dx * dx + dy * dy);
+                                    
+                                    if (distance < 150) {
+                                        this.ctx.beginPath();
+                                        this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                                        this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                                        this.ctx.stroke();
+                                    }
+                                }
+                            }
+                            
+                            // 입자 그리기 및 이동
+                            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                            
+                            this.particles.forEach(particle => {
+                                // 입자 그리기
+                                this.ctx.beginPath();
+                                this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                                this.ctx.fill();
+                                
+                                // 아래로 이동
+                                particle.y += particle.speedY;
+                                
+                                // 화면 밖으로 나가면 위에서 다시 생성
+                                if (particle.y > this.canvas.height) {
+                                    particle.y = -10;
+                                    particle.x = Math.random() * this.canvas.width;
+                                }
+                            });
+                            
+                            requestAnimationFrame(() => this.animate());
+                        }
+                        
+                        setActive(active) {
+                            this.isActive = active;
+                            this.canvas.style.opacity = active ? '1' : '0';
+                        }
+                    }
+                    
                     // 입자 시스템 초기화
                     const productParticles = new ParticleSystem(productCanvas, activePanel === 'product');
                     const automationParticles = new ParticleSystem(automationCanvas, activePanel === 'automation');
+                    const mobileParticles = new MobileParticleSystem(mobileCanvas, splitContainer);
                     
-                    // 패널 전환 시 입자 시스템 업데이트
-                    const originalSwitchPanel = switchPanel;
-                    switchPanel = function(panel) {
-                        originalSwitchPanel(panel);
-                        if (panel === 'product') {
-                            productParticles.setActive(true);
-                            automationParticles.setActive(false);
-                        } else {
+                    // 초기 상태 설정
+                    function updateParticleVisibility() {
+                        if (isMobile()) {
+                            // 모바일: 개별 캔버스 숨기고 통합 캔버스 표시
                             productParticles.setActive(false);
-                            automationParticles.setActive(true);
+                            automationParticles.setActive(false);
+                            mobileParticles.setActive(true);
+                            mobileCanvas.style.display = 'block';
+                        } else {
+                            // 데스크톱: 개별 캔버스 표시, 통합 캔버스 숨김
+                            mobileParticles.setActive(false);
+                            mobileCanvas.style.display = 'none';
+                            if (activePanel === 'product') {
+                                productParticles.setActive(true);
+                                automationParticles.setActive(false);
+                            } else {
+                                productParticles.setActive(false);
+                                automationParticles.setActive(true);
+                            }
                         }
-                    };
-                    
-                    // 초기 상태 설정 - URL 파라미터에 따라
-                    if (activePanel === 'product') {
-                        productParticles.setActive(true);
-                        automationParticles.setActive(false);
-                    } else {
-                        productParticles.setActive(false);
-                        automationParticles.setActive(true);
                     }
+                    
+                    // 초기 실행
+                    updateParticleVisibility();
+                    
+                    // 리사이즈 이벤트에서 파티클 가시성 업데이트
+                    const originalResizeHandler = window.onresize;
+                    window.addEventListener('resize', () => {
+                        updateParticleVisibility();
+                    });
                 })();
             </script>
 
@@ -581,6 +734,16 @@
                         flex: none !important;
                         height: auto;
                         min-height: 400px;
+                    }
+
+                    /* 모바일: 통합 파티클 캔버스 표시, 개별 캔버스 숨김 */
+                    .mobile-particles-canvas {
+                        display: block !important;
+                        opacity: 1 !important;
+                    }
+                    
+                    .split-panel .particles-canvas {
+                        display: none !important;
                     }
 
                     .panel-content {
