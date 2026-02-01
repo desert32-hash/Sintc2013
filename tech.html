@@ -364,7 +364,7 @@ permalink: /tech.html
 <tr class="post-row" data-category="{{ post.categories | first }}">
     <td class="col-num">{{ forloop.rindex }}</td>
     <td class="col-title">
-        <a href="{{ site.baseurl }}{{ post.url }}" class="post-link">{{ post.title }}</a>
+        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </td>
     <td class="col-author">{{ post.author | default: '관리자' }}</td>
     <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
@@ -399,7 +399,7 @@ const posts = [
         title: "{{ post.title | escape }}",
         category: "{{ post.categories | first }}",
         date: "{{ post.date | date: "%y-%m-%d" }}",
-        url: "{{ site.baseurl }}{{ post.url }}"
+        url: "{{ post.url }}"
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
 ];
