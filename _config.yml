@@ -51,3 +51,7 @@ exclude:
   - node_modules
   - vendor
   - "*.zip"
+
+
+
+theme: minima
