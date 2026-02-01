@@ -64,12 +64,12 @@ permalink: /tech.html
             font-weight: 700;
             color: #0056b3;
             margin-bottom: 0px;
-            padding-bottom: 10px;
+            padding-bottom: 0px;
             border-bottom: 2px solid #0056b3;
             text-align: center;
             width: 160px;
-            height: 50px;
-            line-height: 50px;
+            height: 45px;
+            line-height: 45px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -78,7 +78,6 @@ permalink: /tech.html
             list-style: none;
             padding: 0;
             margin: 0;
-            margin-top: 4px;
         }
 
         .category-tab {
@@ -381,12 +380,13 @@ permalink: /tech.html
                     </tbody>
                 </table>
 
-                <div class="pagination" id="pagination" style="display: none;">
+                <div class="pagination" id="pagination">
                 </div>
 
 <script>
 const categoryTabs = document.querySelectorAll('.category-tab a');
 const postTbody = document.getElementById('post-tbody');
+const paginationDiv = document.getElementById('pagination');
 
 let currentCategory = '공지사항';
 let currentPage = 1;
@@ -416,12 +416,18 @@ function renderPosts() {
                 </td>
             </tr>
         `;
+        paginationDiv.style.display = 'none';
         return;
     }
 
-    const startNum = filteredPosts.length - ((currentPage - 1) * postsPerPage);
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const endIndex = Math.min(startIndex + postsPerPage, filteredPosts.length);
+    const postsToShow = filteredPosts.slice(startIndex, endIndex);
 
-    postTbody.innerHTML = filteredPosts.map((post, index) => {
+    const startNum = filteredPosts.length - startIndex;
+
+    postTbody.innerHTML = postsToShow.map((post, index) => {
         const dateParts = post.date.split('-');
         const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
 
@@ -435,6 +441,37 @@ function renderPosts() {
             <td class="col-date">${formattedDate}</td>
         </tr>
     `}).join('');
+
+    renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+    if (totalPages <= 1) {
+        paginationDiv.style.display = 'none';
+        return;
+    }
+
+    let paginationHTML = '';
+    
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+            paginationHTML += `<span class="current">${i}</span>`;
+        } else {
+            paginationHTML += `<a href="#" data-page="${i}">${i}</a>`;
+        }
+    }
+    
+    paginationDiv.innerHTML = paginationHTML;
+    paginationDiv.style.display = 'flex';
+
+    // Add click handlers to pagination links
+    paginationDiv.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = parseInt(link.dataset.page);
+            renderPosts();
+        });
+    });
 }
 
 categoryTabs.forEach(tab => {
