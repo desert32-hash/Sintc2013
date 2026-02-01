@@ -11,6 +11,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <style>
+        @media (max-width: 768px) {
+            .floating-buttons-stack.mobile-only {
+                display: flex !important;
+                bottom: 80px !important;
+                right: 15px !important;
+            }
+
+            .floating-buttons-stack.desktop-only {
+                display: none !important;
+            }
+
+            .floating-buttons-stack.mobile-only .phone-btn {
+                background-color: #4CAF50 !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .floating-buttons-stack.mobile-only {
+                display: none !important;
+            }
+
+            .floating-buttons-stack.desktop-only {
+                display: flex !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,13 +50,26 @@
                     <img src="images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="about.html">회사소개</a></li>
-                    <li><a href="machine.html">특수기계</a></li>
-                    <li><a href="jig.html">지그제작</a></li>
-                    <li><a href="contact.html" class="active">문의하기</a></li>
-                    <li><a href="https://blog.naver.com/ymn10" target="_blank" class="external-link">블로그</a></li>
+                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="메뉴 열기">
@@ -44,7 +85,8 @@
         <div class="page-title-header"
             style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
             <div class="container">
-                <h2 style="font-size: 36px; margin-bottom: 0;">문의하기</h2>
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">문의하기</h2>
+<h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">문의하기</h2>
             </div>
         </div>
 
@@ -52,24 +94,16 @@
             <div class="container">
                 <div class="contact-content">
                     <div class="contact-info">
-                        <div class="section-header" style="text-align: left; margin-bottom: 30px;">
-                            <h3></h3>
-                        </div>
                         <div class="info-item">
-                            <p style="font-size: 1.5em; font-weight: bold; margin-top: 0;">전문 엔지니어가 직접 상담해드립니다.</p>
+                            <p style="font-size: 1.5em; font-weight: bold;">전문 엔지니어가 직접 상담해드립니다.</p>
                         </div>
                         <div class="info-item">
                             <p>온라인 문의, 이메일, 메시지로 연락 주시면<br>신속하게 전문 안내를 받으실 수 있습니다.</p>
                         </div>
-                        <div class="info-item">
-                            <p><br></p>
-                        </div>
-                        <div class="info-item">
-                            <p class="separator-desktop">--------------------------------------------------------------</p>
-                            <p class="separator-mobile">------------------------------------------</p>
-                        </div>
-                        <div class="info-item">
-                            <p><br></p>
+                        <div class="info-item" style="margin: 30px 0;">
+                            <p class="separator-desktop" style="margin: 0;">--------------------------------------------------------------
+                            </p>
+                            <p class="separator-mobile" style="margin: 0;">------------------------------------------</p>
                         </div>
                         <div class="info-item">
                             <p><strong>신성테크</strong></p>
@@ -78,12 +112,9 @@
                             <p>Mail : sintc2013@naver.com</p>
                         </div>
                     </div>
-                    <div class="contact-form-wrapper">
-                        <div class="section-header" style="text-align: left; margin-bottom: 10px;">
-                            <h3></h3>
-                        </div>
+                    <div class="contact-form-wrapper" style="padding-top: 0;">
                         <!-- Form -->
-                        <form class="contact-form" onsubmit="return sendEmail();">
+                        <form class="contact-form" style="margin-top: 0;">
                             <div class="form-group-horizontal">
                                 <label for="name">작성자 <span style="color: var(--primary-color);">*</span></label>
                                 <input type="text" id="name" name="name" placeholder="실명 또는 회사명을 입력해주세요." required>
@@ -98,12 +129,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="message">문의 내용 <span style="color: var(--primary-color);">*</span></label>
-                                <textarea id="message" name="message" rows="8" placeholder="내용을 작성해주세요"
-                                    required></textarea>
+                                <textarea id="message" name="message" rows="10" placeholder="내용을 작성해주세요"
+                                    required style="height: 200px; resize: vertical;"></textarea>
                             </div>
                             <div class="form-group-horizontal">
                                 <!-- Desktop version - keep unchanged -->
-                                <label class="checkbox-label checkbox-desktop" style="display: flex; align-items: center; gap: 6px;">
+                                <label class="checkbox-label checkbox-desktop"
+                                    style="display: flex; align-items: center; gap: 6px;">
                                     <input type="checkbox" id="privacy" name="privacy" required>
                                     <span>개인정보 수집 동의</span>
                                 </label>
@@ -112,13 +144,10 @@
                                     개인정보 수집 동의
                                 </span>
                             </div>
-                            <!-- Honeypot field for spam protection -->
-                            <div class="honeypot-field">
-                                <label for="honeypot">Leave this field empty</label>
-                                <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
-                            </div>
+
                             <button type="submit" class="btn-submit"
-                                style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">보내기</button>
+                                style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;"
+                                onclick="return sendEmail();">보내기</button>
                         </form>
                     </div>
                 </div>
@@ -138,13 +167,6 @@
                 <p class="copyright">
                     Copyrights &copy; 2013 by 신성테크. all rights Reserved.
                 </p>
-            </div>
-            <div class="footer-link">
-                <!-- Blog Icon/Link -->
-                <a href="https://blog.naver.com/ymn10" target="_blank" class="blog-btn">
-                    <img src="images/blog_icon.png" alt="Blog" class="blog-icon-img">
-                    <span class="blog-text">신성테크 블로그</span>
-                </a>
             </div>
         </div>
     </footer>
@@ -172,16 +194,14 @@
                 return false;
             }
 
-            // 폼 데이터 수집 - 직접 input 요소에서 가져오기
-            const nameInput = document.getElementById('name');
-            const phoneInput = document.getElementById('phone');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
+            // 폼 데이터 수집
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-            const name = nameInput ? nameInput.value.trim() : '';
-            const phone = phoneInput ? phoneInput.value.trim() : '';
-            const email = emailInput ? emailInput.value.trim() : '';
-            const message = messageInput ? messageInput.value.trim() : '';
+            // 디버깅: 콘솔에 값 확인
+            console.log('Form values:', { name, phone, email, message });
 
             // 필수 필드 확인
             if (!name || !phone || !email || !message) {
@@ -189,71 +209,58 @@
                 return false;
             }
 
-            // 디버깅: 콘솔에 값 확인
-            console.log('Form data:', { name, phone, email, message });
-            console.log('Name value:', name);
-            console.log('Phone value:', phone);
-            console.log('Email value:', email);
-            console.log('Message value:', message);
-
-            // EmailJS로 이메일 전송 - 템플릿 변수와 정확히 일치하도록 설정
+            // EmailJS로 이메일 전송
+            // EmailJS 템플릿 변수명에 맞춰 파라미터 설정
             const templateParams = {
                 from_name: name,
-                from_email: email,
                 from_phone: phone,
+                from_email: email,
                 message: message
             };
 
-            console.log('Sending with params:', templateParams);
-            console.log('Template params keys:', Object.keys(templateParams));
-            console.log('Template params values:', Object.values(templateParams));
+            console.log('Sending to EmailJS:', templateParams);
 
-            emailjs.send("service_x546j3o", "template_fdvigmt", templateParams)
-                .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    console.log('Response:', response);
-                    alert('문의가 성공적으로 전송되었습니다!');
-                    // 폼 초기화
-                    if (nameInput) nameInput.value = '';
-                    if (phoneInput) phoneInput.value = '';
-                    if (emailInput) emailInput.value = '';
-                    if (messageInput) messageInput.value = '';
-                    const privacyCheckbox = document.getElementById('privacy') || document.getElementById('privacy-mobile');
-                    if (privacyCheckbox) privacyCheckbox.checked = false;
-                }, function (error) {
-                    console.log('FAILED...', error);
-                    console.log('Error details:', JSON.stringify(error, null, 2));
-                    alert('전송에 실패했습니다. 다시 시도해주세요.\n에러: ' + (error.text || error.message || '알 수 없는 오류'));
-                });
+            emailjs.send("service_x546j3o", "template_fdvigmt", templateParams).then(function (response) {
+                alert('문의가 성공적으로 전송되었습니다!');
+                // 폼 초기화
+                document.getElementById('name').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+                const privacyCheckbox = document.getElementById('privacy') || document.getElementById('privacy-mobile');
+                if (privacyCheckbox) privacyCheckbox.checked = false;
+            }, function (error) {
+                alert('전송에 실패했습니다. 다시 시도해주세요.');
+                console.log('FAILED...', error);
+            });
 
             return false;
         }
     </script>
 
-    <!-- Floating Contact Buttons (Mobile Only) -->
-    <div class="floating-buttons-stack">
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
         <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
             </svg>
         </a>
-        <!-- Mobile Kakao Talk Button -->
-        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn mobile-only" aria-label="카카오톡">
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn"
+            aria-label="카카오톡">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </a>
-        <!-- Desktop Mail Button -->
-        <a href="contact.html" class="floating-btn mail-btn desktop-only" aria-label="메일">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="m22 7-10 5L2 7"></path>
-            </svg>
-        </a>
-        <!-- Desktop Kakao Talk Button -->
-        <div class="floating-btn kakaotalk-btn desktop-only" aria-label="카카오톡" onclick="openKakaoTalk()">
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop (Contact page - KakaoTalk only) -->
+    <div class="floating-buttons-stack desktop-only">
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </div>
     </div>
-    
+
     <script>
         // Kakao Talk Open Function
         function openKakaoTalk() {
@@ -261,7 +268,7 @@
             if (window.innerWidth < 769) {
                 return; // Exit function on mobile
             }
-            
+
             // Open Kakao Talk with correct URL
             window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
         }

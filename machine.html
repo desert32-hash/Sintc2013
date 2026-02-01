@@ -11,6 +11,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <style>
+        @media (max-width: 768px) {
+            .floating-buttons-stack.mobile-only {
+                display: flex !important;
+                bottom: 80px !important;
+                right: 15px !important;
+            }
+            .floating-buttons-stack.desktop-only { display: none !important; }
+            .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+        }
+        @media (min-width: 769px) {
+            .floating-buttons-stack.mobile-only { display: none !important; }
+            .floating-buttons-stack.desktop-only { display: flex !important; }
+        }
+    </style>
+    
+    <!-- Gallery Fix - Ensure 5 columns display -->
+    <style>
+        .gallery-grid-5cols {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-item-5cols {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .gallery-item-5cols:hover {
+            transform: translateY(-3px);
+        }
+        
+        .gallery-item-5cols img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item-5cols:hover img {
+            transform: scale(1.02);
+        }
+        
+        .hidden-gallery-item {
+            display: none !important;
+        }
+        
+        .gallery-caption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #333;
+            padding: 4px;
+            min-height: 20px;
+            line-height: 1.3;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px;
+            }
+            .gallery-item-5cols img {
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+            }
+            .gallery-item-5cols img {
+                height: 140px;
+            }
+            .gallery-caption {
+                font-size: 11px;
+            }
+            .gallery-grid-5cols .gallery-item-5cols {
+                display: block !important;
+            }
+            .load-more-container {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid-5cols {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+            }
+            .gallery-item-5cols img {
+                height: 200px;
+            }
+            .gallery-caption {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,13 +135,26 @@
                     <img src="images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="about.html">회사소개</a></li>
-                    <li><a href="machine.html" class="active">특수기계</a></li>
-                    <li><a href="jig.html">지그제작</a></li>
+                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">문의하기</a></li>
-                    <li><a href="https://blog.naver.com/ymn10" target="_blank" class="external-link">블로그</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="메뉴 열기">
@@ -44,193 +170,244 @@
         <div class="page-title-header"
             style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
             <div class="container">
-                <h2 style="font-size: 36px; margin-bottom: 0;">특수 기계</h2>
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">자동화 기계</h2>
+<h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">자동화 기계</h2>
+            </div>
+        </div>
+
+        <!-- Portfolio Category Tabs -->
+        <div class="portfolio-category-tabs">
+            <div class="container">
+                <div class="category-tabs">
+                    <a href="design.html" class="category-tab">디자인</a>
+                    <a href="mechanical.html" class="category-tab">기구설계</a>
+                    <a href="prototype.html" class="category-tab">시제품</a>
+                    <a href="machine.html" class="category-tab active">자동화기계</a>
+                    <a href="jig.html" class="category-tab">지그제작</a>
+                </div>
             </div>
         </div>
 
         <section class="section machine-section">
             <div class="container">
-                <div class="section-header">
-                    <h3>독자적인 기술력과 풍부한 경험으로 복잡한 공정의 특수 기계를 구현합니다.</h3>
-                    <div class="header-underline"></div>
-                </div>
 
                 <!-- Real Gallery Grid - 40 images, 5 columns - No Random Order -->
                 <div class="gallery-grid-5cols">
                     <!-- No Random order -->
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/2축 드릴링 머신.jpg')">
                         <img src="images/machine/2축 드릴링 머신.jpg" alt="특수기계 1">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축 드릴링 머신</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축 드릴링 머신
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/2축(다축) 드릴링 기계.jpg')">
                         <img src="images/machine/2축(다축) 드릴링 기계.jpg" alt="특수기계 2">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축(다축) 드릴링 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축(다축)
+                            드릴링 기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/게이트 컷팅 머신.jpg')">
                         <img src="images/machine/게이트 컷팅 머신.jpg" alt="특수기계 3">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">게이트 컷팅 머신</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">게이트 컷팅 머신
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/고전압 테스트 기구.jpg')">
                         <img src="images/machine/고전압 테스트 기구.jpg" alt="특수기계 4">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고전압 테스트 기구</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고전압 테스트
+                            기구</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/고점도 액체 압송 캔 펌프.jpg')">
                         <img src="images/machine/고점도 액체 압송 캔 펌프.jpg" alt="특수기계 5">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고점도 액체 압송 캔 펌프</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고점도 액체 압송
+                            캔 펌프</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/공압 고정 지그 장치.png')">
                         <img src="images/machine/공압 고정 지그 장치.png" alt="특수기계 6">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 고정 지그 장치</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 고정 지그
+                            장치</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/공압 조립 기계.jpg')">
                         <img src="images/machine/공압 조립 기계.jpg" alt="특수기계 7">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 조립 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 조립 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/권선 기계.png')">
                         <img src="images/machine/권선 기계.png" alt="특수기계 8">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">권선 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">권선 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/금속 검사 장치.jpg')">
                         <img src="images/machine/금속 검사 장치.jpg" alt="특수기계 9">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">금속 검사 장치</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">금속 검사 장치
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/기밀 검사 기계.jpg')">
                         <img src="images/machine/기밀 검사 기계.jpg" alt="특수기계 10">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">기밀 검사 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">기밀 검사 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/노브 압입 기계.jpg')">
                         <img src="images/machine/노브 압입 기계.jpg" alt="특수기계 11">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">노브 압입 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">노브 압입 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/누설 검사 기계 기계.jpg')">
                         <img src="images/machine/누설 검사 기계 기계.jpg" alt="특수기계 12">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누설 검사 기계 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누설 검사 기계
+                            기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/디스펜서 기계.jpg')">
                         <img src="images/machine/디스펜서 기계.jpg" alt="특수기계 13">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">디스펜서 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">디스펜서 기계
+                        </div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형).jpg')">
+                    <div class="gallery-item-5cols"
+                        onclick="openModal('images/machine/로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형).jpg')">
                         <img src="images/machine/로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형).jpg" alt="특수기계 14">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식
+                            드릴, 탭핑 머신</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/로타리 방식 자동 드릴링 머신.png')">
                         <img src="images/machine/로타리 방식 자동 드릴링 머신.png" alt="특수기계 15">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식 자동 드릴링 머신</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식 자동
+                            드릴링 머신</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/버튼 누름(내구성) 테스트 기계1.jpg')">
                         <img src="images/machine/버튼 누름(내구성) 테스트 기계1.jpg" alt="특수기계 16">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼 누름(내구성) 테스트 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼
+                            누름(내구성) 테스트 기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/버튼 누름(내구성) 테스트 기계2.jpg')">
                         <img src="images/machine/버튼 누름(내구성) 테스트 기계2.jpg" alt="특수기계 17">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼 누름(내구성) 테스트 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼
+                            누름(내구성) 테스트 기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/생산용 압입 기계.jpg')">
                         <img src="images/machine/생산용 압입 기계.jpg" alt="특수기계 18">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 압입 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 압입 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/생산용 지그기계.jpg')">
                         <img src="images/machine/생산용 지그기계.jpg" alt="특수기계 19">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 지그기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 지그기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/선형 액추에이터 제작1.jpg')">
                         <img src="images/machine/선형 액추에이터 제작1.jpg" alt="특수기계 20">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터 제작</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터
+                            제작</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/선형 액추에이터 제작2].jpg')">
                         <img src="images/machine/선형 액추에이터 제작2].jpg" alt="특수기계 21">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터 제작</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터
+                            제작</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/수평형 CNC 기계.jpg')">
                         <img src="images/machine/수평형 CNC 기계.jpg" alt="특수기계 22">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">수평형 CNC 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">수평형 CNC
+                            기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/스프링 압착 조립 기계.jpg')">
                         <img src="images/machine/스프링 압착 조립 기계.jpg" alt="특수기계 23">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 압착 조립 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 압착 조립
+                            기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/스프링 조립 기계(홀더 자동공급).jpg')">
                         <img src="images/machine/스프링 조립 기계(홀더 자동공급).jpg" alt="특수기계 24">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 기계(홀더 자동공급)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립
+                            기계(홀더 자동공급)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/실리콘 조립 기계1.jpg')">
                         <img src="images/machine/실리콘 조립 기계1.jpg" alt="특수기계 25">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/실리콘 조립 기계2.jpg')">
                         <img src="images/machine/실리콘 조립 기계2.jpg" alt="특수기계 26">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/압입 코킹 기계.jpg')">
                         <img src="images/machine/압입 코킹 기계.jpg" alt="특수기계 27">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압입 코킹 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압입 코킹 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/전선 권선기 기계.jpeg')">
                         <img src="images/machine/전선 권선기 기계.jpeg" alt="특수기계 28">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">전선 권선기 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">전선 권선기 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/정량 토출 디스펜서.jpg')">
                         <img src="images/machine/정량 토출 디스펜서.jpg" alt="특수기계 29">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정량 토출 디스펜서</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정량 토출
+                            디스펜서</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/주문 제작 기계.jpg')">
                         <img src="images/machine/주문 제작 기계.jpg" alt="특수기계 30">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">주문 제작 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">주문 제작 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/측정용 지그기계.jpg')">
                         <img src="images/machine/측정용 지그기계.jpg" alt="특수기계 31">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">측정용 지그기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">측정용 지그기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/치공구 테스트 기구.jpg')">
                         <img src="images/machine/치공구 테스트 기구.jpg" alt="특수기계 32">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">치공구 테스트 기구</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">치공구 테스트
+                            기구</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/터치패널, 택트스위치 반복 누름 테스트 기계.jpg')">
                         <img src="images/machine/터치패널, 택트스위치 반복 누름 테스트 기계.jpg" alt="특수기계 33">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">터치패널, 택트스위치 반복 누름 테스트 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">터치, 택트스위치
+                            반복 누름 기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/턴테이블 기계.jpg')">
                         <img src="images/machine/턴테이블 기계.jpg" alt="특수기계 34">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">턴테이블 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">턴테이블 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/특수 셋팅 기계.jpg')">
                         <img src="images/machine/특수 셋팅 기계.jpg" alt="특수기계 35">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 셋팅 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 셋팅 기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/특수 연마기계.jpg')">
                         <img src="images/machine/특수 연마기계.jpg" alt="특수기계 36">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 연마기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 연마기계
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/핀 압입 배출 기계.jpg')">
                         <img src="images/machine/핀 압입 배출 기계.jpg" alt="특수기계 37">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀 압입 배출 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀 압입 배출
+                            기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/핀(후크) 압입 기계.jpg')">
                         <img src="images/machine/핀(후크) 압입 기계.jpg" alt="특수기계 38">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀(후크) 압입 기계</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀(후크) 압입
+                            기계</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/화장품 앰플 자동 공급기(턴테이블).jpg')">
                         <img src="images/machine/화장품 앰플 자동 공급기(턴테이블).jpg" alt="특수기계 39">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동 공급기(턴테이블)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동
+                            공급기(턴테이블)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/machine/화장품 앰플 자동 공급기.jpg')">
                         <img src="images/machine/화장품 앰플 자동 공급기.jpg" alt="특수기계 40">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동 공급기</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동
+                            공급기</div>
                     </div>
                 </div>
 
-                </div>
+            </div>
 
-                <!-- Load More Button (Dynamic) - Outside Gallery Grid -->
-                <div style="width: 100%; text-align: center; margin: 30px 0 40px 0; clear: both;">
-                    <div id="loadMoreContainer" class="load-more-container" style="display: none;">
-                        <button id="loadMoreBtn" onclick="loadMoreImages()" 
-                                style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">
-                            더보기 (40 / 40)
-                        </button>
-                    </div>
+            <!-- Load More Button (Dynamic) - Outside Gallery Grid -->
+            <div style="width: 100%; text-align: center; margin: 30px 0 40px 0; clear: both;">
+                <div id="loadMoreContainer" class="load-more-container" style="display: none;">
+                    <button id="loadMoreBtn" onclick="loadMoreImages()"
+                        style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">
+                        더보기 (40 / 40)
+                    </button>
                 </div>
+            </div>
             </div>
         </section>
     </main>
@@ -247,13 +424,6 @@
                     Copyrights &copy; 2013 by 신성테크. all rights Reserved.
                 </p>
             </div>
-            <div class="footer-link">
-                <!-- Blog Icon/Link -->
-                <a href="https://blog.naver.com/ymn10" target="_blank" class="blog-btn">
-                    <img src="images/blog_icon.png" alt="Blog" class="blog-icon-img">
-                    <span class="blog-text">신성테크 블로그</span>
-                </a>
-            </div>
         </div>
     </footer>
 
@@ -264,7 +434,7 @@
     </div>
 
 
-    
+
     <script>
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
@@ -281,25 +451,25 @@
         }
 
         // Close modal on ESC key
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeModal();
             }
         });
 
         // Dynamic Load More functionality without Random Shuffle
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const galleryGrid = document.querySelector('.gallery-grid-5cols');
             const loadMoreContainer = document.getElementById('loadMoreContainer');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
-            
+
             // Configuration
             const initialDisplayCount = 40; // 처음에 보여줄 이미지 수
             const loadMoreCount = 40; // 더보기 클릭 시 추가로 보여줄 이미지 수
-            
+
             let currentDisplayedCount = initialDisplayCount;
             const totalImages = galleryGrid.children.length;
-            
+
             // Initial state setup
             function initializeGallery() {
                 // Hide images beyond initial display count
@@ -308,11 +478,11 @@
                         galleryGrid.children[i].style.display = 'none';
                     }
                 }
-                
+
                 // Update load more button visibility
                 updateLoadMoreButton();
             }
-            
+
             // Update load more button state
             function updateLoadMoreButton() {
                 if (totalImages > currentDisplayedCount) {
@@ -322,24 +492,45 @@
                     loadMoreContainer.style.display = 'none';
                 }
             }
-            
+
             // Load more button click handler
-            window.loadMoreImages = function() {
+            window.loadMoreImages = function () {
                 const nextCount = Math.min(currentDisplayedCount + loadMoreCount, totalImages);
-                
+
                 // Show hidden images
                 for (let i = currentDisplayedCount; i < nextCount; i++) {
                     galleryGrid.children[i].style.display = 'block';
                 }
-                
+
                 currentDisplayedCount = nextCount;
                 updateLoadMoreButton();
             };
-            
+
             // Initialize gallery
             initializeGallery();
         });
 
+    </script>
+
+    <!-- Gallery Randomizer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.gallery-grid-5cols');
+            if (gallery) {
+                const items = Array.from(gallery.children);
+                // Fisher-Yates shuffle algorithm
+                for (let i = items.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [items[i], items[j]] = [items[j], items[i]];
+                }
+                // Re-append items in new order
+                items.forEach(item => gallery.appendChild(item));
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const mainNav = document.querySelector('.main-nav');
@@ -351,27 +542,35 @@
         }
     </script>
 
-    <!-- Floating Contact Buttons (Mobile Only) -->
-    <div class="floating-buttons-stack">
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
         <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
             </svg>
         </a>
-        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn mobile-only" aria-label="카카오톡">
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn" aria-label="카카오톡">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </a>
-        <a href="contact.html" class="floating-btn mail-btn desktop-only" aria-label="메일">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop -->
+    <div class="floating-buttons-stack desktop-only">
+        <a href="contact.html" class="floating-btn mail-btn" aria-label="메일">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                 <path d="m22 7-10 5L2 7"></path>
             </svg>
         </a>
-        <div class="floating-btn kakaotalk-btn desktop-only" aria-label="카카오톡" onclick="openKakaoTalk()">
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </div>
     </div>
-    
+
     <script>
         // Kakao Talk Open Function
         function openKakaoTalk() {
@@ -379,7 +578,7 @@
             if (window.innerWidth < 769) {
                 return; // Exit function on mobile
             }
-            
+
             // Open Kakao Talk with correct URL
             window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
         }

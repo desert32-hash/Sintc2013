@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로세스 - SIntc</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about-fix.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <style>
+        @media (max-width: 768px) {
+            .floating-buttons-stack.mobile-only {
+                display: flex !important;
+                bottom: 80px !important;
+                right: 15px !important;
+            }
+            .floating-buttons-stack.desktop-only { display: none !important; }
+            .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+            /* Hide CTA section on mobile */
+            .process-cta-section {
+                display: none !important;
+            }
+            
+            /* Mobile: Simplify process steps - hide descriptions */
+            .timeline-item p {
+                display: none !important;
+            }
+            
+            .timeline-item {
+                padding-bottom: 10px !important;
+            }
+            
+            .timeline-item h3 {
+                font-size: 16px !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .step-number {
+                width: 22px !important;
+                height: 22px !important;
+                font-size: 11px !important;
+                left: -36px !important;
+            }
+            
+            /* Hide timeline line on mobile */
+            .step-timeline {
+                border-left: none !important;
+                padding-left: 40px !important;
+            }
+            
+            .step-number {
+                left: -34px !important;
+            }
+            
+            /* Mobile: Reduce subtitle margin */
+            .process-subtitle {
+                margin-bottom: 25px !important;
+            }
+            
+            /* Mobile: Add left margin to process split section */
+            .process-split-section {
+                margin-left: 15px !important;
+            }
+        }
+        @media (min-width: 769px) {
+            .floating-buttons-stack.mobile-only { display: none !important; }
+            .floating-buttons-stack.desktop-only { display: flex !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="SINSUNG" class="logo-image">
+                </a>
+            </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">회사소개</a></li>
+                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Header -->
+        <div class="page-title-header"
+            style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
+            <div class="container">
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">프로세스</h2>
+<h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">프로세스</h2>
+            </div>
+        </div>
+
+        <!-- Interactive Split Screen Process Section -->
+        <section class="section process-split-section" style="padding: 40px 0; height: 1300px; overflow: hidden;">
+            <div class="split-container"
+                style="display: flex; height: 100%; width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden;">
+
+                <!-- Product Development Section -->
+                <div class="split-panel product-panel" id="product-panel"
+                    style="width: 700px; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
+                    <div class="panel-bg"
+                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #004494;">
+                    </div>
+                    <canvas class="particles-canvas" id="product-canvas"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; transition: opacity 0.5s ease;"></canvas>
+                    <div class="panel-content"
+                        style="position: relative; z-index: 2; height: 100%; padding: 60px 40px; display: flex; flex-direction: column; color: white;">
+                        <h2
+                            style="font-size: 48px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1;">
+                            PRODUCT<br>DEVELOPMENT</h2>
+                        <p class="process-subtitle" style="font-size: 20px; font-weight: 500; margin-bottom: 40px; opacity: 0.9; color: white;">제품 개발 프로세스
+                        </p>
+
+                        <div class="steps-container" id="product-steps"
+                            style="flex: 1; overflow-y: auto; opacity: 1; transform: translateX(0); transition: all 0.4s ease; padding-right: 15px;">
+                            <div class="step-timeline"
+                                style="border-left: 2px solid rgba(255,255,255,0.3); padding-left: 55px; margin-top: 20px;">
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">1</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        상품 기획</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">고객의 아이디어를 구체화하고 제조 실현
+                                        가능성(Feasibility) 검토</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">2</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        시장 트렌드 분석</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">최최신 기술 동향 및 경쟁사 분석을 통한
+                                        제품 차별화 전략 수립</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">3</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        디자인 컨셉 및 CMF 협의</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">사용자 경험(UX) 중심의 스타일링 및
+                                        최적의 소재/마감(CMF) 확정</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">4</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        기구 및 회로 설계</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">정밀 기구 설계 및 하드웨어(HW) 통합
+                                        시스템 아키텍처 최적화</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">5</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        워킹 목업 제작</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">외관 검토 및 실제 기능 구현을 통한 구동
+                                        메커니즘 검증</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">6</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        설계 수정 및 보완</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">목업 테스트 결과 피드백을 반영하여 양산성
+                                        고려 설계 최적화</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">7</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        금형 제작 및 PCB 양산 준비</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">정밀 금형 설계 및 대량 생산을 위한 PCB
+                                        SMT 공정 라인업</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">8</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        T0~T1 시사출 및 품질 검증</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">초도 샘플의 치수 및 기능 정밀도 검증을
+                                        통한 금형 보정 및 승인</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 20px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #002147; transition: transform 0.3s ease;">9</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        최종 데이터 이관 및 양산 유지관리</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">양산용 최종 데이터 이관 및 안정적인 품질
+                                        유지를 위한 기술 지원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation Machine Section -->
+                <div class="split-panel automation-panel" id="automation-panel"
+                    style="width: 400px; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
+                    <div class="panel-bg"
+                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(230, 85, 35, 0.95) 100%);">
+                    </div>
+                    <canvas class="particles-canvas" id="automation-canvas"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; transition: opacity 0.5s ease;"></canvas>
+                    <div class="panel-content"
+                        style="position: relative; z-index: 2; height: 100%; padding: 60px 40px; display: flex; flex-direction: column; color: white;">
+                        <h2
+                            style="font-size: 48px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1;">
+                            AUTOMATION<br>MACHINE</h2>
+                        <p class="process-subtitle" style="font-size: 20px; font-weight: 500; margin-bottom: 40px; opacity: 0.9; color: white;">자동화 기계 프로세스
+                        </p>
+
+                        <div class="steps-container" id="automation-steps"
+                            style="flex: 1; overflow-y: auto; opacity: 0.2; transform: translateX(0); transition: all 0.4s ease; padding-right: 15px;">
+                            <div class="step-timeline"
+                                style="border-left: 2px solid rgba(255,255,255,0.3); padding-left: 55px; margin-top: 20px;">
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">1</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        생산 공정 분석 및 기술 상담</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">기존 라인 진단 및 자동화
+                                        타당성(Feasibility) 협의</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">2</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        자동화 타당성 검토 및 최적화 제안</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">ROI(투자 효율) 분석 및 최적의 자동화
+                                        레이아웃 제안
+                                    </p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">3</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        기계설계 및 제어 아키텍처 수립</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">3D 메커니즘 설계 및 제어 시스템 통합
+                                        아키텍처 수립</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">4</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        부품 가공 및 기구부 조립</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">자체 가공 및 엄선된 부품을 통한 기구부
+                                        조립</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">5</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        전장 제어 시스템 구축</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">AVR 설계 및 제어 소프트웨어 구축</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">6</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        성능 및 반복 테스트</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">목표 싸이클 타임 달성 및 장기 구동 안정성
+                                        테스트</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">7</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        출하 전 검수 (FAT)</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">고객사 입회하에 사전 성능 검증 및 품질
+                                        최종 승인</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 30px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">8</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        현장 설치 및 유틸리티 연결</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">고객사 현장 설치 및 유틸리티 최적화</p>
+                                </div>
+
+                                <div class="timeline-item" style="position: relative; padding-bottom: 20px;">
+                                    <span class="step-number"
+                                        style="position: absolute; left: -41px; top: 0; width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ff6b35; transition: transform 0.3s ease;">9</span>
+                                    <h3
+                                        style="font-size: 22px; font-weight: 700; margin-bottom: 8px; transition: all 0.3s ease;">
+                                        최종 시운전 및 오퍼레이터 교육</h3>
+                                    <p style="font-size: 15px; opacity: 0.8; line-height: 1.5;">실생산 라인 가동 및 유지보수 전문가 양성
+                                        교육 관리
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                (function () {
+                    const productPanel = document.getElementById('product-panel');
+                    const automationPanel = document.getElementById('automation-panel');
+                    const productSteps = document.getElementById('product-steps');
+                    const automationSteps = document.getElementById('automation-steps');
+                    
+                    // URL 파라미터 확인
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const tabParam = urlParams.get('tab');
+                    let activePanel = (tabParam === 'automation') ? 'automation' : 'product'; // URL 파라미터에 따라 초기 상태 설정
+
+                    // 패널 상태 적용 함수
+                    function applyPanelState() {
+                        if (activePanel === 'product') {
+                            productPanel.style.width = '700px';
+                            automationPanel.style.width = '400px';
+                            productSteps.style.opacity = '1';
+                            productSteps.classList.remove('inactive');
+                            automationSteps.style.opacity = '0.13';
+                            automationSteps.classList.add('inactive');
+                        } else {
+                            productPanel.style.width = '400px';
+                            automationPanel.style.width = '700px';
+                            productSteps.style.opacity = '0.13';
+                            productSteps.classList.add('inactive');
+                            automationSteps.style.opacity = '1';
+                            automationSteps.classList.remove('inactive');
+                        }
+                    }
+
+                    // 패널 전환 함수
+                    function switchPanel(panel) {
+                        if (activePanel === panel) return; // 이미 활성화된 패널이면 무시
+                        activePanel = panel;
+                        applyPanelState();
+                    }
+
+                    // 초기 실행
+                    applyPanelState();
+
+                    // 클릭 이벤트로 변경 (마우스 호버 제거)
+                    productPanel.addEventListener('click', () => switchPanel('product'));
+                    automationPanel.addEventListener('click', () => switchPanel('automation'));
+
+                    // 입자 애니메이션 시스템
+                    const productCanvas = document.getElementById('product-canvas');
+                    const automationCanvas = document.getElementById('automation-canvas');
+                    
+                    class ParticleSystem {
+                        constructor(canvas, isActive) {
+                            this.canvas = canvas;
+                            this.ctx = canvas.getContext('2d');
+                            this.isActive = isActive;
+                            this.particles = [];
+                            this.resize();
+                            this.init();
+                            this.animate();
+                            
+                            window.addEventListener('resize', () => this.resize());
+                        }
+                        
+                        resize() {
+                            const parent = this.canvas.parentElement;
+                            this.canvas.width = parent.offsetWidth;
+                            this.canvas.height = parent.offsetHeight;
+                        }
+                        
+                        init() {
+                            // 100개 입자 생성
+                            for (let i = 0; i < 100; i++) {
+                                this.particles.push({
+                                    x: Math.random() * this.canvas.width,
+                                    y: Math.random() * this.canvas.height,
+                                    size: Math.random() * 2 + 1,
+                                    speedY: Math.random() * 1.5 + 0.5,
+                                    opacity: Math.random() * 0.3 + 0.1
+                                });
+                            }
+                        }
+                        
+                        animate() {
+                            if (!this.isActive) {
+                                requestAnimationFrame(() => this.animate());
+                                return;
+                            }
+                            
+                            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                            
+                            // 연결선 그리기
+                            this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                            this.ctx.lineWidth = 1;
+                            
+                            for (let i = 0; i < this.particles.length; i++) {
+                                for (let j = i + 1; j < this.particles.length; j++) {
+                                    const dx = this.particles[i].x - this.particles[j].x;
+                                    const dy = this.particles[i].y - this.particles[j].y;
+                                    const distance = Math.sqrt(dx * dx + dy * dy);
+                                    
+                                    if (distance < 150) {
+                                        this.ctx.beginPath();
+                                        this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                                        this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                                        this.ctx.stroke();
+                                    }
+                                }
+                            }
+                            
+                            // 입자 그리기 및 이동
+                            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                            
+                            this.particles.forEach(particle => {
+                                // 입자 그리기
+                                this.ctx.beginPath();
+                                this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                                this.ctx.fill();
+                                
+                                // 아래로 이동
+                                particle.y += particle.speedY;
+                                
+                                // 화면 밖으로 나가면 위에서 다시 생성
+                                if (particle.y > this.canvas.height) {
+                                    particle.y = -10;
+                                    particle.x = Math.random() * this.canvas.width;
+                                }
+                            });
+                            
+                            requestAnimationFrame(() => this.animate());
+                        }
+                        
+                        setActive(active) {
+                            this.isActive = active;
+                            this.canvas.style.opacity = active ? '1' : '0';
+                        }
+                    }
+                    
+                    // 입자 시스템 초기화
+                    const productParticles = new ParticleSystem(productCanvas, activePanel === 'product');
+                    const automationParticles = new ParticleSystem(automationCanvas, activePanel === 'automation');
+                    
+                    // 패널 전환 시 입자 시스템 업데이트
+                    const originalSwitchPanel = switchPanel;
+                    switchPanel = function(panel) {
+                        originalSwitchPanel(panel);
+                        if (panel === 'product') {
+                            productParticles.setActive(true);
+                            automationParticles.setActive(false);
+                        } else {
+                            productParticles.setActive(false);
+                            automationParticles.setActive(true);
+                        }
+                    };
+                    
+                    // 초기 상태 설정 - URL 파라미터에 따라
+                    if (activePanel === 'product') {
+                        productParticles.setActive(true);
+                        automationParticles.setActive(false);
+                    } else {
+                        productParticles.setActive(false);
+                        automationParticles.setActive(true);
+                    }
+                })();
+            </script>
+
+            <style>
+                .process-split-section {
+                    overflow: hidden;
+                }
+
+                .split-container {
+                    display: flex;
+                }
+
+                .split-panel {
+                    min-width: 0;
+                }
+
+                .timeline-item:hover .step-number {
+                    transform: scale(1.2) !important;
+                }
+
+                .timeline-item:hover h3 {
+                    color: #fff;
+                    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                }
+
+                /* 비활성화된 패널 스크롤 숨김 */
+                .steps-container.inactive {
+                    overflow: hidden !important;
+                }
+
+                .steps-container::-webkit-scrollbar {
+                    width: 6px;
+                }
+
+                .steps-container::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 3px;
+                }
+
+                .steps-container::-webkit-scrollbar-thumb {
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 3px;
+                }
+
+                @media (max-width: 768px) {
+                    .process-split-section {
+                        height: auto !important;
+                        min-height: auto !important;
+                    }
+
+                    .split-container {
+                        flex-direction: column;
+                    }
+
+                    .split-panel {
+                        flex: none !important;
+                        height: auto;
+                        min-height: 400px;
+                    }
+
+                    .panel-content {
+                        padding: 30px 20px !important;
+                    }
+
+                    .panel-content h2 {
+                        font-size: 28px !important;
+                    }
+
+                    .panel-content>p {
+                        font-size: 16px !important;
+                    }
+
+                    .steps-container {
+                        opacity: 1 !important;
+                        transform: none !important;
+                    }
+
+                    .timeline-item h3 {
+                        font-size: 18px !important;
+                    }
+
+                    .timeline-item p {
+                        font-size: 13px !important;
+                    }
+                }
+            </style>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="about-section process-cta-section" style="background-color: #f0f0f0; border-top: 1px solid #e0e0e0;">
+            <div class="container">
+                <div class="about-content">
+                    <div class="text-block" style="text-align: center;">
+                        <div class="process-cta-content">
+                            <h3 style="font-size: 28px; color: #333; margin-bottom: 30px;">"기획에서 자동화 양산까지, 단 하나의 통합 솔루션"</h3>
+                            <p class="desktop-only" style="text-align: center !important;">검증된 제품화 프로세스와 자동화 시스템으로 제조 원가는 낮추고 품질은 높입니다.<br><br>
+                                신성테크가 귀사의 든든한 기술 파트너가 되어 비즈니스의 성공을 지원합니다.</p>
+                            <p class="mobile-only">신성테크의 검증된 프로세스와 품질 관리 시스템으로 고객의 아이디어를 성공적인 제품으로 구현해 드립니다.</p>
+                            <div style="margin-bottom: 30px;"></div>
+
+                            <div style="text-align: center;">
+                                <a href="contact.html"
+                                    style="display: inline-block; padding: 15px 40px; background-color: #0056b3; color: white; text-decoration: none; border-radius: 5px; font-size: 18px; font-weight: 600; transition: all 0.3s ease;"
+                                    onmouseover="this.style.backgroundColor='#004098'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 86, 179, 0.3)';"
+                                    onmouseout="this.style.backgroundColor='#0056b3'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                                    무료 상담 받기
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>
+                    인천광역시 서구 경서동 683 신성테크<br>
+                    Tel : 010-2188-2255 / Mail : sintc2013@naver.com
+                </p>
+                <p class="copyright">
+                    Copyrights &copy; 2013 by 신성테크. all rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
+        <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </svg>
+        </a>
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn" aria-label="카카오톡">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </a>
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop -->
+    <div class="floating-buttons-stack desktop-only">
+        <a href="contact.html" class="floating-btn mail-btn" aria-label="메일">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-10 5L2 7"></path>
+            </svg>
+        </a>
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/dropdown.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+        }
+
+        // Hide phone button on desktop
+        function handleResponsiveButtons() {
+            const phoneBtn = document.querySelector('.phone-btn');
+            if (window.innerWidth > 768) {
+                phoneBtn.style.display = 'none';
+            } else {
+                phoneBtn.style.display = 'flex';
+            }
+        }
+
+        // Initial check and event listener
+        handleResponsiveButtons();
+        window.addEventListener('resize', handleResponsiveButtons);
+
+        // Kakao Talk Open Function
+        function openKakaoTalk() {
+            // Check if mobile - don't open Kakao on mobile
+            if (window.innerWidth <= 768) {
+                return; // Exit function on mobile
+            }
+
+            // Open Kakao Talk with correct URL
+            window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
+        }
+    </script>
+</body>
+
+</html>

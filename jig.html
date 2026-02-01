@@ -11,6 +11,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <style>
+        @media (max-width: 768px) {
+            .floating-buttons-stack.mobile-only {
+                display: flex !important;
+                bottom: 80px !important;
+                right: 15px !important;
+            }
+            .floating-buttons-stack.desktop-only { display: none !important; }
+            .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+        }
+        @media (min-width: 769px) {
+            .floating-buttons-stack.mobile-only { display: none !important; }
+            .floating-buttons-stack.desktop-only { display: flex !important; }
+        }
+    </style>
+    
+    <!-- Gallery Fix - Ensure 5 columns display -->
+    <style>
+        .gallery-grid-5cols {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-item-5cols {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .gallery-item-5cols:hover {
+            transform: translateY(-3px);
+        }
+        
+        .gallery-item-5cols img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item-5cols:hover img {
+            transform: scale(1.02);
+        }
+        
+        .hidden-gallery-item {
+            display: none !important;
+        }
+        
+        .gallery-caption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #333;
+            padding: 4px;
+            min-height: 20px;
+            line-height: 1.3;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px;
+            }
+            .gallery-item-5cols img {
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+            }
+            .gallery-item-5cols img {
+                height: 140px;
+            }
+            .gallery-caption {
+                font-size: 11px;
+            }
+            .gallery-grid-5cols .gallery-item-5cols {
+                display: block !important;
+            }
+            .load-more-container {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid-5cols {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+            }
+            .gallery-item-5cols img {
+                height: 200px;
+            }
+            .gallery-caption {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,13 +135,26 @@
                     <img src="images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="about.html">회사소개</a></li>
-                    <li><a href="machine.html">특수기계</a></li>
-                    <li><a href="jig.html" class="active">지그제작</a></li>
+                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">문의하기</a></li>
-                    <li><a href="https://blog.naver.com/ymn10" target="_blank" class="external-link">블로그</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="메뉴 열기">
@@ -44,418 +170,524 @@
         <div class="page-title-header"
             style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
             <div class="container">
-                <h2 style="font-size: 36px; margin-bottom: 0;">지그 제작</h2>
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">지그 제작</h2>
+<h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">지그 제작</h2>
+            </div>
+        </div>
+
+        <!-- Portfolio Category Tabs -->
+        <div class="portfolio-category-tabs">
+            <div class="container">
+                <div class="category-tabs">
+                    <a href="design.html" class="category-tab">디자인</a>
+                    <a href="mechanical.html" class="category-tab">기구설계</a>
+                    <a href="prototype.html" class="category-tab">시제품</a>
+                    <a href="machine.html" class="category-tab">자동화기계</a>
+                    <a href="jig.html" class="category-tab active">지그제작</a>
+                </div>
             </div>
         </div>
 
         <section class="section jig-section">
             <div class="container">
-                <div class="section-header">
-                    <h3>다양한 공정용 지그 제작으로 작업 시간을 단축하고 품질을 향상시킵니다.</h3>
-                    <div class="header-underline"></div>
-                </div>
-
                 <!-- Real Gallery Grid - 97 images, 5 columns - No Random Order -->
                 <div class="gallery-grid-5cols">
                     <!-- Jig images 1-97 -->
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/각도 조절(프리스탑) 지그1.jpg')">
                         <img src="images/jig/각도 조절(프리스탑) 지그1.jpg" alt="지그제작 1">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">각도 조절(프리스탑) 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">각도
+                            조절(프리스탑) 지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/각도 조절(프리스탑) 지그2.jpg')">
                         <img src="images/jig/각도 조절(프리스탑) 지그2.jpg" alt="지그제작 2">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">각도 조절(프리스탑) 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">각도
+                            조절(프리스탑) 지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/건조 랙1.jpg')">
                         <img src="images/jig/건조 랙1.jpg" alt="지그제작 3">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">건조 랙</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">건조 랙
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그1.jpg')">
                         <img src="images/jig/검사용 지그1.jpg" alt="지그제작 4">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그2.jpg')">
                         <img src="images/jig/검사용 지그2.jpg" alt="지그제작 5">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그3.jpg')">
                         <img src="images/jig/검사용 지그3.jpg" alt="지그제작 6">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그4.jpg')">
                         <img src="images/jig/검사용 지그4.jpg" alt="지그제작 7">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그5.jpg')">
                         <img src="images/jig/검사용 지그5.jpg" alt="지그제작 8">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그6.jpg')">
                         <img src="images/jig/검사용 지그6.jpg" alt="지그제작 9">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그7.jpg')">
                         <img src="images/jig/검사용 지그7.jpg" alt="지그제작 10">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그8.jpg')">
                         <img src="images/jig/검사용 지그8.jpg" alt="지그제작 11">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그9.jpg')">
                         <img src="images/jig/검사용 지그9.jpg" alt="지그제작 12">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/검사용 지그10.jpg')">
                         <img src="images/jig/검사용 지그10.jpg" alt="지그제작 13">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">검사용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/교체용 지그1.jpg')">
                         <img src="images/jig/교체용 지그1.jpg" alt="지그제작 14">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">교체용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">교체용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/낙하 테스트 지그1.jpg')">
                         <img src="images/jig/낙하 테스트 지그1.jpg" alt="지그제작 15">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">낙하 테스트 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">낙하 테스트 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/누름(하중) 지그1.png')">
                         <img src="images/jig/누름(하중) 지그1.png" alt="지그제작 16">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누름(하중) 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누름(하중) 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/뚜껑 조립 지그1.jpg')">
                         <img src="images/jig/뚜껑 조립 지그1.jpg" alt="지그제작 17">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/뚜껑 조립 지그2.jpg')">
                         <img src="images/jig/뚜껑 조립 지그2.jpg" alt="지그제작 18">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/뚜껑 조립 지그3.jpg')">
                         <img src="images/jig/뚜껑 조립 지그3.jpg" alt="지그제작 19">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">뚜껑 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/리벳 지그1.jpg')">
                         <img src="images/jig/리벳 지그1.jpg" alt="지그제작 20">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">리벳 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">리벳 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/리벳 지그2.jpg')">
                         <img src="images/jig/리벳 지그2.jpg" alt="지그제작 21">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">리벳 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">리벳 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/마스킹 지그1.jpg')">
                         <img src="images/jig/마스킹 지그1.jpg" alt="지그제작 22">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">마스킹 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">마스킹 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/마스킹 지그2.jpg')">
                         <img src="images/jig/마스킹 지그2.jpg" alt="지그제작 23">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">마스킹 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">마스킹 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/몰딩용 지그1.jpg')">
                         <img src="images/jig/몰딩용 지그1.jpg" alt="지그제작 24">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">몰딩용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">몰딩용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/몰딩용 지그2.jpg')">
                         <img src="images/jig/몰딩용 지그2.jpg" alt="지그제작 25">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">몰딩용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">몰딩용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 알루미늄지그1.jpg')">
                         <img src="images/jig/본딩 경화용 알루미늄지그1.jpg" alt="지그제작 26">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 알루미늄지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용
+                            알루미늄지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 알루미늄지그2.jpg')">
                         <img src="images/jig/본딩 경화용 알루미늄지그2.jpg" alt="지그제작 27">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 알루미늄지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용
+                            알루미늄지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 알루미늄지그3.jpg')">
                         <img src="images/jig/본딩 경화용 알루미늄지그3.jpg" alt="지그제작 28">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 알루미늄지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용
+                            알루미늄지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 알루미늄지그4.jpg')">
                         <img src="images/jig/본딩 경화용 알루미늄지그4.jpg" alt="지그제작 29">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 알루미늄지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용
+                            알루미늄지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 지그1.jpg')">
                         <img src="images/jig/본딩 경화용 지그1.jpg" alt="지그제작 30">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/본딩 경화용 지그2.jpg')">
                         <img src="images/jig/본딩 경화용 지그2.jpg" alt="지그제작 31">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">본딩 경화용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/부품 분리 지그1.jpg')">
                         <img src="images/jig/부품 분리 지그1.jpg" alt="지그제작 32">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 분리 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 분리 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/부품 조립 지그1.jpg')">
                         <img src="images/jig/부품 조립 지그1.jpg" alt="지그제작 33">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/부품 조립 지그2.jpg')">
                         <img src="images/jig/부품 조립 지그2.jpg" alt="지그제작 34">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">부품 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 스탬프 지그1.jpg')">
                         <img src="images/jig/생산용 스탬프 지그1.jpg" alt="지그제작 35">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 스탬프 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 스탬프
+                            지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그1.jpg')">
                         <img src="images/jig/생산용 안착 지그1.jpg" alt="지그제작 36">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그2.jpg')">
                         <img src="images/jig/생산용 안착 지그2.jpg" alt="지그제작 37">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그3.jpg')">
                         <img src="images/jig/생산용 안착 지그3.jpg" alt="지그제작 38">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그4.jpg')">
                         <img src="images/jig/생산용 안착 지그4.jpg" alt="지그제작 39">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그5.jpg')">
                         <img src="images/jig/생산용 안착 지그5.jpg" alt="지그제작 40">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그6.jpg')">
                         <img src="images/jig/생산용 안착 지그6.jpg" alt="지그제작 41">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그7.jpg')">
                         <img src="images/jig/생산용 안착 지그7.jpg" alt="지그제작 42">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그8.jpg')">
                         <img src="images/jig/생산용 안착 지그8.jpg" alt="지그제작 43">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그9.jpg')">
                         <img src="images/jig/생산용 안착 지그9.jpg" alt="지그제작 44">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그10.jpg')">
                         <img src="images/jig/생산용 안착 지그10.jpg" alt="지그제작 45">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그11.jpg')">
                         <img src="images/jig/생산용 안착 지그11.jpg" alt="지그제작 46">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그12.jpg')">
                         <img src="images/jig/생산용 안착 지그12.jpg" alt="지그제작 47">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그13.jpg')">
                         <img src="images/jig/생산용 안착 지그13.jpg" alt="지그제작 48">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그14.jpg')">
                         <img src="images/jig/생산용 안착 지그14.jpg" alt="지그제작 49">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 안착 지그15.jpg')">
                         <img src="images/jig/생산용 안착 지그15.jpg" alt="지그제작 50">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 지그1.jpg')">
                         <img src="images/jig/생산용 지그1.jpg" alt="지그제작 51">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 코팅 지그1.jpg')">
                         <img src="images/jig/생산용 코팅 지그1.jpg" alt="지그제작 52">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 코팅 지그2.jpg')">
                         <img src="images/jig/생산용 코팅 지그2.jpg" alt="지그제작 53">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/생산용 코팅 지그3.jpg')">
                         <img src="images/jig/생산용 코팅 지그3.jpg" alt="지그제작 54">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 코팅 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스티커 지그1.jpg')">
                         <img src="images/jig/스티커 지그1.jpg" alt="지그제작 55">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스티커 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스티커 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스티커 지그2.jpg')">
                         <img src="images/jig/스티커 지그2.jpg" alt="지그제작 56">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스티커 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스티커 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스프링 조립 지그1.jpg')">
                         <img src="images/jig/스프링 조립 지그1.jpg" alt="지그제작 57">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스프링 조립 지그2.jpg')">
                         <img src="images/jig/스프링 조립 지그2.jpg" alt="지그제작 58">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스프링 조립 지그3.jpg')">
                         <img src="images/jig/스프링 조립 지그3.jpg" alt="지그제작 59">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스프링 조립 지그4.jpg')">
                         <img src="images/jig/스프링 조립 지그4.jpg" alt="지그제작 60">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/스프링 조립 지그5.jpg')">
                         <img src="images/jig/스프링 조립 지그5.jpg" alt="지그제작 61">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/안경알 고정 지그1.png')">
                         <img src="images/jig/안경알 고정 지그1.png" alt="지그제작 62">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">안경알 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">안경알 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/오링 삽입 지그1.jpg')">
                         <img src="images/jig/오링 삽입 지그1.jpg" alt="지그제작 63">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">오링 삽입 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">오링 삽입 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/인쇄용 지그1.jpg')">
                         <img src="images/jig/인쇄용 지그1.jpg" alt="지그제작 64">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">인쇄용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">인쇄용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/인쇄용 지그2.jpg')">
                         <img src="images/jig/인쇄용 지그2.jpg" alt="지그제작 65">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">인쇄용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">인쇄용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/전자석 지그1.jpg')">
                         <img src="images/jig/전자석 지그1.jpg" alt="지그제작 66">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">전자석 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">전자석 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/정밀 조립 지그1.jpg')">
                         <img src="images/jig/정밀 조립 지그1.jpg" alt="지그제작 67">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정밀 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정밀 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/정밀 조립 지그2.jpg')">
                         <img src="images/jig/정밀 조립 지그2.jpg" alt="지그제작 68">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정밀 조립 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정밀 조립 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 고정 지그1.jpg')">
                         <img src="images/jig/제품 고정 지그1.jpg" alt="지그제작 69">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 고정 지그2.jpg')">
                         <img src="images/jig/제품 고정 지그2.jpg" alt="지그제작 70">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 고정 지그3.jpg')">
                         <img src="images/jig/제품 고정 지그3.jpg" alt="지그제작 71">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 고정 지그4.jpg')">
                         <img src="images/jig/제품 고정 지그4.jpg" alt="지그제작 72">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)1.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)1.jpg" alt="지그제작 73">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)2.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)2.jpg" alt="지그제작 74">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)3.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)3.jpg" alt="지그제작 75">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)4.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)4.jpg" alt="지그제작 76">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)5.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)5.jpg" alt="지그제작 77">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)6.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)6.jpg" alt="지그제작 78">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)7.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)7.jpg" alt="지그제작 79">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그(인쇄 지그)8.jpg')">
                         <img src="images/jig/제품 안착 지그(인쇄 지그)8.jpg" alt="지그제작 80">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그(인쇄 지그)</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착
+                            지그(인쇄 지그)</div>
                     </div>
-                    
+
                     <!-- Jig images 81-97 -->
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착 지그1.jpg')">
                         <img src="images/jig/제품 안착 지그1.jpg" alt="지그제작 81">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/제품 안착(고정) 테스트 지그1.jpg')">
                         <img src="images/jig/제품 안착(고정) 테스트 지그1.jpg" alt="지그제작 82">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착(고정) 테스트 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">제품 안착(고정)
+                            테스트 지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그1.jpg')">
                         <img src="images/jig/조립용 지그1.jpg" alt="지그제작 83">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그2.jpg')">
                         <img src="images/jig/조립용 지그2.jpg" alt="지그제작 84">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그3.jpg')">
                         <img src="images/jig/조립용 지그3.jpg" alt="지그제작 85">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그4.jpg')">
                         <img src="images/jig/조립용 지그4.jpg" alt="지그제작 86">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그5.jpg')">
                         <img src="images/jig/조립용 지그5.jpg" alt="지그제작 87">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그6.jpg')">
                         <img src="images/jig/조립용 지그6.jpg" alt="지그제작 88">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그7.jpg')">
                         <img src="images/jig/조립용 지그7.jpg" alt="지그제작 89">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/조립용 지그8.jpg')">
                         <img src="images/jig/조립용 지그8.jpg" alt="지그제작 90">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">조립용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/측정용 지그1.jpg')">
                         <img src="images/jig/측정용 지그1.jpg" alt="지그제작 91">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">측정용 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">측정용 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/치공구 지그1.jpg')">
                         <img src="images/jig/치공구 지그1.jpg" alt="지그제작 92">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">치공구 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">치공구 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/클립 고정, 푸쉬 지그1.jpg')">
                         <img src="images/jig/클립 고정, 푸쉬 지그1.jpg" alt="지그제작 93">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">클립 고정, 푸쉬 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">클립 고정, 푸쉬
+                            지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/토션 스프링 삽입 지그1.jpg')">
                         <img src="images/jig/토션 스프링 삽입 지그1.jpg" alt="지그제작 94">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">토션 스프링 삽입 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">토션 스프링 삽입
+                            지그</div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/특수 회전  지그1.jpg')">
                         <img src="images/jig/특수 회전  지그1.jpg" alt="지그제작 95">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 회전  지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 회전 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/파이프 고정 지그1.jpg')">
                         <img src="images/jig/파이프 고정 지그1.jpg" alt="지그제작 96">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">파이프 고정 지그</div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">파이프 고정 지그
+                        </div>
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/jig/흡착 지그1.jpg')">
                         <img src="images/jig/흡착 지그1.jpg" alt="지그제작 97">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">흡착 지그</div>
-                </div>
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">흡착 지그
+                        </div>
+                    </div>
 
                 </div>
 
                 <!-- Load More Button (Dynamic) - Outside Gallery Grid -->
                 <div style="width: 100%; text-align: center; margin: 30px 0 40px 0; clear: both;">
                     <div id="loadMoreContainer" class="load-more-container">
-                        <button id="loadMoreBtn" onclick="loadMoreImages()" 
-                                style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">
+                        <button id="loadMoreBtn" onclick="loadMoreImages()"
+                            style="display: inline-block; padding: 12px 30px; background: white; color: black; border: 1px solid black; border-radius: 0; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">
                             더보기 (40 / 97)
                         </button>
                     </div>
@@ -476,13 +708,6 @@
                     Copyrights &copy; 2013 by 신성테크. all rights Reserved.
                 </p>
             </div>
-            <div class="footer-link">
-                <!-- Blog Icon/Link -->
-                <a href="https://blog.naver.com/ymn10" target="_blank" class="blog-btn">
-                    <img src="images/blog_icon.png" alt="Blog" class="blog-icon-img">
-                    <span class="blog-text">신성테크 블로그</span>
-                </a>
-            </div>
         </div>
     </footer>
 
@@ -493,7 +718,7 @@
     </div>
 
 
-    
+
     <script>
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
@@ -510,36 +735,36 @@
         }
 
         // Close modal on ESC key
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeModal();
             }
         });
 
         // Dynamic Load More functionality without Random Shuffle
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('JavaScript loaded');
-            
+
             const galleryGrid = document.querySelector('.gallery-grid-5cols');
             const loadMoreContainer = document.getElementById('loadMoreContainer');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
-            
+
             // Check if mobile
             const isMobile = window.innerWidth <= 768;
-            
+
             console.log('Gallery grid:', galleryGrid);
             console.log('Load more container:', loadMoreContainer);
             console.log('Load more btn:', loadMoreBtn);
             console.log('Is mobile:', isMobile);
-            
+
             if (!galleryGrid) {
                 console.error('Gallery grid not found');
                 return;
             }
-            
+
             const totalImages = galleryGrid.children.length;
             console.log('Total images found:', totalImages);
-            
+
             // Only show load more functionality on desktop
             if (!isMobile) {
                 // Hide images beyond 40 on desktop
@@ -550,11 +775,11 @@
                         console.log('Hidden image:', i);
                     }
                 }
-                
+
                 // Show load more button if there are more images
                 console.log('Total images:', totalImages, 'Initial display count:', 40);
                 console.log('Should show load more:', totalImages > 40);
-                
+
                 if (totalImages > 40 && loadMoreContainer) {
                     loadMoreContainer.style.display = 'block';
                     if (loadMoreBtn) {
@@ -564,9 +789,9 @@
                 } else {
                     console.log('Load more button will be hidden');
                 }
-                
+
                 // Load more function for desktop
-                window.loadMoreImages = function() {
+                window.loadMoreImages = function () {
                     console.log('Load more clicked');
                     for (let i = 40; i < totalImages; i++) {
                         const item = galleryGrid.children[i];
@@ -588,6 +813,27 @@
             }
         });
 
+    </script>
+
+    <!-- Gallery Randomizer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.gallery-grid-5cols');
+            if (gallery) {
+                const items = Array.from(gallery.children);
+                // Fisher-Yates shuffle algorithm
+                for (let i = items.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [items[i], items[j]] = [items[j], items[i]];
+                }
+                // Re-append items in new order
+                items.forEach(item => gallery.appendChild(item));
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const mainNav = document.querySelector('.main-nav');
@@ -599,30 +845,35 @@
         }
     </script>
 
-    <!-- Floating Contact Buttons (Mobile Only) -->
-    <div class="floating-buttons-stack">
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
         <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
             </svg>
         </a>
-        <!-- Mobile Kakao Talk Button -->
-        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn mobile-only" aria-label="카카오톡">
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn" aria-label="카카오톡">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </a>
-        <!-- Desktop Mail Button -->
-        <a href="contact.html" class="floating-btn mail-btn desktop-only" aria-label="메일">
-            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop -->
+    <div class="floating-buttons-stack desktop-only">
+        <a href="contact.html" class="floating-btn mail-btn" aria-label="메일">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                 <path d="m22 7-10 5L2 7"></path>
             </svg>
         </a>
-        <!-- Desktop Kakao Talk Button -->
-        <div class="floating-btn kakaotalk-btn desktop-only" aria-label="카카오톡" onclick="openKakaoTalk()">
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
             <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
         </div>
     </div>
-    
+
     <script>
         // Kakao Talk Open Function
         function openKakaoTalk() {
@@ -630,7 +881,7 @@
             if (window.innerWidth < 769) {
                 return; // Exit function on mobile
             }
-            
+
             // Open Kakao Talk with correct URL
             window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
         }

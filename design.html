@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디자인 - SIntc</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <style>
+        @media (max-width: 768px) {
+            .floating-buttons-stack.mobile-only {
+                display: flex !important;
+                bottom: 80px !important;
+                right: 15px !important;
+            }
+            .floating-buttons-stack.desktop-only { display: none !important; }
+            .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+        }
+        @media (min-width: 769px) {
+            .floating-buttons-stack.mobile-only { display: none !important; }
+            .floating-buttons-stack.desktop-only { display: flex !important; }
+        }
+    </style>
+    
+    <!-- Gallery Fix - Ensure 5 columns display -->
+    <style>
+        .gallery-grid-5cols {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-item-5cols {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .gallery-item-5cols:hover {
+            transform: translateY(-3px);
+        }
+        
+        .gallery-item-5cols img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item-5cols:hover img {
+            transform: scale(1.02);
+        }
+        
+        .hidden-gallery-item {
+            display: none !important;
+        }
+        
+        .gallery-caption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #333;
+            padding: 4px;
+            min-height: 20px;
+            line-height: 1.3;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px;
+            }
+            .gallery-item-5cols img {
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid-5cols {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+            }
+            .gallery-item-5cols img {
+                height: 140px;
+            }
+            .gallery-caption {
+                font-size: 11px;
+            }
+            .gallery-grid-5cols .gallery-item-5cols {
+                display: block !important;
+            }
+            .load-more-container {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid-5cols {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+            }
+            .gallery-item-5cols img {
+                height: 200px;
+            }
+            .gallery-caption {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="SINSUNG" class="logo-image">
+                </a>
+            </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">회사소개</a></li>
+                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Header -->
+        <div class="page-title-header"
+            style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
+            <div class="container">
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">디자인</h2>
+<h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">디자인</h2>
+            </div>
+        </div>
+
+        <!-- Portfolio Category Tabs -->
+        <div class="portfolio-category-tabs">
+            <div class="container">
+                <div class="category-tabs">
+                    <a href="design.html" class="category-tab active">디자인</a>
+                    <a href="mechanical.html" class="category-tab">기구설계</a>
+                    <a href="prototype.html" class="category-tab">시제품</a>
+                    <a href="machine.html" class="category-tab">자동화기계</a>
+                    <a href="jig.html" class="category-tab">지그제작</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Gallery Section -->
+        <section class="section design-section" style="padding-top: 0;">
+            <div class="container">
+                <!-- Design Gallery Grid - 5 columns -->
+                <div class="gallery-grid-5cols">
+                    <!-- Design images from design folder -->
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/01.jpg')">
+                        <img src="images/design/01.jpg" alt="디자인 1">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/02.jpg')">
+                        <img src="images/design/02.jpg" alt="디자인 2">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/03.jpg')">
+                        <img src="images/design/03.jpg" alt="디자인 3">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/04.jpg')">
+                        <img src="images/design/04.jpg" alt="디자인 4">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/05.jpg')">
+                        <img src="images/design/05.jpg" alt="디자인 5">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/06.jpg')">
+                        <img src="images/design/06.jpg" alt="디자인 6">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/07.jpg')">
+                        <img src="images/design/07.jpg" alt="디자인 7">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/08.jpg')">
+                        <img src="images/design/08.jpg" alt="디자인 8">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/09.jpg')">
+                        <img src="images/design/09.jpg" alt="디자인 9">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/10.jpg')">
+                        <img src="images/design/10.jpg" alt="디자인 10">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/11.jpg')">
+                        <img src="images/design/11.jpg" alt="디자인 11">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/12.jpg')">
+                        <img src="images/design/12.jpg" alt="디자인 12">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/13.jpg')">
+                        <img src="images/design/13.jpg" alt="디자인 13">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/design/14.jpg')">
+                        <img src="images/design/14.jpg" alt="디자인 14">
+                    </div>
+                </div>
+
+                <!-- Load More Button - Not needed for static gallery -->
+                <div style="width: 100%; text-align: center; margin: 30px 0 40px 0; clear: both;">
+                    <!-- Static gallery - no load more needed -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>
+                    인천광역시 서구 경서동 683 신성테크<br>
+                    Tel : 010-2188-2255 / Mail : sintc2013@naver.com
+                </p>
+                <p class="copyright">
+                    Copyrights &copy; 2013 by 신성테크. all rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+        }
+
+        // Close modal
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Gallery Randomizer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.gallery-grid-5cols');
+            if (gallery) {
+                const items = Array.from(gallery.children);
+                // Fisher-Yates shuffle algorithm
+                for (let i = items.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [items[i], items[j]] = [items[j], items[i]];
+                }
+                // Re-append items in new order
+                items.forEach(item => gallery.appendChild(item));
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
+        <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </svg>
+        </a>
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn" aria-label="카카오톡">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </a>
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop -->
+    <div class="floating-buttons-stack desktop-only">
+        <a href="contact.html" class="floating-btn mail-btn" aria-label="메일">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-10 5L2 7"></path>
+            </svg>
+        </a>
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </div>
+    </div>
+
+    <script>
+        // Kakao Talk Open Function
+        function openKakaoTalk() {
+            // Check if mobile - don't open Kakao on mobile
+            if (window.innerWidth < 769) {
+                return; // Exit function on mobile
+            }
+
+            // Open Kakao Talk with correct URL
+            window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
+        }
+    </script>
+</body>
+
+</html>

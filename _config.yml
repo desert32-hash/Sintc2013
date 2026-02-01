@@ -1,0 +1,53 @@
+# Jekyll Configuration for SINTC Tech Blog
+title: 신성테크 기술자료
+description: 기구설계, 시제품, 자동화 기계 전문 기업의 기술 노하우
+baseurl: ""
+url: "https://sintc.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+# Pagination
+paginate: 12
+paginate_path: "/technology/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:path/
+  pages:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "tech-post"
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "default"
+
+# Include folders
+include:
+  - _pages
+
+# Exclude files
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - "*.zip"
