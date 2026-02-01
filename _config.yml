@@ -31,7 +31,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "tech-post"
+      layout: "default"
   - scope:
       path: "_pages"
       type: "pages"
@@ -52,5 +52,3 @@ exclude:
   - "*.zip"
 
 
-
-theme: minima

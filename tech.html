@@ -1,20 +1,10 @@
 ---
-layout: null
+layout: default
 permalink: /tech.html
+title: 기술자료
 ---
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신성테크 홈페이지 입니다.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=2">
-    <link rel="stylesheet" href="/css/dropdown.css">
-    <style>
+<style>
         /* Mobile/Desktop visibility */
         @media (max-width: 768px) {
             .desktop-only {
@@ -31,16 +21,6 @@ permalink: /tech.html
             .mobile-only {
                 display: none !important;
             }
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        main {
-            flex: 1;
         }
 
         .tech-blog-container {
@@ -120,22 +100,6 @@ permalink: /tech.html
 
         .tech-content {
             flex: 1;
-        }
-
-        .tech-content-header {
-            margin-bottom: 30px;
-        }
-
-        .tech-content-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #132a56;
-            margin-bottom: 10px;
-        }
-
-        .tech-content-subtitle {
-            color: #666;
-            font-size: 14px;
         }
 
         .post-table {
@@ -277,198 +241,137 @@ permalink: /tech.html
             }
         }
     </style>
-</head>
-<body>
-    <header class="site-header">
-        <div class="container header-container">
-            <div class="logo">
-                <a href="/index.html">
-                    <img src="/images/logo.png" alt="SINSUNG" class="logo-image">
-                </a>
-            </div>
-            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
-                <img src="/images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/about.html">회사소개</a></li>
-                    <li><a href="/Business.html">사업영역</a></li>
-                    <li><a href="/process.html">프로세스</a></li>
-                    <li class="dropdown">
-                        <a href="/design.html" class="dropdown-toggle">포트폴리오</a>
-                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
-                            <li><a href="/design.html">디자인</a></li>
-                            <li><a href="/mechanical.html">기구설계</a></li>
-                            <li><a href="/prototype.html">시제품</a></li>
-                            <li><a href="/machine.html">자동화기계</a></li>
-                            <li><a href="/jig.html" class="jig-menu-item">지그제작</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/tech.html">기술자료</a></li>
-<li><a href="/contact.html">문의하기</a></li>
-<li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
-<li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
 
-    <div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
-        <div class="container">
-            <h2 class="desktop-only" style="font-size: 36px; margin: 0;">기술자료</h2>
-<h2 class="mobile-only" style="font-size: 24px; margin: 0;">기술자료</h2>
-        </div>
+<div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
+    <div class="container">
+        <h2 class="desktop-only" style="font-size: 36px; margin: 0;">기술자료</h2>
+        <h2 class="mobile-only" style="font-size: 24px; margin: 0;">기술자료</h2>
     </div>
+</div>
 
-    <main>
-        <div class="tech-blog-container">
-            <aside class="tech-sidebar">
-                <h2 class="tech-sidebar-title">카테고리</h2>
-                <ul class="category-tabs">
-                    <li class="category-tab">
-                        <a href="#" class="active" data-category="공지사항">공지사항</a>
-                    </li>
-                    <li class="category-tab">
-                        <a href="#" data-category="디자인/기구설계">디자인/기구설계</a>
-                    </li>
-                    <li class="category-tab">
-                        <a href="#" data-category="자동화 기술">자동화 기술</a>
-                    </li>
-                    <li class="category-tab">
-                        <a href="#" data-category="산업 소재">산업 소재</a>
-                    </li>
-                    <li class="category-tab">
-                        <a href="#" data-category="제어 기술">제어 기술</a>
-                    </li>
-                </ul>
-            </aside>
+<div class="tech-blog-container">
+    <aside class="tech-sidebar">
+        <h2 class="tech-sidebar-title">카테고리</h2>
+        <ul class="category-tabs">
+            <li class="category-tab">
+                <a href="#" class="active" data-category="공지사항">공지사항</a>
+            </li>
+            <li class="category-tab">
+                <a href="#" data-category="디자인/기구설계">디자인/기구설계</a>
+            </li>
+            <li class="category-tab">
+                <a href="#" data-category="자동화 기술">자동화 기술</a>
+            </li>
+            <li class="category-tab">
+                <a href="#" data-category="산업 소재">산업 소재</a>
+            </li>
+            <li class="category-tab">
+                <a href="#" data-category="제어 기술">제어 기술</a>
+            </li>
+        </ul>
+    </aside>
 
-            <div class="tech-content">
-                <table class="post-table" id="post-table">
-                    <thead>
-                        <tr>
-                            <th class="col-num">번호</th>
-                            <th class="col-title">제목</th>
-                            <th class="col-author">작성자</th>
-                            <th class="col-date">등록일</th>
-                        </tr>
-                    </thead>
-                    <tbody id="post-tbody">
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-<tr class="post-row" data-category="{{ post.categories | first }}">
-    <td class="col-num">{{ forloop.rindex }}</td>
-    <td class="col-title">
-        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
-    </td>
-    <td class="col-author">{{ post.author | default: '관리자' }}</td>
-    <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
-</tr>
-{% endfor %}
-{% if site.posts.size == 0 %}
-<tr class="no-posts">
-    <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
-        <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-        <p>등록된 글이 없습니다.</p>
-    </td>
-</tr>
-{% endif %}
-                    </tbody>
-                </table>
+    <div class="tech-content">
+        <table class="post-table" id="post-table">
+            <thead>
+                <tr>
+                    <th class="col-num">번호</th>
+                    <th class="col-title">제목</th>
+                    <th class="col-author">작성자</th>
+                    <th class="col-date">등록일</th>
+                </tr>
+            </thead>
+            <tbody id="post-tbody">
+                {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+                {% for post in sorted_posts %}
+                <tr class="post-row" data-category="{{ post.categories | first }}">
+                    <td class="col-num">{{ forloop.rindex }}</td>
+                    <td class="col-title">
+                        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
+                    </td>
+                    <td class="col-author">{{ post.author | default: '관리자' }}</td>
+                    <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
+                </tr>
+                {% endfor %}
+                {% if site.posts.size == 0 %}
+                <tr class="no-posts">
+                    <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+                        <p>등록된 글이 없습니다.</p>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
 
-                <div class="pagination" id="pagination" style="display: none;">
-                </div>
+        <div class="pagination" id="pagination" style="display: none;">
+        </div>
 
-<script>
-const categoryTabs = document.querySelectorAll('.category-tab a');
-const postTbody = document.getElementById('post-tbody');
+        <script>
+        const categoryTabs = document.querySelectorAll('.category-tab a');
+        const postTbody = document.getElementById('post-tbody');
 
-let currentCategory = '공지사항';
-let currentPage = 1;
-const postsPerPage = 12;
+        let currentCategory = '공지사항';
+        let currentPage = 1;
+        const postsPerPage = 12;
 
-const posts = [
-    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-    {% for post in sorted_posts %}
-    {
-        title: "{{ post.title | escape }}",
-        category: "{{ post.categories | first }}",
-        date: "{{ post.date | date: "%y-%m-%d" }}",
-        url: "{{ post.url }}"
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-];
+        const posts = [
+            {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+            {% for post in sorted_posts %}
+            {
+                title: "{{ post.title | escape }}",
+                category: "{{ post.categories | first }}",
+                date: "{{ post.date | date: "%y-%m-%d" }}",
+                url: "{{ post.url }}"
+            }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        ];
 
-function renderPosts() {
-    const filteredPosts = posts.filter(post => post.category === currentCategory);
-    
-    if (filteredPosts.length === 0) {
-        postTbody.innerHTML = `
-            <tr class="no-posts">
-                <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
-                    <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-                    <p>등록된 글이 없습니다.</p>
-                </td>
-            </tr>
-        `;
-        return;
-    }
+        function renderPosts() {
+            const filteredPosts = posts.filter(post => post.category === currentCategory);
+            
+            if (filteredPosts.length === 0) {
+                postTbody.innerHTML = `
+                    <tr class="no-posts">
+                        <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+                            <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+                            <p>등록된 글이 없습니다.</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
 
-    const startNum = filteredPosts.length - ((currentPage - 1) * postsPerPage);
+            const startNum = filteredPosts.length - ((currentPage - 1) * postsPerPage);
 
-    postTbody.innerHTML = filteredPosts.map((post, index) => {
-        const dateParts = post.date.split('-');
-        const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
+            postTbody.innerHTML = filteredPosts.map((post, index) => {
+                const dateParts = post.date.split('-');
+                const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
 
-        return `
-        <tr class="post-row" data-category="${post.category}">
-            <td class="col-num">${startNum - index}</td>
-            <td class="col-title">
-                <a href="${post.url}" class="post-link">${post.title}</a>
-            </td>
-            <td class="col-author">관리자</td>
-            <td class="col-date">${formattedDate}</td>
-        </tr>
-    `}).join('');
-}
+                return `
+                <tr class="post-row" data-category="${post.category}">
+                    <td class="col-num">${startNum - index}</td>
+                    <td class="col-title">
+                        <a href="${post.url}" class="post-link">${post.title}</a>
+                    </td>
+                    <td class="col-author">관리자</td>
+                    <td class="col-date">${formattedDate}</td>
+                </tr>
+            `}).join('');
+        }
 
-categoryTabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentCategory = tab.dataset.category;
-        currentPage = 1;
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentCategory = tab.dataset.category;
+                currentPage = 1;
+                renderPosts();
+            });
+        });
+
         renderPosts();
-    });
-});
-
-renderPosts();
-</script>
-            </div>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-info">
-                <p>
-                    인천광역시 서구 경서동 683 신성테크<br>
-                    Tel : 010-2188-2255 / Mail : sintc2013@naver.com
-                </p>
-                <p class="copyright">
-                    Copyrights &copy; 2013 by 신성테크. all rights Reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="/js/main.js"></script>
-
-</body>
-</html>
+        </script>
+    </div>
+</div>
