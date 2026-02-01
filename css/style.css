@@ -889,21 +889,9 @@ img {
     line-height: 1.6;
 }
 
-/* Mobile Header Blog Icon */
+/* Mobile Header Blog Icon - Hidden on mobile */
 .mobile-header-blog {
-    display: none;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: none !important;
 }
 
 .mobile-header-blog:hover {
@@ -1942,9 +1930,18 @@ img {
         display: none;
     }
 
-    /* 모바일 헤더 블로그 아이콘 */
+    /* 모바일에서 구분선 표시 설정 */
+    .separator-desktop {
+        display: none !important;
+    }
+
+    .separator-mobile {
+        display: block !important;
+    }
+
+    /* 모바일 헤더 블로그 아이콘 - 숨김 처리 */
     .mobile-header-blog {
-        display: flex;
+        display: none !important;
     }
 }
 
@@ -2244,6 +2241,13 @@ img {
     margin-top: 40px;
 }
 
+/* Desktop: Remove margin from business-summary-section */
+@media (min-width: 769px) {
+    .business-summary-section.history-section {
+        margin-top: 0 !important;
+    }
+}
+
 .history-item {
     display: flex;
     gap: 30px;
@@ -2493,7 +2497,8 @@ img {
         font-size: 14px;
     }
 
-    .form-group label {
+    .form-group label,
+    .form-group-horizontal label {
         font-size: 14px;
     }
 
