@@ -1,0 +1,209 @@
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    position: relative;
+    padding-right: 20px !important;
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: inherit;
+}
+
+header .main-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff !important;
+    width: 120px !important;
+    height: auto !important;
+    max-width: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    border-radius: 0 !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex !important;
+    flex-direction: column !important;
+    white-space: nowrap !important;
+}
+
+/* 가로 위치 조정 옵션 */
+/* 옵션 1: 왼쪽 정렬 (기본) */
+.dropdown-menu.align-left {
+    left: 0;
+}
+
+/* 옵션 2: 중앙 정렬 */
+.dropdown-menu.align-center {
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.dropdown:hover .dropdown-menu.align-center {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 옵션 3: 오른쪽 정렬 */
+.dropdown-menu.align-right {
+    left: auto;
+    right: 0;
+}
+
+/* 옵션 4: 약간 왼쪽으로 이동 */
+.dropdown-menu.align-offset {
+    left: -0px;
+}
+
+header .main-nav .dropdown:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0);
+    background-color: #ffffff !important;
+    width: 120px !important;
+    height: auto !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    display: block !important;
+    width: 100%;
+}
+
+.main-nav .dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto !important;
+    padding: 6px 8px !important;
+    color: #333;
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+    min-height: 46px !important;
+    background-color: #ffffff !important;
+}
+
+.main-nav .dropdown-menu li a:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Active state for dropdown items */
+.main-nav .dropdown-menu li a.active {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+/* Active state for dropdown */
+.dropdown:hover .dropdown-toggle {
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+/* 지그 메뉴 항목만 넓게 */
+.main-nav .dropdown-menu li .jig-menu-item {
+    padding: 4px 8px !important;
+    min-width: 60px !important;
+}
+
+    /* Mobile responsive */
+@media (max-width: 768px) {
+    /* 모바일에서는 드롭다운 메뉴 완전히 숨김 */
+    header .main-nav .dropdown-menu,
+    header .main-nav .desktop-only-dropdown {
+        display: none !important;
+    }
+
+    /* 모바일에서 포트폴리오 버튼은 일반 버튼처럼 표시 */
+    .main-nav ul li.dropdown {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 44px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-nav ul li.dropdown .dropdown-toggle {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 32px;
+        margin: 0;
+        padding: 8px 6px !important;
+        box-sizing: border-box;
+        background-color: transparent;
+        color: var(--text-color);
+        font-weight: 400;
+        font-size: 14px;
+        border: none;
+        box-shadow: none;
+    }
+
+    .main-nav ul li.dropdown .dropdown-toggle:hover {
+        background-color: #f5f5f5;
+        color: var(--primary-color);
+    }
+
+    /* 모바일에서 dropdown-toggle 화살표 제거 및 패딩 초기화 */
+    .dropdown-toggle {
+        padding-right: 12px !important;
+    }
+
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    /* 모바일 그리드 - 6개 버튼 2줄 배치 (네이티브 스타일) */
+    .main-nav ul {
+        display: grid;
+        grid-template-areas: 
+            "company business process"
+            "tech portfolio contact";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        gap: 12px;
+        padding: 16px;
+        background-color: #ffffff;
+    }
+
+    .main-nav ul li {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .main-nav ul li:hover {
+        border-color: var(--primary-color);
+    }
+
+    .main-nav ul li:nth-child(1) { grid-area: company; }
+    .main-nav ul li:nth-child(2) { grid-area: business; }
+    .main-nav ul li:nth-child(3) { grid-area: process; }
+    .main-nav ul li:nth-child(4) { grid-area: tech; }
+    .main-nav ul li:nth-child(5) { grid-area: portfolio; }
+    .main-nav ul li:nth-child(6) { grid-area: contact; }
+
+    /* 네이티브 스타일 버튼 내부 테두리 제거 */
+    .main-nav a {
+        border: none;
+    }
+}
