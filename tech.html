@@ -1,6 +1,3 @@
----
-layout: null
----
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,8 +7,8 @@ layout: null
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?v=2">
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/dropdown.css">
+    <link rel="stylesheet" href="/Sintc2013/css/style.css?v=2">
+    <link rel="stylesheet" href="/Sintc2013/css/dropdown.css">
     <style>
         /* Mobile/Desktop visibility */
         @media (max-width: 768px) {
@@ -280,30 +277,30 @@ layout: null
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="{{ site.baseurl }}/index.html">
-                    <img src="{{ site.baseurl }}/images/logo.png" alt="SINSUNG" class="logo-image">
+                <a href="/Sintc2013/index.html">
+                    <img src="/Sintc2013/images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
             <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
-                <img src="{{ site.baseurl }}/images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+                <img src="/Sintc2013/images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="{{ site.baseurl }}/about.html">회사소개</a></li>
-                    <li><a href="{{ site.baseurl }}/Business.html">사업영역</a></li>
-                    <li><a href="{{ site.baseurl }}/process.html">프로세스</a></li>
+                    <li><a href="/Sintc2013/about.html">회사소개</a></li>
+                    <li><a href="/Sintc2013/Business.html">사업영역</a></li>
+                    <li><a href="/Sintc2013/process.html">프로세스</a></li>
                     <li class="dropdown">
-                        <a href="{{ site.baseurl }}/design.html" class="dropdown-toggle">포트폴리오</a>
+                        <a href="/Sintc2013/design.html" class="dropdown-toggle">포트폴리오</a>
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
-                            <li><a href="{{ site.baseurl }}/design.html">디자인</a></li>
-                            <li><a href="{{ site.baseurl }}/mechanical.html">기구설계</a></li>
-                            <li><a href="{{ site.baseurl }}/prototype.html">시제품</a></li>
-                            <li><a href="{{ site.baseurl }}/machine.html">자동화기계</a></li>
-                            <li><a href="{{ site.baseurl }}/jig.html" class="jig-menu-item">지그제작</a></li>
+                            <li><a href="/Sintc2013/design.html">디자인</a></li>
+                            <li><a href="/Sintc2013/mechanical.html">기구설계</a></li>
+                            <li><a href="/Sintc2013/prototype.html">시제품</a></li>
+                            <li><a href="/Sintc2013/machine.html">자동화기계</a></li>
+                            <li><a href="/Sintc2013/jig.html" class="jig-menu-item">지그제작</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ site.baseurl }}/tech.html">기술자료</a></li>
-<li><a href="{{ site.baseurl }}/contact.html">문의하기</a></li>
+                    <li><a href="/Sintc2013/tech.html">기술자료</a></li>
+<li><a href="/Sintc2013/contact.html">문의하기</a></li>
 <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
 <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
@@ -357,25 +354,12 @@ layout: null
                         </tr>
                     </thead>
                     <tbody id="post-tbody">
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-<tr class="post-row" data-category="{{ post.categories | first }}" style="display: none;">
-    <td class="col-num">{{ forloop.rindex }}</td>
-    <td class="col-title">
-        <a href="{{ site.baseurl }}{{ post.url }}" class="post-link">{{ post.title }}</a>
-    </td>
-    <td class="col-author">{{ post.author | default: '관리자' }}</td>
-    <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
-</tr>
-{% endfor %}
-{% if site.posts.size == 0 %}
-                        <tr class="no-posts">
+<tr class="no-posts">
                             <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
                                 <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
                                 <p>등록된 글이 없습니다.</p>
                             </td>
                         </tr>
-{% endif %}
                     </tbody>
                 </table>
 
@@ -399,7 +383,7 @@ layout: null
         </div>
     </footer>
 
-    <script src="{{ site.baseurl }}/js/main.js"></script>
+    <script src="/Sintc2013/js/main.js"></script>
 
 </body>
 </html>
