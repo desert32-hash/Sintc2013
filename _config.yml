@@ -1,8 +1,8 @@
 # Jekyll Configuration for SINTC Tech Blog
 title: 신성테크 기술자료
 description: 기구설계, 시제품, 자동화 기계 전문 기업의 기술 노하우
-baseurl: ""
-url: "https://sintc.github.io"
+baseurl: "/Sintc2013"
+url: "https://desert32-hash.github.io"
 
 # Build settings
 markdown: kramdown
@@ -41,7 +41,7 @@ defaults:
 
 # Include folders
 include:
-  - _pages
+  - _posts
 
 # Exclude files
 exclude:
