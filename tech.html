@@ -1,5 +1,6 @@
 ---
 layout: null
+permalink: /tech.html
 ---
 
 <!DOCTYPE html>
@@ -382,6 +383,73 @@ layout: null
 
                 <div class="pagination" id="pagination" style="display: none;">
                 </div>
+
+<script>
+const categoryTabs = document.querySelectorAll('.category-tab a');
+const postTbody = document.getElementById('post-tbody');
+
+let currentCategory = '공지사항';
+let currentPage = 1;
+const postsPerPage = 12;
+
+const posts = [
+    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+    {% for post in sorted_posts %}
+    {
+        title: "{{ post.title | escape }}",
+        category: "{{ post.categories | first }}",
+        date: "{{ post.date | date: "%y-%m-%d" }}",
+        url: "{{ site.baseurl }}{{ post.url }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+];
+
+function renderPosts() {
+    const filteredPosts = posts.filter(post => post.category === currentCategory);
+    
+    if (filteredPosts.length === 0) {
+        postTbody.innerHTML = `
+            <tr class="no-posts">
+                <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+                    <p>등록된 글이 없습니다.</p>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    const startNum = filteredPosts.length - ((currentPage - 1) * postsPerPage);
+
+    postTbody.innerHTML = filteredPosts.map((post, index) => {
+        const dateParts = post.date.split('-');
+        const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
+
+        return `
+        <tr class="post-row" data-category="${post.category}">
+            <td class="col-num">${startNum - index}</td>
+            <td class="col-title">
+                <a href="${post.url}" class="post-link">${post.title}</a>
+            </td>
+            <td class="col-author">관리자</td>
+            <td class="col-date">${formattedDate}</td>
+        </tr>
+    `}).join('');
+}
+
+categoryTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.dataset.category;
+        currentPage = 1;
+        renderPosts();
+    });
+});
+
+renderPosts();
+</script>
             </div>
         </div>
     </main>
