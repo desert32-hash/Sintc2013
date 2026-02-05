@@ -168,8 +168,8 @@
             font-size: 13px;
             margin-top: 7px;
             /* 카테고리 파란 박스 상단 갭과 일치 */
-            margin-bottom: 10px;
-            /* 20px에서 10px로 추가 단축 */
+            margin-bottom: 5px;
+            /* 데이터 박스와 본문 사이 간격 최소화 */
             padding: 0 8px;
             height: 30px;
             /* 카테고리 파란 박스 높이와 일치 */
@@ -188,13 +188,12 @@
             line-height: 1.5;
             /* 1.8에서 1.5로 줄여 글자 사이 간격 축소 */
             color: #333;
-            white-space: pre-wrap;
-            /* 엔터 친 만큼 그대로 빈 줄이 생기게 함 */
         }
 
         .post-content p {
-            margin-bottom: 5px;
-            /* 10px에서 5px로 추가 단축 */
+            margin: 0;
+            /* 문단 사이 자동 여백 제거 (촘촘하게) */
+            margin-bottom: 0;
         }
 
         @media (max-width: 768px) {
