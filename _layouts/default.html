@@ -168,8 +168,8 @@
             font-size: 13px;
             margin-top: 7px;
             /* 카테고리 파란 박스 상단 갭과 일치 */
-            margin-bottom: 5px;
-            /* 데이터 박스와 본문 사이 간격 최소화 */
+            margin-bottom: 20px;
+            /* 다시 쾌적한 간격으로 복구 */
             padding: 0 8px;
             height: 30px;
             /* 카테고리 파란 박스 높이와 일치 */
@@ -185,15 +185,13 @@
 
         .post-content {
             font-size: 16px;
-            line-height: 1.5;
-            /* 1.8에서 1.5로 줄여 글자 사이 간격 축소 */
+            line-height: 1.8;
             color: #333;
         }
 
         .post-content p {
-            margin: 0;
-            /* 문단 사이 자동 여백 제거 (촘촘하게) */
-            margin-bottom: 0;
+            margin-bottom: 20px;
+            /* 문단 사이 여백 복구 */
         }
 
         @media (max-width: 768px) {
