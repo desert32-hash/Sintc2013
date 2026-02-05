@@ -111,10 +111,8 @@ permalink: /tech.html
             border-bottom: 1px solid #e0e0e0;
             width: 100%;
             box-sizing: border-box;
-            height: 35px;
-            /* 높이 35px로 일원화 */
-            line-height: 34px;
-            /* 테두리 제외 텍스트 중앙 */
+            height: 38px;
+            line-height: 37px;
         }
 
         .category-tab a:hover,
@@ -148,8 +146,9 @@ permalink: /tech.html
         .post-table {
             width: 900px;
             table-layout: fixed;
-            border-collapse: collapse !important;
-            /* 다시 collapse로 전환하여 정확한 측정 보장 */
+            border-collapse: separate !important;
+            /* separate가 픽셀 계산에 더 정확함 */
+            border-spacing: 0;
             margin: 0;
             padding: 0;
         }
@@ -167,19 +166,17 @@ permalink: /tech.html
             vertical-align: middle;
             box-sizing: border-box;
             height: 47px;
-            /* 1px(top) + 45px + 1px(bottom) = 47px */
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #0056b3;
         }
 
         .post-table td {
             padding: 0 10px;
-            height: 35px !important;
-            /* 높이 35px로 일원화 */
+            height: 38px !important;
             border-bottom: 1px solid #eee;
             font-size: 14px;
             vertical-align: middle;
-            line-height: 34px;
+            line-height: 37px;
             box-sizing: border-box;
             overflow: hidden;
         }
