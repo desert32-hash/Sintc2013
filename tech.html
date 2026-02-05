@@ -98,7 +98,7 @@ permalink: /tech.html
 
         .category-tab a {
             display: block;
-            padding: 8px 10px;
+            padding: 0 10px;
             background: transparent;
             color: #333;
             text-decoration: none;
@@ -108,7 +108,9 @@ permalink: /tech.html
             border-bottom: 1px solid #e0e0e0;
             width: 100%;
             height: 38px;
-            line-height: normal;
+            line-height: 38px;
+            /* 높이와 일치시켜 수직 중앙 정렬 */
+            box-sizing: border-box;
         }
 
         .category-tab a:hover,
@@ -117,6 +119,7 @@ permalink: /tech.html
             color: white;
             border-bottom: 1px solid #0056b3;
             padding: 0 10px;
+            /* padding 일관성 유지 */
         }
 
         .tech-content {
