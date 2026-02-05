@@ -53,6 +53,8 @@ permalink: /tech.html
             margin: 0 auto;
             padding: 40px 20px;
             gap: 30px;
+            align-items: flex-start;
+            /* 추가: 양쪽 상단 시작점 고정 */
         }
 
         .tech-sidebar {
@@ -149,7 +151,12 @@ permalink: /tech.html
         .post-table {
             width: 900px;
             table-layout: fixed;
-            border-collapse: collapse;
+            border-collapse: separate;
+            /* collapse에서 separate로 변경 */
+            border-spacing: 0;
+            /* 간격 제거 */
+            margin: 0;
+            /* 기본 마진 제거 */
         }
 
         .post-table thead {
@@ -175,6 +182,8 @@ permalink: /tech.html
             font-size: 14px;
             vertical-align: middle;
             line-height: 38px;
+            box-sizing: border-box;
+            /* 높이 계산 정확도 보장 */
         }
 
         .post-table tbody tr:hover {
