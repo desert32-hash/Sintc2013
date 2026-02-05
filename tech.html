@@ -56,7 +56,7 @@ permalink: /tech.html
             flex-shrink: 0;
             border-right: 2px solid #e0e0e0;
             padding-right: 20px;
-            height: 244px;
+            align-self: stretch;
         }
 
         .tech-sidebar-title {
@@ -392,6 +392,24 @@ const paginationDiv = document.getElementById('pagination');
 let currentCategory = '공지사항';
 let currentPage = 1;
 const postsPerPage = 12;
+
+// URL 해시에서 카테고리 읽기
+if (window.location.hash) {
+    const hashCategory = decodeURIComponent(window.location.hash.substring(1));
+    // 유효한 카테고리인지 확인
+    const validCategories = ['공지사항', '디자인/기구설계', '자동화 기술', '산업 소재', '제어 기술'];
+    if (validCategories.includes(hashCategory)) {
+        currentCategory = hashCategory;
+        // 해당 카테고리 탭 활성화
+        categoryTabs.forEach(tab => {
+            if (tab.dataset.category === currentCategory) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+}
 
 const posts = [
     {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
