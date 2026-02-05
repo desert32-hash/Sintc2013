@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +16,17 @@
             .desktop-only {
                 display: none !important;
             }
+
             .mobile-only {
                 display: block !important;
             }
         }
+
         @media (min-width: 769px) {
             .desktop-only {
                 display: block !important;
             }
+
             .mobile-only {
                 display: none !important;
             }
@@ -59,17 +63,20 @@
         .tech-blog-container {
             display: flex;
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 40px 20px;
             gap: 30px;
+            align-items: stretch;
+            /* 본문 높이에 맞춰 사이드바가 늘어나도록 설정 */
         }
 
         .tech-sidebar {
-            width: 200px;
+            width: 160px;
             flex-shrink: 0;
             border-right: 2px solid #e0e0e0;
             padding-right: 20px;
-            height: 244px;
+            min-height: 500px;
+            /* 최소 길이는 500px 유지 */
         }
 
         .tech-sidebar-title {
@@ -77,59 +84,66 @@
             font-weight: 700;
             color: #0056b3;
             margin-bottom: 0px;
-            padding-bottom: 10px;
+            padding-bottom: 0;
             border-bottom: 2px solid #0056b3;
             text-align: center;
-            width: 160px;
-            height: 50px;
-            line-height: 50px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
         .category-tabs {
             list-style: none;
             padding: 0;
             margin: 0;
-            margin-top: 4px;
+            margin-top: 0px;
         }
 
         .category-tab {
-            margin-bottom: 0;
+            margin: 0;
+            padding: 0;
             background: white;
             width: 100%;
-            height: 38px;
+            height: 37px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+            list-style: none;
+            box-sizing: border-box;
         }
 
         .category-tab a {
-            display: block;
-            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
             background: transparent;
             color: #333;
             text-decoration: none;
+            border-radius: 0;
             font-weight: 500;
             text-align: center;
-            border-bottom: 1px solid #e0e0e0;
             width: 100%;
+            height: 30px;
             box-sizing: border-box;
-            line-height: 1.2;
+            line-height: normal;
         }
 
         .category-tab a:hover,
         .category-tab a.active {
             background: #0056b3;
             color: white;
-            border-bottom: 1px solid #0056b3;
+            padding: 0 10px;
         }
 
         .tech-content {
             flex: 1;
             background: white;
             padding: 10px 40px 40px 40px;
-            border-radius: 8px;
         }
 
         .post-title {
@@ -203,6 +217,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="site-header">
         <div class="container header-container">
@@ -256,19 +271,24 @@
                 <h2 class="tech-sidebar-title">카테고리</h2>
                 <ul class="category-tabs">
                     <li class="category-tab">
-                        <a href="/tech.html#공지사항" {% if page.categories contains '공지사항' %}class="active"{% endif %}>공지사항</a>
+                        <a href="/tech.html#공지사항" {% if page.categories contains '공지사항' %}class="active" {% endif
+                            %}>공지사항</a>
                     </li>
                     <li class="category-tab">
-                        <a href="/tech.html#디자인/기구설계" {% if page.categories contains '디자인/기구설계' %}class="active"{% endif %}>디자인/기구설계</a>
+                        <a href="/tech.html#디자인/기구설계" {% if page.categories contains '디자인/기구설계' %}class="active" {%
+                            endif %}>디자인/기구설계</a>
                     </li>
                     <li class="category-tab">
-                        <a href="/tech.html#자동화 기술" {% if page.categories contains '자동화 기술' %}class="active"{% endif %}>자동화 기술</a>
+                        <a href="/tech.html#자동화 기술" {% if page.categories contains '자동화 기술' %}class="active" {% endif
+                            %}>자동화 기술</a>
                     </li>
                     <li class="category-tab">
-                        <a href="/tech.html#산업 소재" {% if page.categories contains '산업 소재' %}class="active"{% endif %}>산업 소재</a>
+                        <a href="/tech.html#산업 소재" {% if page.categories contains '산업 소재' %}class="active" {% endif
+                            %}>산업 소재</a>
                     </li>
                     <li class="category-tab">
-                        <a href="/tech.html#제어 기술" {% if page.categories contains '제어 기술' %}class="active"{% endif %}>제어 기술</a>
+                        <a href="/tech.html#제어 기술" {% if page.categories contains '제어 기술' %}class="active" {% endif
+                            %}>제어 기술</a>
                     </li>
                 </ul>
             </aside>
@@ -301,19 +321,20 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="/js/main.js"></script>
-    
+
     <!-- NAVER ADS CONVERSION TRACKING -->
     <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript">
-    if (!wcs_add) var wcs_add={};
-    wcs_add["wa"] = "s_2cb9ea2491f7";
-    if (!_nasa) var _nasa={};
-    if(window.wcs){
-    wcs.inflow();
-    wcs_do();
-    }
+        if (!wcs_add) var wcs_add = {};
+        wcs_add["wa"] = "s_2cb9ea2491f7";
+        if (!_nasa) var _nasa = {};
+        if (window.wcs) {
+            wcs.inflow();
+            wcs_do();
+        }
     </script>
 </body>
+
 </html>
