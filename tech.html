@@ -69,9 +69,10 @@ permalink: /tech.html
             font-size: 18px;
             font-weight: 700;
             color: #0056b3;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-bottom: 0;
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid #ddd;
+            /* 게시판과 시작점 일치 */
             border-bottom: 1px solid #0056b3;
             text-align: center;
             width: 160px;
@@ -80,7 +81,6 @@ permalink: /tech.html
             margin-left: auto;
             margin-right: auto;
             box-sizing: border-box;
-            /* 1px의 오차도 허용하지 않도록 추가 */
         }
 
         .category-tabs {
@@ -101,8 +101,8 @@ permalink: /tech.html
 
         .category-tab a {
             display: block;
-            padding: 8px 10px;
-            /* 원래 스타일의 여백 복구 */
+            padding: 0 10px;
+            /* 여백 축소 */
             background: transparent;
             color: #333;
             text-decoration: none;
@@ -113,8 +113,8 @@ permalink: /tech.html
             width: 100%;
             box-sizing: border-box;
             height: 38px;
-            line-height: normal;
-            /* 고정 line-height 해제하여 여백이 글자를 누르지 않게 함 */
+            line-height: 38px;
+            /* 높이와 일치시켜 텍스트 중앙 정렬 및 여백 최소화 */
         }
 
         .category-tab a:hover,
@@ -122,7 +122,7 @@ permalink: /tech.html
             background: #0056b3;
             color: white;
             border-bottom: 1px solid #0056b3;
-            padding: 8px 10px;
+            padding: 0 10px;
         }
 
         .tech-content {
@@ -151,7 +151,8 @@ permalink: /tech.html
             border-collapse: collapse !important;
             margin: 0;
             padding: 0;
-            border: none;
+            border-top: 1px solid #ddd;
+            /* 왼쪽과 시작점 일치 */
         }
 
         .post-table thead {
