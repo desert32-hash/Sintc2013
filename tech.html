@@ -88,12 +88,16 @@ permalink: /tech.html
         }
 
         .category-tab {
-            margin-bottom: 0;
+            margin: 0;
+            padding: 0;
+            /* 초록색 박스(여백) 제거 */
             background: white;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 35px;
+            /* 높이 고정 */
+            display: block;
+            /* 불필요한 flex 제거하여 높이 간섭 차단 */
+            list-style: none;
         }
 
         .category-tab a {
@@ -107,9 +111,10 @@ permalink: /tech.html
             text-align: center;
             border-bottom: 1px solid #e0e0e0;
             width: 100%;
-            height: 38px;
-            line-height: 38px;
-            /* 높이와 일치시켜 수직 중앙 정렬 */
+            height: 35px;
+            /* li와 동일하게 35px로 고정 */
+            line-height: 35px;
+            /* 텍스트 수직 중앙 정렬 */
             box-sizing: border-box;
         }
 
@@ -165,11 +170,13 @@ permalink: /tech.html
 
         .post-table td {
             padding: 0 10px;
-            height: 38px;
+            height: 35px !important;
             border-bottom: 1px solid #eee;
             font-size: 14px;
             vertical-align: middle;
-            line-height: normal;
+            line-height: 35px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .post-table tbody tr:hover {
