@@ -732,7 +732,7 @@ img {
     border-radius: 0;
     border: 1px solid #e0e0e0;
     box-shadow: none;
-    height: 420px !important;
+    height: 423px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -801,7 +801,7 @@ img {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 13.3px;
 }
 
 .form-group-horizontal {
@@ -2373,6 +2373,8 @@ img {
 .form-group {
     margin-bottom: 20px;
 }
+
+
 
 
 
