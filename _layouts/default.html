@@ -28,6 +28,16 @@
             }
         }
 
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
         .page-title-header {
             background-color: #0056b3;
             padding: 5px 0;
@@ -287,5 +297,17 @@
     </footer>
     
     <script src="/js/main.js"></script>
+    
+    <!-- NAVER ADS CONVERSION TRACKING -->
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+    if (!wcs_add) var wcs_add={};
+    wcs_add["wa"] = "s_2cb9ea2491f7";
+    if (!_nasa) var _nasa={};
+    if(window.wcs){
+    wcs.inflow();
+    wcs_do();
+    }
+    </script>
 </body>
 </html>
