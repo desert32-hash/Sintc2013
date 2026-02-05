@@ -97,16 +97,12 @@ permalink: /tech.html
             display: flex;
             align-items: center;
             justify-content: center;
-            box-sizing: border-box;
-        }
-
-        .category-tab:hover {
-            background: white;
         }
 
         .category-tab a {
             display: block;
-            padding: 0 10px;
+            padding: 8px 10px;
+            /* 원래 스타일의 여백 복구 */
             background: transparent;
             color: #333;
             text-decoration: none;
@@ -117,17 +113,16 @@ permalink: /tech.html
             width: 100%;
             box-sizing: border-box;
             height: 38px;
-            line-height: 38px;
-            margin: 0;
-            /* 여백 완전 제거 */
+            line-height: normal;
+            /* 고정 line-height 해제하여 여백이 글자를 누르지 않게 함 */
         }
 
         .category-tab a:hover,
         .category-tab a.active {
             background: #0056b3;
             color: white;
-            padding: 0 10px;
             border-bottom: 1px solid #0056b3;
+            padding: 8px 10px;
         }
 
         .tech-content {
