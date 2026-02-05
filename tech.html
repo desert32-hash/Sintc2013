@@ -58,11 +58,12 @@ permalink: /tech.html
         }
 
         .tech-sidebar {
-            width: 200px;
+            width: 160px;
             flex-shrink: 0;
             border-right: 2px solid #e0e0e0;
             padding-right: 20px;
-            /* 고정 height 제거 (배치 오차 방지) */
+            height: 510px;
+            /* 세로줄 길이 510px 고정 */
         }
 
         .tech-sidebar-title {
@@ -111,10 +112,10 @@ permalink: /tech.html
             text-align: center;
             border-bottom: 1px solid #e0e0e0;
             width: 100%;
-            height: 35px;
-            /* li와 동일하게 35px로 고정 */
-            line-height: 35px;
-            /* 텍스트 수직 중앙 정렬 */
+            height: 36px;
+            /* 36px로 동기화 */
+            line-height: 36px;
+            /* 수직 중앙 정렬 */
             box-sizing: border-box;
         }
 
@@ -170,11 +171,12 @@ permalink: /tech.html
 
         .post-table td {
             padding: 0 10px;
-            height: 35px !important;
+            height: 36px !important;
+            /* 36px로 동기화 */
             border-bottom: 1px solid #eee;
             font-size: 14px;
             vertical-align: middle;
-            line-height: 35px;
+            line-height: 36px;
             box-sizing: border-box;
             overflow: hidden;
         }
