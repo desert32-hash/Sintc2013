@@ -74,11 +74,14 @@ permalink: /tech.html
             padding-bottom: 0;
             border-bottom: 2px solid #0056b3;
             text-align: center;
-            width: 160px;
+            width: 100%;
+            /* 고정 160px 삭제하여 아래 선들과 길이 일치 */
             height: 46px;
-            line-height: 46px;
-            margin-left: auto;
-            margin-right: auto;
+            display: flex;
+            /* 중앙 정렬 강화 */
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
         .category-tabs {
@@ -102,7 +105,10 @@ permalink: /tech.html
         }
 
         .category-tab a {
-            display: block;
+            display: flex;
+            /* 중앙 정렬 강화 */
+            align-items: center;
+            justify-content: center;
             padding: 0 10px;
             background: transparent;
             color: #333;
@@ -113,10 +119,9 @@ permalink: /tech.html
             border-bottom: 1px solid #e0e0e0;
             width: 100%;
             height: 36px;
-            /* 36px로 동기화 */
-            line-height: 36px;
-            /* 수직 중앙 정렬 */
             box-sizing: border-box;
+            line-height: 1;
+            /* flex 사용 시 line-height 간섭 제거 */
         }
 
         .category-tab a:hover,
