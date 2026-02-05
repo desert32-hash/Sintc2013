@@ -5,6 +5,7 @@ permalink: /tech.html
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +21,17 @@ permalink: /tech.html
             .desktop-only {
                 display: none !important;
             }
+
             .mobile-only {
                 display: block !important;
             }
         }
+
         @media (min-width: 769px) {
             .desktop-only {
                 display: block !important;
             }
+
             .mobile-only {
                 display: none !important;
             }
@@ -56,7 +60,7 @@ permalink: /tech.html
             flex-shrink: 0;
             border-right: 2px solid #e0e0e0;
             padding-right: 20px;
-            height: 520px;
+            height: 510px;
         }
 
         .tech-sidebar-title {
@@ -161,7 +165,7 @@ permalink: /tech.html
 
         .post-table td {
             padding: 0 10px;
-            height: 38px;
+            height: 42px;
             border-bottom: 1px solid #eee;
             font-size: 14px;
             vertical-align: middle;
@@ -278,6 +282,7 @@ permalink: /tech.html
         }
     </style>
 </head>
+
 <body>
     <header class="site-header">
         <div class="container header-container">
@@ -305,9 +310,9 @@ permalink: /tech.html
                         </ul>
                     </li>
                     <li><a href="/tech.html">기술자료</a></li>
-<li><a href="/contact.html">문의하기</a></li>
-<li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
-<li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <li><a href="/contact.html">문의하기</a></li>
+                    <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="메뉴 열기">
@@ -321,7 +326,7 @@ permalink: /tech.html
     <div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
         <div class="container">
             <h2 class="desktop-only" style="font-size: 36px; margin: 0;">기술자료</h2>
-<h2 class="mobile-only" style="font-size: 24px; margin: 0;">기술자료</h2>
+            <h2 class="mobile-only" style="font-size: 24px; margin: 0;">기술자료</h2>
         </div>
     </div>
 
@@ -359,75 +364,75 @@ permalink: /tech.html
                         </tr>
                     </thead>
                     <tbody id="post-tbody">
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-<tr class="post-row" data-category="{{ post.categories | first }}">
-    <td class="col-num">{{ forloop.rindex }}</td>
-    <td class="col-title">
-        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
-    </td>
-    <td class="col-author">{{ post.author | default: '관리자' }}</td>
-    <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
-</tr>
-{% endfor %}
-{% if site.posts.size == 0 %}
-<tr class="no-posts">
-    <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
-        <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-        <p>등록된 글이 없습니다.</p>
-    </td>
-</tr>
-{% endif %}
+                        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+                        {% for post in sorted_posts %}
+                        <tr class="post-row" data-category="{{ post.categories | first }}">
+                            <td class="col-num">{{ forloop.rindex }}</td>
+                            <td class="col-title">
+                                <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
+                            </td>
+                            <td class="col-author">{{ post.author | default: '관리자' }}</td>
+                            <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% if site.posts.size == 0 %}
+                        <tr class="no-posts">
+                            <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+                                <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+                                <p>등록된 글이 없습니다.</p>
+                            </td>
+                        </tr>
+                        {% endif %}
                     </tbody>
                 </table>
 
                 <div class="pagination" id="pagination">
                 </div>
 
-<script>
-const categoryTabs = document.querySelectorAll('.category-tab a');
-const postTbody = document.getElementById('post-tbody');
-const paginationDiv = document.getElementById('pagination');
+                <script>
+                    const categoryTabs = document.querySelectorAll('.category-tab a');
+                    const postTbody = document.getElementById('post-tbody');
+                    const paginationDiv = document.getElementById('pagination');
 
-let currentCategory = '공지사항';
-let currentPage = 1;
-const postsPerPage = 12;
+                    let currentCategory = '공지사항';
+                    let currentPage = 1;
+                    const postsPerPage = 12;
 
-// URL 해시에서 카테고리 읽기
-if (window.location.hash) {
-    const hashCategory = decodeURIComponent(window.location.hash.substring(1));
-    // 유효한 카테고리인지 확인
-    const validCategories = ['공지사항', '디자인/기구설계', '자동화 기술', '산업 소재', '제어 기술'];
-    if (validCategories.includes(hashCategory)) {
-        currentCategory = hashCategory;
-        // 해당 카테고리 탭 활성화
-        categoryTabs.forEach(tab => {
-            if (tab.dataset.category === currentCategory) {
-                tab.classList.add('active');
-            } else {
-                tab.classList.remove('active');
-            }
-        });
-    }
-}
+                    // URL 해시에서 카테고리 읽기
+                    if (window.location.hash) {
+                        const hashCategory = decodeURIComponent(window.location.hash.substring(1));
+                        // 유효한 카테고리인지 확인
+                        const validCategories = ['공지사항', '디자인/기구설계', '자동화 기술', '산업 소재', '제어 기술'];
+                        if (validCategories.includes(hashCategory)) {
+                            currentCategory = hashCategory;
+                            // 해당 카테고리 탭 활성화
+                            categoryTabs.forEach(tab => {
+                                if (tab.dataset.category === currentCategory) {
+                                    tab.classList.add('active');
+                                } else {
+                                    tab.classList.remove('active');
+                                }
+                            });
+                        }
+                    }
 
-const posts = [
-    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-    {% for post in sorted_posts %}
-    {
-        title: "{{ post.title | escape }}",
-        category: "{{ post.categories | first }}",
-        date: "{{ post.date | date: "%y-%m-%d" }}",
-        url: "{{ post.url }}"
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
+                    const posts = [
+                        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+                    {% for post in sorted_posts %}
+                    {
+                        title: "{{ post.title | escape }}",
+                            category: "{{ post.categories | first }}",
+                                date: "{{ post.date | date: " % y -% m -% d" }}",
+                                    url: "{{ post.url }}"
+                    } {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
 ];
 
-function renderPosts() {
-    const filteredPosts = posts.filter(post => post.category === currentCategory);
-    
-    if (filteredPosts.length === 0) {
-        postTbody.innerHTML = `
+                    function renderPosts() {
+                        const filteredPosts = posts.filter(post => post.category === currentCategory);
+
+                        if (filteredPosts.length === 0) {
+                            postTbody.innerHTML = `
             <tr class="no-posts">
                 <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
                     <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
@@ -435,22 +440,22 @@ function renderPosts() {
                 </td>
             </tr>
         `;
-        paginationDiv.style.display = 'none';
-        return;
-    }
+                            paginationDiv.style.display = 'none';
+                            return;
+                        }
 
-    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-    const startIndex = (currentPage - 1) * postsPerPage;
-    const endIndex = Math.min(startIndex + postsPerPage, filteredPosts.length);
-    const postsToShow = filteredPosts.slice(startIndex, endIndex);
+                        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                        const startIndex = (currentPage - 1) * postsPerPage;
+                        const endIndex = Math.min(startIndex + postsPerPage, filteredPosts.length);
+                        const postsToShow = filteredPosts.slice(startIndex, endIndex);
 
-    const startNum = filteredPosts.length - startIndex;
+                        const startNum = filteredPosts.length - startIndex;
 
-    postTbody.innerHTML = postsToShow.map((post, index) => {
-        const dateParts = post.date.split('-');
-        const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
+                        postTbody.innerHTML = postsToShow.map((post, index) => {
+                            const dateParts = post.date.split('-');
+                            const formattedDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
 
-        return `
+                            return `
         <tr class="post-row" data-category="${post.category}">
             <td class="col-num">${startNum - index}</td>
             <td class="col-title">
@@ -461,51 +466,51 @@ function renderPosts() {
         </tr>
     `}).join('');
 
-    renderPagination(totalPages);
-}
+                        renderPagination(totalPages);
+                    }
 
-function renderPagination(totalPages) {
-    if (totalPages <= 1) {
-        paginationDiv.style.display = 'none';
-        return;
-    }
+                    function renderPagination(totalPages) {
+                        if (totalPages <= 1) {
+                            paginationDiv.style.display = 'none';
+                            return;
+                        }
 
-    let paginationHTML = '';
-    
-    for (let i = 1; i <= totalPages; i++) {
-        if (i === currentPage) {
-            paginationHTML += `<span class="current">${i}</span>`;
-        } else {
-            paginationHTML += `<a href="#" data-page="${i}">${i}</a>`;
-        }
-    }
-    
-    paginationDiv.innerHTML = paginationHTML;
-    paginationDiv.style.display = 'flex';
+                        let paginationHTML = '';
 
-    // Add click handlers to pagination links
-    paginationDiv.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            currentPage = parseInt(link.dataset.page);
-            renderPosts();
-        });
-    });
-}
+                        for (let i = 1; i <= totalPages; i++) {
+                            if (i === currentPage) {
+                                paginationHTML += `<span class="current">${i}</span>`;
+                            } else {
+                                paginationHTML += `<a href="#" data-page="${i}">${i}</a>`;
+                            }
+                        }
 
-categoryTabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentCategory = tab.dataset.category;
-        currentPage = 1;
-        renderPosts();
-    });
-});
+                        paginationDiv.innerHTML = paginationHTML;
+                        paginationDiv.style.display = 'flex';
 
-renderPosts();
-</script>
+                        // Add click handlers to pagination links
+                        paginationDiv.querySelectorAll('a').forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                currentPage = parseInt(link.dataset.page);
+                                renderPosts();
+                            });
+                        });
+                    }
+
+                    categoryTabs.forEach(tab => {
+                        tab.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            categoryTabs.forEach(t => t.classList.remove('active'));
+                            tab.classList.add('active');
+                            currentCategory = tab.dataset.category;
+                            currentPage = 1;
+                            renderPosts();
+                        });
+                    });
+
+                    renderPosts();
+                </script>
             </div>
         </div>
     </main>
@@ -525,17 +530,18 @@ renderPosts();
     </footer>
 
     <script src="/js/main.js"></script>
-    
+
     <!-- NAVER ADS CONVERSION TRACKING -->
     <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript">
-    if (!wcs_add) var wcs_add={};
-    wcs_add["wa"] = "s_2cb9ea2491f7";
-    if (!_nasa) var _nasa={};
-    if(window.wcs){
-    wcs.inflow();
-    wcs_do();
-    }
+        if (!wcs_add) var wcs_add = {};
+        wcs_add["wa"] = "s_2cb9ea2491f7";
+        if (!_nasa) var _nasa = {};
+        if (window.wcs) {
+            wcs.inflow();
+            wcs_do();
+        }
     </script>
 </body>
+
 </html>
