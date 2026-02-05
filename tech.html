@@ -70,17 +70,17 @@ permalink: /tech.html
             font-weight: 700;
             color: #0056b3;
             margin-top: 0;
-            /* 추가: 브라우저 기본 여백 제거 */
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: 1px solid #0056b3;
-            /* 2px -> 1px로 수정 (게시판과 두께 일치) */
             text-align: center;
             width: 160px;
             height: 46px;
             line-height: 46px;
             margin-left: auto;
             margin-right: auto;
+            box-sizing: border-box;
+            /* 1px의 오차도 허용하지 않도록 추가 */
         }
 
         .category-tabs {
@@ -152,11 +152,10 @@ permalink: /tech.html
             width: 900px;
             table-layout: fixed;
             border-collapse: separate;
-            /* collapse에서 separate로 변경 */
             border-spacing: 0;
-            /* 간격 제거 */
             margin: 0;
-            /* 기본 마진 제거 */
+            border: none;
+            /* 유령 테두리 제거 */
         }
 
         .post-table thead {
@@ -170,9 +169,9 @@ permalink: /tech.html
             font-weight: 600;
             color: #333;
             border-bottom: 1px solid #0056b3;
-            /* 테두리 색상을 왼쪽과 통일 (정렬 확인 용이) */
             font-size: 14px;
             vertical-align: middle;
+            box-sizing: border-box;
         }
 
         .post-table td {
@@ -183,7 +182,8 @@ permalink: /tech.html
             vertical-align: middle;
             line-height: 38px;
             box-sizing: border-box;
-            /* 높이 계산 정확도 보장 */
+            overflow: hidden;
+            /* 높이 변동 방지 */
         }
 
         .post-table tbody tr:hover {
@@ -437,7 +437,7 @@ permalink: /tech.html
                     {
                         title: "{{ post.title | escape }}",
                             category: "{{ post.categories | first }}",
-                                date: "{{ post.date | date: '%y-%m-%d' }}",
+                                date: "{{ post.date | date: '%y.%m.%d' }}",
                                     url: "{{ post.url }}"
                     } {% unless forloop.last %}, {% endunless %}
                     {% endfor %}
