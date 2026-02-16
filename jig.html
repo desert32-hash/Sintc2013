@@ -188,6 +188,38 @@
             height: 50px;
         }
         
+        /* Modal Navigation Buttons */
+        .modal-prev,
+        .modal-next {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        .modal-prev:hover,
+        .modal-next:hover {
+            background: rgba(0, 0, 0, 0.6);
+            color: #ddd;
+        }
+        
         @media (max-width: 768px) {
             .modal {
                 padding-top: 100px;
@@ -200,6 +232,17 @@
             .modal-content {
                 max-width: 95%;
                 max-height: 70vh;
+            }
+            .modal-prev,
+            .modal-next {
+                font-size: 35px;
+                padding: 15px;
+            }
+            .modal-prev {
+                left: 10px;
+            }
+            .modal-next {
+                right: 10px;
             }
         }
     </style>
@@ -263,8 +306,10 @@
                     <a href="design.html" class="category-tab">디자인</a>
                     <a href="mechanical.html" class="category-tab">기구설계</a>
                     <a href="prototype.html" class="category-tab">시제품</a>
-                    <a href="machine.html" class="category-tab">자동화기계</a>
-                    <a href="jig.html" class="category-tab active">지그제작</a>
+                    <a href="machine.html" class="category-tab desktop-only">자동화기계</a>
+                    <a href="machine.html" class="category-tab mobile-only">자동화</a>
+                    <a href="jig.html" class="category-tab active desktop-only">지그제작</a>
+                    <a href="jig.html" class="category-tab active mobile-only">지그</a>
                 </div>
             </div>
         </div>
@@ -795,6 +840,8 @@
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
+        <span class="modal-prev" onclick="changeModalImage(-1)">&#10094;</span>
+        <span class="modal-next" onclick="changeModalImage(1)">&#10095;</span>
         <img class="modal-content" id="modalImage">
         <div id="modalCaption"></div>
     </div>
@@ -802,13 +849,65 @@
 
 
     <script>
-        // Modal functionality
+        // Modal functionality with navigation
+        let currentImageIndex = 0;
+        let galleryImages = [];
+        
+        // Initialize gallery images array
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryGrid = document.querySelector('.gallery-grid-5cols');
+            if (galleryGrid) {
+                galleryImages = Array.from(galleryGrid.querySelectorAll('.gallery-item-5cols')).map(item => {
+                    const onclickAttr = item.getAttribute('onclick');
+                    const match = onclickAttr.match(/openModal\('([^']+)'\)/);
+                    return match ? match[1] : '';
+                }).filter(src => src !== '');
+            }
+        });
+        
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             modal.style.display = 'block';
             modalImg.src = imageSrc;
             document.body.style.overflow = 'hidden';
+            
+            // Find current image index
+            currentImageIndex = galleryImages.indexOf(imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+            
+            updateNavigationButtons();
+        }
+        
+        function changeModalImage(direction) {
+            const modalImg = document.getElementById('modalImage');
+            
+            // Calculate new index
+            currentImageIndex += direction;
+            
+            // Wrap around
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            // Update image
+            modalImg.src = galleryImages[currentImageIndex];
+            updateNavigationButtons();
+        }
+        
+        function updateNavigationButtons() {
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+            
+            if (galleryImages.length <= 1) {
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+            } else {
+                if (prevBtn) prevBtn.style.display = 'block';
+                if (nextBtn) nextBtn.style.display = 'block';
+            }
         }
 
         // Close modal
@@ -825,13 +924,19 @@
                 document.body.style.overflow = 'auto';
             }
         }
-
-        // Close modal on ESC key
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                const modal = document.getElementById('imageModal');
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block') {
+                if (event.key === 'ArrowLeft') {
+                    changeModalImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeModalImage(1);
+                } else if (event.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
             }
         });
 
