@@ -124,6 +124,84 @@
                 font-size: 12px;
             }
         }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 90%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        #modalCaption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .modal {
+                padding-top: 100px;
+            }
+            .close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+            .modal-content {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+        }
     </style>
 </head>
 
@@ -715,14 +793,16 @@
     </footer>
 
     <!-- Image Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
     </div>
 
 
 
     <script>
+        // Modal functionality
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -731,23 +811,32 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
+        // Close modal
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('imageModal').style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Close modal on ESC key
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
-                closeModal();
+                const modal = document.getElementById('imageModal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
 
-        // Dynamic Load More functionality without Random Shuffle
+        // Combined Randomizer and Load More functionality
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('JavaScript loaded');
-
             const galleryGrid = document.querySelector('.gallery-grid-5cols');
             const loadMoreContainer = document.getElementById('loadMoreContainer');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -755,48 +844,55 @@
             // Check if mobile
             const isMobile = window.innerWidth <= 768;
 
-            console.log('Gallery grid:', galleryGrid);
-            console.log('Load more container:', loadMoreContainer);
-            console.log('Load more btn:', loadMoreBtn);
-            console.log('Is mobile:', isMobile);
-
             if (!galleryGrid) {
                 console.error('Gallery grid not found');
                 return;
             }
 
             const totalImages = galleryGrid.children.length;
-            console.log('Total images found:', totalImages);
+            const initialDisplayCount = 40; // 처음에 보여줄 이미지 수
+
+            // CRITICAL: First reset ALL items to visible to clear any previous state
+            for (let i = 0; i < totalImages; i++) {
+                const item = galleryGrid.children[i];
+                if (item) {
+                    item.classList.remove('hidden-gallery-item');
+                    item.style.display = '';
+                }
+            }
+
+            // First, randomize the gallery items
+            const items = Array.from(galleryGrid.children);
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+            items.forEach(item => galleryGrid.appendChild(item));
 
             // Only show load more functionality on desktop
             if (!isMobile) {
-                // Hide images beyond 40 on desktop
-                for (let i = 40; i < totalImages; i++) {
+                // Hide images beyond initial count on desktop
+                for (let i = initialDisplayCount; i < totalImages; i++) {
                     const item = galleryGrid.children[i];
                     if (item) {
                         item.classList.add('hidden-gallery-item');
-                        console.log('Hidden image:', i);
+                        item.style.display = 'none';
                     }
                 }
 
-                // Show load more button if there are more images
-                console.log('Total images:', totalImages, 'Initial display count:', 40);
-                console.log('Should show load more:', totalImages > 40);
-
-                if (totalImages > 40 && loadMoreContainer) {
+                // Reset and show load more button
+                if (totalImages > initialDisplayCount && loadMoreContainer) {
                     loadMoreContainer.style.display = 'block';
                     if (loadMoreBtn) {
-                        loadMoreBtn.textContent = `더보기 (40 / ${totalImages})`;
+                        loadMoreBtn.textContent = `더보기 (${initialDisplayCount} / ${totalImages})`;
                     }
-                    console.log('Load more button should be visible');
-                } else {
-                    console.log('Load more button will be hidden');
+                } else if (loadMoreContainer) {
+                    loadMoreContainer.style.display = 'none';
                 }
 
                 // Load more function for desktop
                 window.loadMoreImages = function () {
-                    console.log('Load more clicked');
-                    for (let i = 40; i < totalImages; i++) {
+                    for (let i = initialDisplayCount; i < totalImages; i++) {
                         const item = galleryGrid.children[i];
                         if (item) {
                             item.classList.remove('hidden-gallery-item');
@@ -808,31 +904,13 @@
                     }
                 };
             } else {
-                // Mobile: hide load more button and show all images
+                // Mobile: hide load more button and ensure all images are visible
                 if (loadMoreContainer) {
                     loadMoreContainer.style.display = 'none';
                 }
-                console.log('Mobile: all images visible, no load more button');
             }
         });
 
-    </script>
-
-    <!-- Gallery Randomizer Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const gallery = document.querySelector('.gallery-grid-5cols');
-            if (gallery) {
-                const items = Array.from(gallery.children);
-                // Fisher-Yates shuffle algorithm
-                for (let i = items.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [items[i], items[j]] = [items[j], items[i]];
-                }
-                // Re-append items in new order
-                items.forEach(item => gallery.appendChild(item));
-            }
-        });
     </script>
 
     <!-- Mobile Menu Script -->

@@ -124,6 +124,84 @@
                 font-size: 12px;
             }
         }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 90%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        #modalCaption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .modal {
+                padding-top: 100px;
+            }
+            .close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+            .modal-content {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+        }
     </style>
 </head>
 
@@ -431,14 +509,16 @@
     </footer>
 
     <!-- Image Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
     </div>
 
 
 
     <script>
+        // Modal functionality
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -447,16 +527,27 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
+        // Close modal
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('imageModal').style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Close modal on ESC key
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
-                closeModal();
+                const modal = document.getElementById('imageModal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
 
@@ -475,6 +566,15 @@
 
             // Initial state setup
             function initializeGallery() {
+                // CRITICAL: First reset ALL items to visible to clear any previous state
+                for (let i = 0; i < totalImages; i++) {
+                    galleryGrid.children[i].style.display = '';
+                    galleryGrid.children[i].classList.remove('hidden-gallery-item');
+                }
+
+                // Reset current displayed count
+                currentDisplayedCount = initialDisplayCount;
+
                 // Hide images beyond initial display count
                 for (let i = 0; i < totalImages; i++) {
                     if (i >= initialDisplayCount) {
