@@ -443,22 +443,27 @@ img {
 
 /* Machine Page Section Padding */
 .machine-section {
-    padding: 0 0 10px 0;
+    padding: 0 0 10px 0 !important;
 }
 
 /* Jig Page Section Padding */
 .jig-section {
-    padding: 0 0 10px 0;
+    padding: 0 0 10px 0 !important;
 }
 
 /* Mechanical Page Section Padding */
 .mechanical-section {
-    padding: 0 0 10px 0;
+    padding: 0 0 10px 0 !important;
 }
 
 /* Design Page Section Padding */
 .design-section {
-    padding: 0 0 10px 0;
+    padding: 0 0 10px 0 !important;
+}
+
+/* Prototype Page Section Padding */
+.prototype-section {
+    padding: 0 0 10px 0 !important;
 }
 
 /* Portfolio Category Tabs */
@@ -498,6 +503,33 @@ img {
     background-color: #ffffff;
     border-bottom: 3px solid var(--primary-color);
     font-weight: 600;
+}
+
+/* Gallery Load More Button Area */
+.load-more-area {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 20px 0;
+    clear: both;
+}
+
+.load-more-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+    background: #f8f8f8;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 /* Mobile Only Text */
@@ -709,7 +741,7 @@ img {
 
 /* Contact Section */
 .contact-section {
-    padding: 50px 0 70px 0;
+    padding: 50px 0 55px 0;
     /* 아래쪽 여백을 100px로 대폭 늘림 */
 }
 
