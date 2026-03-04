@@ -2570,8 +2570,13 @@ img {
         text-align: center;
     }
 
-    .gallery-section {
-        padding: 25px 0 20px 0;
+    .gallery-section,
+    .machine-section,
+    .jig-section,
+    .mechanical-section,
+    .design-section,
+    .prototype-section {
+        padding: 25px 0 20px 0 !important;
     }
 
     .gallery-title {
