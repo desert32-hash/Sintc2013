@@ -709,7 +709,8 @@ img {
 
 /* Contact Section */
 .contact-section {
-    padding: 50px 0;
+    padding: 50px 0 70px 0;
+    /* 아래쪽 여백을 100px로 대폭 늘림 */
 }
 
 .contact-content {
@@ -814,6 +815,11 @@ img {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+/* 문의 내용 박스 아래 여백만 별도로 줄임 */
+.form-group:has(#message) {
+    margin-bottom: -5px;
 }
 
 .form-group label,
@@ -1760,7 +1766,7 @@ img {
         width: 100%;
         z-index: 999;
     }
-    
+
     body:has(.portfolio-category-tabs) .section {
         padding-top: 30px;
     }
