@@ -2599,13 +2599,46 @@ img {
     }
 
     .form-group label,
-    .form-group-horizontal label {
+    .form-group-horizontal label:not(.checkbox-label) {
         font-size: 14px;
+        min-width: unset;
+        width: 100%;
+        text-align: left;
+    }
+
+    .form-group-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* 체크박스 영역 전용: 가로 정렬 유지 및 좌측 정렬 */
+    .form-group-horizontal:has(.checkbox-label) {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100%;
+    }
+
+    .form-group-horizontal .checkbox-label {
+        width: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin: 0;
+    }
+
+    .form-group-horizontal .checkbox-label input[type="checkbox"] {
+        width: 18px !important;
+        height: 18px !important;
+        margin: 0 !important;
     }
 
     .form-group input,
     .form-group textarea,
-    .form-group select {
+    .form-group-horizontal input {
+        width: 100% !important;
         padding: 10px;
         font-size: 14px;
     }
