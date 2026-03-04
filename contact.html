@@ -185,14 +185,6 @@
         })();
 
         function sendEmail() {
-            // Honeypot field validation - check if it's empty (block bots)
-            const honeypot = document.getElementById('honeypot').value;
-            if (honeypot) {
-                // Silently fail for bots - don't alert them
-                console.log('Spam detected - honeypot field filled');
-                return false;
-            }
-
             // 개인정보 수집 동의 체크 확인
             const privacyCheckbox = document.getElementById('privacy') || document.getElementById('privacy-mobile');
             if (!privacyCheckbox.checked) {
