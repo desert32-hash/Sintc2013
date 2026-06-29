@@ -301,6 +301,7 @@
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="design.html">디자인</a></li>
                             <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="circuit.html">회로제어</a></li>
                             <li><a href="prototype.html">시제품</a></li>
                             <li><a href="machine.html">자동화기계</a></li>
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
@@ -336,6 +337,7 @@
                 <div class="category-tabs">
                     <a href="design.html" class="category-tab active">디자인</a>
                     <a href="mechanical.html" class="category-tab">기구설계</a>
+                    <a href="circuit.html" class="category-tab">회로제어</a>
                     <a href="prototype.html" class="category-tab">시제품</a>
                     <a href="machine.html" class="category-tab desktop-only">자동화기계</a>
                     <a href="machine.html" class="category-tab mobile-only">자동화</a>
@@ -666,15 +668,21 @@
     </script>
 
     <!-- NAVER ADS CONVERSION TRACKING -->
-    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add["wa"] = "s_2cb9ea2491f7";
-        if (!_nasa) var _nasa = {};
-        if (window.wcs) {
-            wcs.inflow();
-            wcs_do();
-        }
+    <script>
+    if (location.protocol !== 'file:') {
+        var wcsScript = document.createElement('script');
+        wcsScript.src = '//wcs.naver.net/wcslog.js';
+        wcsScript.onload = function() {
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = "s_2cb9ea2491f7";
+            if (!_nasa) var _nasa={};
+            if(window.wcs){
+                wcs.inflow();
+                wcs_do();
+            }
+        };
+        document.body.appendChild(wcsScript);
+    }
     </script>
 </body>
 

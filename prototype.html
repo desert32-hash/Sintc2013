@@ -301,6 +301,7 @@
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="design.html">디자인</a></li>
                             <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="circuit.html">회로제어</a></li>
                             <li><a href="prototype.html">시제품</a></li>
                             <li><a href="machine.html">자동화기계</a></li>
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
@@ -336,6 +337,7 @@
                 <div class="category-tabs">
                     <a href="design.html" class="category-tab">디자인</a>
                     <a href="mechanical.html" class="category-tab">기구설계</a>
+                    <a href="circuit.html" class="category-tab">회로제어</a>
                     <a href="prototype.html" class="category-tab active">시제품</a>
                     <a href="machine.html" class="category-tab desktop-only">자동화기계</a>
                     <a href="machine.html" class="category-tab mobile-only">자동화</a>
@@ -515,23 +517,47 @@
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/55.jpg')">
                         <img src="images/prototype/55.jpg" alt="시제품 55">
                     </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/56.jpg')">
+                        <img src="images/prototype/56.jpg" alt="시제품 56">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/57.jpg')">
+                        <img src="images/prototype/57.jpg" alt="시제품 57">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/58.jpg')">
+                        <img src="images/prototype/58.jpg" alt="시제품 58">
+                    </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/59.jpg')">
-                        <img src="images/prototype/59.jpg" alt="시제품 56">
+                        <img src="images/prototype/59.jpg" alt="시제품 59">
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/60.jpg')">
-                        <img src="images/prototype/60.jpg" alt="시제품 57">
+                        <img src="images/prototype/60.jpg" alt="시제품 60">
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/61.jpg')">
-                        <img src="images/prototype/61.jpg" alt="시제품 58">
+                        <img src="images/prototype/61.jpg" alt="시제품 61">
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/62.jpg')">
-                        <img src="images/prototype/62.jpg" alt="시제품 59">
+                        <img src="images/prototype/62.jpg" alt="시제품 62">
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/63.jpg')">
-                        <img src="images/prototype/63.jpg" alt="시제품 60">
+                        <img src="images/prototype/63.jpg" alt="시제품 63">
                     </div>
                     <div class="gallery-item-5cols" onclick="openModal('images/prototype/64.jpg')">
-                        <img src="images/prototype/64.jpg" alt="시제품 61">
+                        <img src="images/prototype/64.jpg" alt="시제품 64">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/65.JPG')">
+                        <img src="images/prototype/65.JPG" alt="시제품 65">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/66.JPG')">
+                        <img src="images/prototype/66.JPG" alt="시제품 66">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/67.JPG')">
+                        <img src="images/prototype/67.JPG" alt="시제품 67">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/68.jpg')">
+                        <img src="images/prototype/68.jpg" alt="시제품 68">
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/prototype/69.jpg')">
+                        <img src="images/prototype/69.jpg" alt="시제품 69">
                     </div>
                 </div>
 
@@ -797,15 +823,21 @@
     </script>
 
     <!-- NAVER ADS CONVERSION TRACKING -->
-    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add["wa"] = "s_2cb9ea2491f7";
-        if (!_nasa) var _nasa = {};
-        if (window.wcs) {
-            wcs.inflow();
-            wcs_do();
-        }
+    <script>
+    if (location.protocol !== 'file:') {
+        var wcsScript = document.createElement('script');
+        wcsScript.src = '//wcs.naver.net/wcslog.js';
+        wcsScript.onload = function() {
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = "s_2cb9ea2491f7";
+            if (!_nasa) var _nasa={};
+            if(window.wcs){
+                wcs.inflow();
+                wcs_do();
+            }
+        };
+        document.body.appendChild(wcsScript);
+    }
     </script>
 </body>
 

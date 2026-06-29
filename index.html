@@ -223,6 +223,7 @@
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="design.html">디자인</a></li>
                             <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="circuit.html">회로제어</a></li>
                             <li><a href="prototype.html">시제품</a></li>
                             <li><a href="machine.html">자동화기계</a></li>
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
@@ -347,6 +348,12 @@
                             <span class="tab-text-mobile">기구설계</span>
                         </a>
                     </li>
+                    <li class="tab-item" data-tab="circuit">
+                        <a href="#" class="tab-link">
+                            <span class="tab-text-desktop">회로제어</span>
+                            <span class="tab-text-mobile">회로제어</span>
+                        </a>
+                    </li>
                     <li class="tab-item" data-tab="prototyping">
                         <a href="#" class="tab-link">
                             <span class="tab-text-desktop">시제품 제작</span>
@@ -393,6 +400,22 @@
                                 <p class="content-description desktop-only">메커니즘 분석과 시뮬레이션을 통한 최적의 기구 설계 솔루션을 제공합니다.</p>
 <p class="content-description mobile-only">메커니즘 분석과 시뮬레이션을 통한 최적의<br>기구 설계 솔루션을 제공합니다.</p>
                                 <a href="Business.html#mechanical" class="portfolio-link">
+                                    <자세히 보기>
+                                </a>
+                                <br>
+                                <button class="content-btn" style="margin-bottom: 0px;">무료 상담 받기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Circuit Control Tab -->
+                    <div class="tab-pane" id="circuit">
+                        <div class="tab-content">
+                            <div class="content-wrapper">
+                                <h3 class="content-headline">Electronics - 맞춤형 회로 및 제어 솔루션</h3>
+                                <p class="content-description desktop-only">하드웨어 회로 설계부터 제어 펌웨어 개발까지 통합 전자 제어 솔루션을 제공합니다.</p>
+<p class="content-description mobile-only">하드웨어 회로 설계부터 제어 펌웨어 개발까지<br>통합 전자 제어 솔루션을 제공합니다.</p>
+                                <a href="Business.html#circuit" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -688,6 +711,18 @@
                         <img src="images/design/07.jpg" alt="Gallery 20">
                         <span class="gallery-label">디자인</span>
                     </div>
+                    <div class="gallery-item">
+                        <img src="images/circuit/Mega 2560 파이필터 제어 쉴드.JPG" alt="Gallery 21">
+                        <span class="gallery-label">Mega 파이필터 제어 쉴드</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/circuit/수동 조그 제어형 CNC 시스템.JPG" alt="Gallery 22">
+                        <span class="gallery-label">수동 조그 CNC 시스템</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/circuit/핀 압입 자동화 제어 시스템.jpg" alt="Gallery 23">
+                        <span class="gallery-label">핀 압입 자동화 제어 시스템</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -741,14 +776,20 @@
     <script src="js/main.js"></script>
     
     <!-- NAVER ADS CONVERSION TRACKING -->
-    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript">
-    if (!wcs_add) var wcs_add={};
-    wcs_add["wa"] = "s_2cb9ea2491f7";
-    if (!_nasa) var _nasa={};
-    if(window.wcs){
-    wcs.inflow();
-    wcs_do();
+    <script>
+    if (location.protocol !== 'file:') {
+        var wcsScript = document.createElement('script');
+        wcsScript.src = '//wcs.naver.net/wcslog.js';
+        wcsScript.onload = function() {
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = "s_2cb9ea2491f7";
+            if (!_nasa) var _nasa={};
+            if(window.wcs){
+                wcs.inflow();
+                wcs_do();
+            }
+        };
+        document.body.appendChild(wcsScript);
     }
     </script>
     <script>

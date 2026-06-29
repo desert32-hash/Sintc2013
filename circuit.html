@@ -294,7 +294,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="about.html">회사소개</a></li>
-                    <li><a href="Business.html">사업영역</a></li>
+                    <li><a href="Business.html">사업영역</a>                    </li>
                     <li><a href="process.html">프로세스</a></li>
                     <li class="dropdown">
                         <a href="design.html" class="dropdown-toggle">포트폴리오</a>
@@ -326,9 +326,10 @@
         <div class="page-title-header"
             style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
             <div class="container">
-                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">자동화 기계</h2>
-                <h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">자동화 기계</h2>
+                <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">회로 제어</h2>
+                <h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">회로 제어</h2>
             </div>
+        </div>
         </div>
 
         <!-- Portfolio Category Tabs -->
@@ -337,10 +338,11 @@
                 <div class="category-tabs">
                     <a href="design.html" class="category-tab">디자인</a>
                     <a href="mechanical.html" class="category-tab">기구설계</a>
-                    <a href="circuit.html" class="category-tab">회로제어</a>
+                    <a href="circuit.html" class="category-tab active desktop-only">회로제어</a>
+                    <a href="circuit.html" class="category-tab active mobile-only">회로제어</a>
                     <a href="prototype.html" class="category-tab">시제품</a>
-                    <a href="machine.html" class="category-tab active desktop-only">자동화기계</a>
-                    <a href="machine.html" class="category-tab active mobile-only">자동화</a>
+                    <a href="machine.html" class="category-tab desktop-only">자동화기계</a>
+                    <a href="machine.html" class="category-tab mobile-only">자동화</a>
                     <a href="jig.html" class="category-tab desktop-only">지그제작</a>
                     <a href="jig.html" class="category-tab mobile-only">지그</a>
                 </div>
@@ -350,209 +352,173 @@
         <section class="section machine-section">
             <div class="container">
 
-                <!-- Real Gallery Grid - 40 images, 5 columns - No Random Order -->
+                <!-- Real Gallery Grid - 40 images, 5 columns - No Random Order (Circuit Control) -->
                 <div class="gallery-grid-5cols">
                     <!-- No Random order -->
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/2축 드릴링 머신.jpg')">
-                        <img src="images/machine/2축 드릴링 머신.jpg" alt="특수기계 1">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축 드릴링 머신
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/필터 제조 공정 제어 시스템.jpg')">
+                        <img src="images/circuit/필터 제조 공정 제어 시스템.jpg" alt="회로 제어 1">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">플래닝 제어 보드
                         </div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/2축(다축) 드릴링 기계.jpg')">
-                        <img src="images/machine/2축(다축) 드릴링 기계.jpg" alt="특수기계 2">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">2축(다축)
-                            드릴링 기계</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/Mega 2560 파이필터 제어 쉴드.JPG')">
+                        <img src="images/circuit/Mega 2560 파이필터 제어 쉴드.JPG" alt="회로 제어 2">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">Mega 2560 파이필터
+                            제어 쉴드</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/게이트 컷팅 머신.jpg')">
-                        <img src="images/machine/게이트 컷팅 머신.jpg" alt="특수기계 3">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">게이트 컷팅 머신
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/MCU 기반 턴테이블 제어 시스템.jpg')">
+                        <img src="images/circuit/MCU 기반 턴테이블 제어 시스템.jpg" alt="회로 제어 3">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">MCU 기반 턴테이블
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/고전압 테스트 기구.jpg')">
-                        <img src="images/machine/고전압 테스트 기구.jpg" alt="특수기계 4">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고전압 테스트
-                            기구</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/MCU 기반 산업용 맞춤 PCB 설계.jpg')">
+                        <img src="images/circuit/MCU 기반 산업용 맞춤 PCB 설계.jpg" alt="회로 제어 4">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">MCU 기반 산업용 맞춤
+                            PCB 설계</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/고점도 액체 압송 캔 펌프.jpg')">
-                        <img src="images/machine/고점도 액체 압송 캔 펌프.jpg" alt="특수기계 5">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">고점도 액체 압송
-                            캔 펌프</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/PLC 기반 시트 배출 제어 시스템.JPG')">
+                        <img src="images/circuit/PLC 기반 시트 배출 제어 시스템.JPG" alt="회로 제어 5">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">PLC 기반 시트 배출
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/공압 고정 지그 장치.png')">
-                        <img src="images/machine/공압 고정 지그 장치.png" alt="특수기계 6">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 고정 지그
-                            장치</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/PLC 기반 산업용 맞춤 제어반.JPG')">
+                        <img src="images/circuit/PLC 기반 산업용 맞춤 제어반.JPG" alt="회로 제어 6">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">PLC 기반 산업용 맞춤
+                            제어반</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/공압 조립 기계.jpg')">
-                        <img src="images/machine/공압 조립 기계.jpg" alt="특수기계 7">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">공압 조립 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/노브 압입 공정 제어 시스템.JPG')">
+                        <img src="images/circuit/노브 압입 공정 제어 시스템.JPG" alt="회로 제어 7">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">노브 압입 공정
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/권선 기계.jpg')">
-                        <img src="images/machine/권선 기계.jpg" alt="특수기계 8">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">권선 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/실리콘 조립 기계 제어 시스템.JPG')">
+                        <img src="images/circuit/실리콘 조립 기계 제어 시스템.JPG" alt="회로 제어 8">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/금속 검사 장치.jpg')">
-                        <img src="images/machine/금속 검사 장치.jpg" alt="특수기계 9">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">금속 검사 장치
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/기밀 검사 기계.jpg')">
-                        <img src="images/machine/기밀 검사 기계.jpg" alt="특수기계 10">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">기밀 검사 기계
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/노브 압입 기계.jpg')">
-                        <img src="images/machine/노브 압입 기계.jpg" alt="특수기계 11">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">노브 압입 기계
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/누설 검사 기계 기계.jpg')">
-                        <img src="images/machine/누설 검사 기계 기계.jpg" alt="특수기계 12">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누설 검사 기계
-                            기계</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/디스펜서 기계.jpg')">
-                        <img src="images/machine/디스펜서 기계.jpg" alt="특수기계 13">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">디스펜서 기계
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols"
-                        onclick="openModal('images/machine/로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형).jpg')">
-                        <img src="images/machine/로타리 방식 드릴링 머신, 탭핑 머신(지그 교체형).jpg" alt="특수기계 14">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식
-                            드릴, 탭핑 머신</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/로타리 방식 자동 드릴링 머신.jpg')">
-                        <img src="images/machine/로타리 방식 자동 드릴링 머신.jpg" alt="특수기계 15">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로타리 방식 자동
-                            드릴링 머신</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/버튼 누름(내구성) 테스트 기계1.jpg')">
-                        <img src="images/machine/버튼 누름(내구성) 테스트 기계1.jpg" alt="특수기계 16">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼
-                            누름(내구성) 테스트 기계</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/버튼 누름(내구성) 테스트 기계2.jpg')">
-                        <img src="images/machine/버튼 누름(내구성) 테스트 기계2.jpg" alt="특수기계 17">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">버튼
-                            누름(내구성) 테스트 기계</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/생산용 압입 기계.jpg')">
-                        <img src="images/machine/생산용 압입 기계.jpg" alt="특수기계 18">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 압입 기계
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/생산용 지그기계.jpg')">
-                        <img src="images/machine/생산용 지그기계.jpg" alt="특수기계 19">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">생산용 지그기계
-                        </div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/선형 액추에이터 제작1.jpg')">
-                        <img src="images/machine/선형 액추에이터 제작1.jpg" alt="특수기계 20">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터
-                            제작</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/선형 액추에이터 제작2].jpg')">
-                        <img src="images/machine/선형 액추에이터 제작2].jpg" alt="특수기계 21">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">선형 액추에이터
-                            제작</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/수평형 CNC 기계.jpg')">
-                        <img src="images/machine/수평형 CNC 기계.jpg" alt="특수기계 22">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">수평형 CNC
-                            기계</div>
-                    </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/스프링 압착 조립 기계.jpg')">
-                        <img src="images/machine/스프링 압착 조립 기계.jpg" alt="특수기계 23">
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/스프링 압착 조립 제어 시스템.JPG')">
+                        <img src="images/circuit/스프링 압착 조립 제어 시스템.JPG" alt="회로 제어 9">
                         <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 압착 조립
-                            기계</div>
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/스프링 조립 기계(홀더 자동공급).jpg')">
-                        <img src="images/machine/스프링 조립 기계(홀더 자동공급).jpg" alt="특수기계 24">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">스프링 조립
-                            기계(홀더 자동공급)</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/수동 조그 제어형 CNC 컨트롤러.jpg')">
+                        <img src="images/circuit/수동 조그 제어형 CNC 컨트롤러.jpg" alt="회로 제어 10">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">수동 조그 제어형
+                            CNC 컨트롤러</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/실리콘 조립 기계1.jpg')">
-                        <img src="images/machine/실리콘 조립 기계1.jpg" alt="특수기계 25">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/수동 조그 제어형 CNC 시스템.JPG')">
+                        <img src="images/circuit/수동 조그 제어형 CNC 시스템.JPG" alt="회로 제어 11">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">수동 조그 제어형
+                            CNC 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/실리콘 조립 기계2.jpg')">
-                        <img src="images/machine/실리콘 조립 기계2.jpg" alt="특수기계 26">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/소리 반응 제어 PCB.JPG')">
+                        <img src="images/circuit/소리 반응 제어 PCB.JPG" alt="회로 제어 12">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">소리 반응 제어
+                            PCB</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/압입 코킹 기계.jpg')">
-                        <img src="images/machine/압입 코킹 기계.jpg" alt="특수기계 27">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압입 코킹 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/릴레이 제어식 조립 시스템.JPG')">
+                        <img src="images/circuit/릴레이 제어식 조립 시스템.JPG" alt="회로 제어 13">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">릴레이 제어식
+                            조립 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/전선 권선기 기계.jpeg')">
-                        <img src="images/machine/전선 권선기 기계.jpeg" alt="특수기계 28">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">전선 권선기 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/로터리 드릴링·탭핑 자동화 제어부.JPG')">
+                        <img src="images/circuit/로터리 드릴링·탭핑 자동화 제어부.JPG" alt="회로 제어 14">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로터리 드릴링·탭핑
+                            자동화 제어부</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/정량 토출 디스펜서.jpg')">
-                        <img src="images/machine/정량 토출 디스펜서.jpg" alt="특수기계 29">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">정량 토출
-                            디스펜서</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/로터리 드릴링·탭핑 자동화 제어 시스템.JPG')">
+                        <img src="images/circuit/로터리 드릴링·탭핑 자동화 제어 시스템.JPG" alt="회로 제어 15">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">로터리 드릴링·탭핑
+                            자동화 제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/주문 제작 기계.jpg')">
-                        <img src="images/machine/주문 제작 기계.jpg" alt="특수기계 30">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">주문 제작 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/누설 검사 제어 시스템.JPG')">
+                        <img src="images/circuit/누설 검사 제어 시스템.JPG" alt="회로 제어 16">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">누설 검사
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/측정용 지그기계.jpg')">
-                        <img src="images/machine/측정용 지그기계.jpg" alt="특수기계 31">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">측정용 지그기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/앰플 자동 정렬 및 공급 제어 시스템.JPG')">
+                        <img src="images/circuit/앰플 자동 정렬 및 공급 제어 시스템.JPG" alt="회로 제어 17">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">앰플 자동 정렬 및
+                            공급 제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/치공구 테스트 기구.jpg')">
-                        <img src="images/machine/치공구 테스트 기구.jpg" alt="특수기계 32">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">치공구 테스트
-                            기구</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/앰플 자동 정렬 및 공급 제어 시스템2.JPG')">
+                        <img src="images/circuit/앰플 자동 정렬 및 공급 제어 시스템2.JPG" alt="회로 제어 18">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">앰플 자동 정렬 및
+                            공급 제어 시스템2</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/터치패널, 택트스위치 반복 누름 테스트 기계.jpg')">
-                        <img src="images/machine/터치패널, 택트스위치 반복 누름 테스트 기계.jpg" alt="특수기계 33">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">터치, 택트스위치
-                            반복 누름 기계</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/압출공정 인라인 4축 드릴링 제어 시스템.JPG')">
+                        <img src="images/circuit/압출공정 인라인 4축 드릴링 제어 시스템.JPG" alt="회로 제어 19">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압출공정 인라인 4축
+                            드릴링 제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/턴테이블 기계.jpg')">
-                        <img src="images/machine/턴테이블 기계.jpg" alt="특수기계 34">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">턴테이블 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/압출공정 인라인 4축 드릴링 제어 시스템2.JPG')">
+                        <img src="images/circuit/압출공정 인라인 4축 드릴링 제어 시스템2.JPG" alt="회로 제어 20">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압출공정 인라인 4축
+                            드릴링 제어 시스템2</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/특수 셋팅 기계.jpg')">
-                        <img src="images/machine/특수 셋팅 기계.jpg" alt="특수기계 35">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 셋팅 기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/압입 코킹 공정 제어 시스템.JPG')">
+                        <img src="images/circuit/압입 코킹 공정 제어 시스템.JPG" alt="회로 제어 21">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">압입 코킹 공정
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/특수 연마기계.jpg')">
-                        <img src="images/machine/특수 연마기계.jpg" alt="특수기계 36">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">특수 연마기계
-                        </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/실리콘 조립 제어 시스템.JPG')">
+                        <img src="images/circuit/실리콘 조립 제어 시스템.JPG" alt="회로 제어 22">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">실리콘 조립
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/핀 압입 배출 기계.jpg')">
-                        <img src="images/machine/핀 압입 배출 기계.jpg" alt="특수기계 37">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀 압입 배출
-                            기계</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/운동기구 모터 전원 제어 PCB.JPG')">
+                        <img src="images/circuit/운동기구 모터 전원 제어 PCB.JPG" alt="회로 제어 23">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">운동기구 모터 전원
+                            제어 PCB</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/핀(후크) 압입 기계.jpg')">
-                        <img src="images/machine/핀(후크) 압입 기계.jpg" alt="특수기계 38">
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/용기 성형기 제어 시스템.jpg')">
+                        <img src="images/circuit/용기 성형기 제어 시스템.jpg" alt="회로 제어 24">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">용기 성형기
+                            제어 시스템</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/앰플 자동 정렬 및 공급 제어부.JPG')">
+                        <img src="images/circuit/앰플 자동 정렬 및 공급 제어부.JPG" alt="회로 제어 25">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">앰플 자동 정렬 및
+                            공급 제어부</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/운동기구 모터 제어 시스템.JPG')">
+                        <img src="images/circuit/운동기구 모터 제어 시스템.JPG" alt="회로 제어 26">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">운동기구 모터
+                            제어 시스템</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/의료용 제품 정량 디스펜싱 제어 시스템.JPG')">
+                        <img src="images/circuit/의료용 제품 정량 디스펜싱 제어 시스템.JPG" alt="회로 제어 27">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">의료용 제품 정량
+                            디스펜싱 제어 시스템</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/핀(후크) 압입 기계 제어 시스템.JPG')">
+                        <img src="images/circuit/핀(후크) 압입 기계 제어 시스템.JPG" alt="회로 제어 28">
                         <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀(후크) 압입
-                            기계</div>
+                            기계 제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/화장품 앰플 자동 공급기(턴테이블).jpg')">
-                        <img src="images/machine/화장품 앰플 자동 공급기(턴테이블).jpg" alt="특수기계 39">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동
-                            공급기(턴테이블)</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/핀 압입 자동화 제어 시스템.jpg')">
+                        <img src="images/circuit/핀 압입 자동화 제어 시스템.jpg" alt="회로 제어 29">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">핀 압입 자동화
+                            제어 시스템</div>
                     </div>
-                    <div class="gallery-item-5cols" onclick="openModal('images/machine/화장품 앰플 자동 공급기.jpg')">
-                        <img src="images/machine/화장품 앰플 자동 공급기.jpg" alt="특수기계 40">
-                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">화장품 앰플 자동
-                            공급기</div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/통신 인터페이스 제어 보드.jpg')">
+                        <img src="images/circuit/통신 인터페이스 제어 보드.jpg" alt="회로 제어 30">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">통신 인터페이스
+                            제어 보드</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/필터 제조 공정 제어 시스템.jpg')">
+                        <img src="images/circuit/필터 제조 공정 제어 시스템.jpg" alt="회로 제어 31">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">필터 제조 공정
+                            제어 시스템</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/필터 제조 공정 제어 시스템2.jpg')">
+                        <img src="images/circuit/필터 제조 공정 제어 시스템2.jpg" alt="회로 제어 32">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">필터 제조 공정
+                            제어 시스템2</div>
+                    </div>
+                    <div class="gallery-item-5cols" onclick="openModal('images/circuit/휴대용 LED 점등 정밀 제어 PCB.jpg')">
+                        <img src="images/circuit/휴대용 LED 점등 정밀 제어 PCB.jpg" alt="회로 제어 33">
+                        <div class="gallery-caption" contenteditable="false" onclick="event.stopPropagation()">휴대용 LED 점등
+                            정밀 제어 PCB</div>
                     </div>
                 </div>
 
