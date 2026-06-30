@@ -320,7 +320,7 @@ permalink: /tech.html
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="/design.html">디자인</a></li>
                             <li><a href="/mechanical.html">기구설계</a></li>
-                            <li><a href="/circuit.html">회로제어</a></li>
+                            <li><a href="/circuit.html">전자제어</a></li>
                             <li><a href="/prototype.html">시제품</a></li>
                             <li><a href="/machine.html">자동화기계</a></li>
                             <li><a href="/jig.html" class="jig-menu-item">지그제작</a></li>
@@ -356,16 +356,19 @@ permalink: /tech.html
                         <a href="#" class="active" data-category="공지사항">공지사항</a>
                     </li>
                     <li class="category-tab">
-                        <a href="#" data-category="디자인/기구설계">디자인/기구설계</a>
+                        <a href="#" data-category="제품기획">제품기획</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#" data-category="기구설계">기구설계</a>
+                    </li>
+                    <li class="category-tab">
+                        <a href="#" data-category="전자제어">전자제어</a>
                     </li>
                     <li class="category-tab">
                         <a href="#" data-category="자동화 기술">자동화 기술</a>
                     </li>
                     <li class="category-tab">
-                        <a href="#" data-category="산업 소재">산업 소재</a>
-                    </li>
-                    <li class="category-tab">
-                        <a href="#" data-category="제어 기술">제어 기술</a>
+                        <a href="#" data-category="제조공법·소재">제조공법·소재</a>
                     </li>
                 </ul>
             </aside>
@@ -419,7 +422,7 @@ permalink: /tech.html
                     if (window.location.hash) {
                         const hashCategory = decodeURIComponent(window.location.hash.substring(1));
                         // 유효한 카테고리인지 확인
-                        const validCategories = ['공지사항', '디자인/기구설계', '자동화 기술', '산업 소재', '제어 기술'];
+                        const validCategories = ['공지사항', '제품기획', '기구설계', '전자제어', '자동화 기술', '제조공법·소재'];
                         if (validCategories.includes(hashCategory)) {
                             currentCategory = hashCategory;
                             // 해당 카테고리 탭 활성화
