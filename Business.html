@@ -44,6 +44,7 @@
             /* Hide original service images on mobile (moved after text) */
             #design > .service-image,
             #mechanical > .service-image,
+            #circuit > .service-image,
             #prototyping > .service-image,
             #automation > .service-image,
             #jig > .service-image {
@@ -51,17 +52,25 @@
             }
             
             /* Mobile service image container -统一间距 */
+            .service-content {
+                width: 300px !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+            }
+
             .mobile-service-image {
                 margin-top: 25px !important;
                 text-align: center !important;
             }
             
             .mobile-service-image img {
-                width: 100% !important;
-                max-width: 300px !important;
+                width: 300px !important;
+                max-width: 100% !important;
                 height: 200px !important;
                 object-fit: cover !important;
                 border-radius: 8px !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
             
             .mobile-service-image .portfolio-link {
@@ -236,7 +245,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/design/03.jpg" alt="디자인 도면/장비"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
@@ -253,7 +262,7 @@
                 <div style="border-top: 1px solid #e0e0e0; padding-top: 10px; margin-bottom: 20px;"></div>
                 <div id="mechanical" class="service-item"
                     style="display: flex; align-items: center; margin-bottom: 30px; gap: 40px; scroll-margin-top: 100px;">
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/mechanical/07.jpg" alt="CAD 설계"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
@@ -301,7 +310,7 @@
                         <p class="desktop-only"
                             style="font-size: 16px; line-height: 1.8; color: #666666; margin-bottom: 20px;">하드웨어 회로 설계부터 제어 펌웨어 개발까지 통합 전자 제어 솔루션을 제공합니다.<br>PLC, MCU 기반 제어 시스템 및 맞춤형 PCB 설계를 통해 고객 요구에 최적화된 제어 시스템 구축.</p>
                         <p class="mobile-only"
-                            style="font-size: 15px; line-height: 1.8; color: #666666; margin-bottom: 15px;">하드웨어 회로 설계부터 제어 펌웨어 개발까지 통합 솔루션</p>
+                            style="font-size: 15px; line-height: 1.8; color: #666666; margin-bottom: 15px;">하드웨어 회로 설계부터 제어 펌웨어 개발까지</p>
                         <div class="desktop-only" style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #0056b3;">
                             <strong style="color: #333333;">기대효과:</strong>
                             <span style="color: #666666;">맞춤형 제어 시스템 구축, 생산 자동화 연동 최적화, 시스템 신뢰성 향상</span>
@@ -313,7 +322,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/circuit/Mega 2560 파이필터 제어 쉴드.JPG" alt="전자 제어"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
@@ -330,7 +339,7 @@
                 <div style="border-top: 1px solid #e0e0e0; padding-top: 10px; margin-bottom: 20px;"></div>
                 <div id="prototyping" class="service-item"
                     style="display: flex; align-items: center; margin-bottom: 30px; gap: 40px; scroll-margin-top: 100px;">
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/prototype/69.jpg" alt="시제품 제작"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
@@ -389,7 +398,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/machine/실리콘 조립 기계2.jpg" alt="자동화 장비"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
@@ -406,7 +415,7 @@
                 <div style="border-top: 1px solid #e0e0e0; padding-top: 10px; margin-bottom: 20px;"></div>
                 <div id="jig" class="service-item"
                     style="display: flex; align-items: center; margin-bottom: 0px; gap: 40px; scroll-margin-top: 100px;">
-                    <div class="service-image" style="flex: 0 0 300px;">
+                    <div class="service-image desktop-only" style="flex: 0 0 300px;">
                         <img src="images/jig/뚜껑 조립 지그2.jpg" alt="지그/치공구"
                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                         <div style="text-align: center; margin-top: 15px;">
