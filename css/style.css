@@ -1312,8 +1312,12 @@ img {
 
 @media (max-width: 480px) {
     .tab-link {
-        padding: 10px 12px;
+        padding: 6px 6px;
         font-size: 13px;
+    }
+
+    .manufacturing-tabs {
+        gap: 2px;
     }
 
     .tab-content-container {
@@ -1779,12 +1783,16 @@ img {
         margin: 10px 0;
     }
 
+.portfolio-category-tabs .container {
+        padding: 0 !important;
+    }
+
     .category-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        padding: 0 5px;
+        justify-content: center;
+        padding: 0 8px;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
@@ -1811,7 +1819,7 @@ img {
     }
 
     .category-tab {
-        padding: 12px 11px;
+        padding: 10px 8px;
         font-size: 14px;
         white-space: nowrap;
         flex-shrink: 0;
