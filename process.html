@@ -136,14 +136,14 @@
         <!-- Interactive Split Screen Process Section -->
         <section class="section process-split-section" style="padding: 40px 0; height: 1300px; overflow: hidden;">
             <div class="split-container"
-                style="display: flex; height: 100%; width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden; position: relative; z-index: 2;">
+                style="display: flex; height: 100%; width: 100%; max-width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden; position: relative; z-index: 2;">
                 <!-- Mobile Combined Canvas for continuous particle animation - positioned inside container -->
                 <canvas class="mobile-particles-canvas" id="mobile-canvas"
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; pointer-events: none; display: none;"></canvas>
 
                 <!-- Product Development Section -->
                 <div class="split-panel product-panel" id="product-panel"
-                    style="width: 700px; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
+                    style="flex: 7 1 0%; width: auto; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
                     <div class="panel-bg"
                         style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #004494;">
                     </div>
@@ -258,7 +258,7 @@
 
                 <!-- Automation Machine Section -->
                 <div class="split-panel automation-panel" id="automation-panel"
-                    style="width: 400px; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
+                    style="flex: 4 1 0%; width: auto; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s ease;">
                     <div class="panel-bg"
                         style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(230, 85, 35, 0.95) 100%);">
                     </div>
@@ -395,6 +395,8 @@
                             // 모바일: 두 패널 모두 동일한 스타일 적용
                             productPanel.style.width = '100%';
                             automationPanel.style.width = '100%';
+                            productPanel.style.flex = 'none';
+                            automationPanel.style.flex = 'none';
                             productSteps.style.opacity = '1';
                             productSteps.classList.remove('inactive');
                             automationSteps.style.opacity = '1';
@@ -402,15 +404,19 @@
                         } else {
                             // 데스크톱: 기존 로직 유지
                             if (activePanel === 'product') {
-                                productPanel.style.width = '700px';
-                                automationPanel.style.width = '400px';
+                                productPanel.style.flex = '7 1 0%';
+                                automationPanel.style.flex = '4 1 0%';
+                                productPanel.style.width = 'auto';
+                                automationPanel.style.width = 'auto';
                                 productSteps.style.opacity = '1';
                                 productSteps.classList.remove('inactive');
                                 automationSteps.style.opacity = '0.13';
                                 automationSteps.classList.add('inactive');
                             } else {
-                                productPanel.style.width = '400px';
-                                automationPanel.style.width = '700px';
+                                productPanel.style.flex = '4 1 0%';
+                                automationPanel.style.flex = '7 1 0%';
+                                productPanel.style.width = 'auto';
+                                automationPanel.style.width = 'auto';
                                 productSteps.style.opacity = '0.13';
                                 productSteps.classList.add('inactive');
                                 automationSteps.style.opacity = '1';
