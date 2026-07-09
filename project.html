@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신성테크 홈페이지 입니다.</title>
+<meta name="description" content="신성테크: 제품개발·기구설계부터 시제품 제작, 자동화장비 및 정밀 지그 구축까지 제조 전 과정을 아우르는 통합 엔지니어링 솔루션을 제공합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dropdown.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:#f8f9fa; color:#333; }
+  .container { max-width:1100px; margin:0 auto; padding:0 20px; }
+
+  .dc-container {
+    --dc-navy: #0f2247;
+    --dc-blue: #0056b3;
+    --dc-blue-dark: #003d82;
+    --dc-steel: #5b6b82;
+    --dc-red: #c0392b;
+    --dc-red-bg: #fdf4f3;
+    --dc-red-line: #f3d4d1;
+    --dc-teal: #0f8b7d;
+    --dc-teal-bg: #eff9f7;
+    --dc-teal-line: #cdeae4;
+    --dc-line: #e3e8f0;
+    --dc-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  .dc-hero {
+    position: relative;
+    background:
+      linear-gradient(rgba(0, 86, 179, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 86, 179, 0.055) 1px, transparent 1px),
+      #ffffff;
+    background-size: 28px 28px, 28px 28px, 100% 100%;
+    border: 1px solid var(--dc-line);
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 40px;
+  }
+  .dc-hero-inner { padding: 44px 48px; position: relative; z-index: 1; }
+  .dc-hero-corner { position: absolute; width: 18px; height: 18px; z-index: 2; }
+  .dc-hero-corner--tl { top: 10px; left: 10px; border-top: 2px solid var(--dc-blue); border-left: 2px solid var(--dc-blue); }
+  .dc-hero-corner--tr { top: 10px; right: 10px; border-top: 2px solid var(--dc-blue); border-right: 2px solid var(--dc-blue); }
+  .dc-hero-corner--bl { bottom: 10px; left: 10px; border-bottom: 2px solid var(--dc-blue); border-left: 2px solid var(--dc-blue); }
+  .dc-hero-corner--br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--dc-blue); border-right: 2px solid var(--dc-blue); }
+  .dc-tag {
+    display: inline-block; font-family: var(--dc-mono); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.06em; color: var(--dc-blue); background: rgba(0, 86, 179, 0.06);
+    border: 1px solid rgba(0, 86, 179, 0.25); padding: 5px 12px; border-radius: 3px; margin-bottom: 20px;
+  }
+  .dc-title { font-size: 34px; font-weight: 800; color: var(--dc-navy); line-height: 1.35; margin: 0 0 26px 0; }
+  .dc-hero-text { border-left: 3px solid var(--dc-line); padding-left: 22px; }
+  .dc-hero-p { font-size: 16.5px; line-height: 1.75; color: #444; font-weight: 500; margin: 0; }
+  .dc-hero-p--highlight { color: var(--dc-blue-dark); font-weight: 700; margin-top: 14px; }
+  .dc-spec-row {
+    display: flex; flex-wrap: wrap; gap: 28px; margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--dc-line);
+  }
+  .dc-spec { display: flex; flex-direction: column; gap: 4px; }
+  .dc-spec-label { font-family: var(--dc-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--dc-steel); }
+  .dc-spec-value { font-size: 14.5px; font-weight: 700; color: var(--dc-navy); }
+
+  .dc-two-col { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+  .dc-panel {
+    flex: 1; min-width: 300px; background: #fff; border-radius: 4px; padding: 30px;
+    border: 1px solid var(--dc-line);
+  }
+  .dc-panel-title {
+    font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px;
+    margin: 0 0 14px 0; padding-bottom: 10px; border-bottom: 1px solid var(--dc-line); color: var(--dc-navy);
+  }
+  .dc-panel-mark {
+    font-family: var(--dc-mono); font-size: 12px; font-weight: 700; padding: 2px 7px; border-radius: 3px;
+  }
+  .dc-panel--issue { border-top: 3px solid var(--dc-red); }
+  .dc-panel-title--issue { color: var(--dc-red); }
+  .dc-panel-title--issue .dc-panel-mark { background: var(--dc-red-bg); border: 1px solid var(--dc-red-line); color: var(--dc-red); }
+  .dc-list--issue li::before { content: '✕'; color: var(--dc-red); font-weight: 700; margin-right: 10px; }
+  .dc-panel--req { border-top: 3px solid var(--dc-teal); }
+  .dc-panel-title--req { color: var(--dc-teal); }
+  .dc-panel-title--req .dc-panel-mark { background: var(--dc-teal-bg); border: 1px solid var(--dc-teal-line); color: var(--dc-teal); }
+  .dc-list--req li::before { content: '✓'; color: var(--dc-teal); font-weight: 700; margin-right: 10px; }
+  .dc-list { list-style: none; padding: 0; margin: 0; }
+  .dc-list li {
+    padding: 8px 0; border-bottom: 1px solid #f2f4f7; color: #444;
+    font-size: 14px; font-weight: 500;
+    display: flex; align-items: center;
+  }
+  .dc-list li:last-child { border-bottom: none; }
+
+  .dc-gallery-block { margin-bottom: 40px; }
+  .dc-gallery {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid var(--dc-line);
+    border-radius: 4px;
+    padding: 16px;
+    overflow: hidden;
+  }
+  .dc-gallery-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100px;
+    flex-shrink: 0;
+  }
+  .dc-gallery-thumb {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, opacity 0.2s;
+    opacity: 0.6;
+  }
+  .dc-gallery-thumb:hover { opacity: 0.85; }
+  .dc-gallery-thumb.active {
+    border-color: var(--dc-blue);
+    opacity: 1;
+  }
+  .dc-gallery-video-thumb {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, opacity 0.2s;
+    opacity: 0.6;
+    background: #0f2247;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .dc-gallery-video-thumb:hover { opacity: 0.85; }
+  .dc-gallery-video-thumb.active {
+    border-color: var(--dc-red);
+    opacity: 1;
+  }
+  .dc-gallery-video-thumb svg {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    z-index: 2;
+  }
+  .dc-gallery-video-thumb::before {
+    content: 'YOUTUBE';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--dc-mono);
+    font-size: 7px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.05em;
+  }
+  .dc-gallery-main {
+    flex: 1;
+    min-height: 300px;
+    height: 638px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f2f4f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .dc-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .dc-gallery-main iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .dc-solutions-block { margin-bottom: 40px; }
+  .dc-section-title { font-size: 23px; color: var(--dc-navy); font-weight: 800; text-align: center; margin-bottom: 26px; letter-spacing: -0.01em; }
+
+  .dc-core-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .dc-core-card {
+    background: linear-gradient(135deg, #e8f0fe 0%, #d6e4ff 100%);
+    border: 1px solid #b8d0f5;
+    border-radius: 4px;
+    padding: 18px 16px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .dc-core-card:hover {
+    box-shadow: 0 6px 18px rgba(0,86,179,0.12);
+    transform: translateY(-2px);
+  }
+  .dc-core-card::after {
+    content: 'CORE';
+    position: absolute;
+    top: 10px; right: 10px;
+    font-family: var(--dc-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--dc-blue); background: rgba(255,255,255,0.7); border: 1px solid rgba(0,86,179,0.25);
+    padding: 1px 5px; border-radius: 3px;
+  }
+  .dc-core-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .dc-core-icon {
+    width: 32px; height: 32px; border-radius: 4px;
+    background: rgba(0, 86, 179, 0.12); color: var(--dc-blue);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .dc-core-icon svg { width: 17px; height: 17px; }
+  .dc-core-num-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex: 1;
+  }
+  .dc-core-num {
+    font-family: var(--dc-mono); font-size: 20px; font-weight: 700; color: var(--dc-blue);
+    line-height: 1;
+  }
+  .dc-core-card h4 {
+    font-size: 14px; color: var(--dc-navy); font-weight: 700; margin: 0;
+  }
+  .dc-core-card p {
+    font-size: 14px; color: #555; line-height: 1.6; margin: 0;
+  }
+
+  .dc-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .dc-sub-card {
+    background: #fff;
+    border: 1px solid var(--dc-line);
+    border-radius: 4px;
+    padding: 18px 16px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .dc-sub-card:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    border-color: #c8d0e0;
+  }
+  .dc-sub-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .dc-sub-icon {
+    width: 32px; height: 32px; border-radius: 4px;
+    background: rgba(0, 86, 179, 0.07); color: var(--dc-blue);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .dc-sub-icon svg { width: 17px; height: 17px; }
+  .dc-sub-num-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex: 1;
+  }
+  .dc-sub-num {
+    font-family: var(--dc-mono); font-size: 20px; font-weight: 700; color: var(--dc-blue);
+    line-height: 1;
+  }
+  .dc-sub-card h4 {
+    font-size: 14px; color: var(--dc-navy); font-weight: 700; margin: 0;
+  }
+  .dc-sub-card p {
+    font-size: 14px; color: #555; line-height: 1.6; margin: 0;
+  }
+
+  .dc-divider { display: flex; align-items: center; gap: 0; margin: 6px 0 28px 0; color: var(--dc-line); }
+  .dc-divider::before, .dc-divider::after { content: ''; flex: 1; height: 1px; background: var(--dc-line); }
+  .dc-divider span { font-family: var(--dc-mono); font-size: 13px; color: var(--dc-steel); }
+
+  .dc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dc-tag-chip {
+    font-family: var(--dc-mono); padding: 6px 13px; background: #f6f8fb; color: var(--dc-steel);
+    border: 1px solid var(--dc-line); border-radius: 4px; font-size: 13px; font-weight: 600;
+  }
+  .dc-panel--tech { border-top: 3px solid var(--dc-navy); }
+  .dc-panel-title--tech .dc-panel-mark { background: #eef1f6; border: 1px solid var(--dc-line); color: var(--dc-navy); }
+  .dc-panel--achieve { background: #fff; border-top: 3px solid var(--dc-teal); }
+  .dc-panel-title--achieve { color: var(--dc-teal); }
+  .dc-panel-title--achieve .dc-panel-mark { background: var(--dc-teal-bg); border: 1px solid var(--dc-teal-line); color: var(--dc-teal); }
+  .dc-achieve-list { list-style: none; padding: 0; margin: 0; }
+  .dc-achieve-list li {
+    padding: 8px 0; border-bottom: 1px solid #f2f4f7; display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: #444; font-weight: 500;
+  }
+  .dc-achieve-list li:last-child { border-bottom: none; }
+  .dc-ok {
+    font-family: var(--dc-mono); font-size: 10px; font-weight: 700; color: #fff;
+    background: var(--dc-teal); padding: 2px 6px; border-radius: 3px; flex-shrink: 0;
+  }
+
+  @media (max-width: 992px) {
+    .dc-core-row { grid-template-columns: repeat(2, 1fr); }
+    .dc-sub-grid { grid-template-columns: repeat(2, 1fr); }
+    .dc-gallery { flex-direction: column; }
+    .dc-gallery-thumbs {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .dc-gallery-thumb { width: 80px; flex-shrink: 0; }
+    .dc-gallery-video-thumb { width: 80px; flex-shrink: 0; }
+    .dc-gallery-main { height: 400px; }
+  }
+  @media (max-width: 640px) {
+    .dc-hero-inner { padding: 30px 24px; }
+    .dc-title { font-size: 26px; }
+    .dc-hero-corner { display: none; }
+    .dc-panel { padding: 26px; min-width: 100%; }
+    .dc-core-row { grid-template-columns: 1fr; }
+    .dc-sub-grid { grid-template-columns: 1fr; }
+    .dc-gallery-main { height: 280px; }
+  }
+  @media (max-width: 768px) {
+    .dc-two-col { flex-direction: column; }
+    .dc-panel { min-width: 100%; }
+  }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" target="_self">
+                    <img src="images/logo.png" alt="SINSUNG" class="logo-image">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html" target="_self">회사소개</a></li>
+                    <li><a href="Business.html" target="_self">사업영역</a></li>
+                    <li><a href="process.html" target="_self">프로세스</a></li>
+                    <li class="desktop-only"><a href="project.html" target="_self">개발사례</a></li>
+                    <li class="dropdown">
+                        <a href="design.html" class="dropdown-toggle" target="_self">포트폴리오</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="design.html" target="_self">디자인</a></li>
+                            <li><a href="mechanical.html" target="_self">기구설계</a></li>
+                            <li><a href="circuit.html" target="_self">전자제어</a></li>
+                            <li><a href="prototype.html" target="_self">시제품</a></li>
+                            <li><a href="machine.html" target="_self">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item" target="_self">지그제작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="tech.html" target="_self">기술자료</a></li>
+                    <li><a href="contact.html" target="_self">문의하기</a></li>
+                    <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+<main style="padding-bottom: 60px;">
+  <div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center; margin-bottom: 40px;">
+    <div class="container">
+      <h2 style="font-size: 36px; margin-bottom: 0;">개발사례</h2>
+    </div>
+  </div>
+
+  <div class="container dc-container">
+    <div class="dc-hero">
+      <div class="dc-hero-corner dc-hero-corner--tl"></div>
+      <div class="dc-hero-corner dc-hero-corner--tr"></div>
+      <div class="dc-hero-corner dc-hero-corner--bl"></div>
+      <div class="dc-hero-corner dc-hero-corner--br"></div>
+
+      <div class="dc-hero-inner">
+        <span class="dc-tag">PROJECT NO. 01</span>
+        <h1 class="dc-title">무선 레일 이송 자동 제어 시스템 개발</h1>
+
+        <div class="dc-hero-text">
+          <p class="dc-hero-p">
+            컨셉 단계부터 현장 특성을 반영한 맞춤형 메커니즘으로 기획되었습니다. </br>
+            바닥이 없는 현장 구조물에 맞춰 안정적인 주행이 가능하도록 하드웨어와 소프트웨어를 완전히 새롭게 설계하였으며, </br>
+            무선 운용과 자동 제어 기능을 완벽히 구현하였습니다.
+          </p>
+          <p class="dc-hero-p dc-hero-p--highlight">
+            신성테크는 컨셉 제안부터 기구 설계, 제어 시스템 구축까지 전 과정을 독자적으로 수행하여 최적화된 레일 이송 자동화 시스템을 완성하였습니다.
+          </p>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <div class="dc-gallery-block">
+      <div class="dc-gallery">
+        <div class="dc-gallery-thumbs">
+          <div class="dc-gallery-video-thumb active" data-index="0" onclick="changeGalleryContent(0)">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.81zM9.55 15.5V8.5l6.27 3.5-6.27 3.5z"/></svg>
+          </div>
+          <img src="projects/01.jpg" class="dc-gallery-thumb" data-index="1" onclick="changeGalleryContent(1)">
+          <img src="projects/02.jpg" class="dc-gallery-thumb" data-index="2" onclick="changeGalleryContent(2)">
+          <img src="projects/03.jpg" class="dc-gallery-thumb" data-index="3" onclick="changeGalleryContent(3)">
+          <img src="projects/04.jpg" class="dc-gallery-thumb" data-index="4" onclick="changeGalleryContent(4)">
+          <img src="projects/05.jpg" class="dc-gallery-thumb" data-index="5" onclick="changeGalleryContent(5)">
+        </div>
+        <div class="dc-gallery-main" id="gallery-main-container">
+          <iframe id="gallery-main-iframe" src="https://www.youtube.com/embed/KhmIw8UcdcY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-two-col">
+      <div class="dc-panel dc-panel--issue">
+        <h3 class="dc-panel-title dc-panel-title--issue"><span class="dc-panel-mark">ISSUE</span> 주요 문제점</h3>
+        <ul class="dc-list dc-list--issue">
+          <li>X축 제어가 불안정하고 Y축 구동이 불가능함</li>
+          <li>설정한 속도와 실제 속도의 오차 발생</li>
+          <li>자동 운전의 신뢰성이 낮음</li>
+          <li>장비 상태를 확인하기 어려움</li>
+          <li>전원을 끄면 현재 위치 정보가 초기화됨</li>
+          <li>노이즈에 의한 제어 안정성 저하 가능성</li>
+        </ul>
+      </div>
+
+      <div class="dc-panel dc-panel--req">
+        <h3 class="dc-panel-title dc-panel-title--req"><span class="dc-panel-mark">REQ</span> 고객 요구사항</h3>
+        <ul class="dc-list dc-list--req">
+          <li>지정한 속도를 정확하게 유지할 것</li>
+          <li>X축과 Y축을 안정적으로 제어할 것</li>
+          <li>속도 변경 기능 제공</li>
+          <li>자동 및 수동 운전 지원</li>
+          <li>무선으로 운용 가능한 시스템</li>
+          <li>장비 상태를 쉽게 확인할 수 있는 화면 제공</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dc-solutions-block">
+      <h3 class="dc-section-title">핵심 해결 방안</h3>
+
+      <div class="dc-core-row">
+        <div class="dc-core-card">
+          <div class="dc-core-header">
+            <div class="dc-core-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="2" y1="8" x2="22" y2="8"/><line x1="2" y1="16" x2="22" y2="16"/><line x1="6" y1="6" x2="6" y2="18"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="18" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="dc-core-num-title">
+              <span class="dc-core-num">01</span>
+              <h4>레일 기반 이동 시스템 설계</h4>
+            </div>
+          </div>
+          <p>바닥 없는 현장에 맞춘 공중 레일 주행 메커니즘</p>
+        </div>
+
+        <div class="dc-core-card">
+          <div class="dc-core-header">
+            <div class="dc-core-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg></div>
+            <div class="dc-core-num-title">
+              <span class="dc-core-num">02</span>
+              <h4>레일 오차 자동 보정 기능</h4>
+            </div>
+          </div>
+          <p>±10mm 레일 간격 변화 자동 보정 및 주행 안정화</p>
+        </div>
+
+        <div class="dc-core-card">
+          <div class="dc-core-header">
+            <div class="dc-core-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1.5"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg></div>
+            <div class="dc-core-num-title">
+              <span class="dc-core-num">03</span>
+              <h4>전용 제어 PCB 개발</h4>
+            </div>
+          </div>
+          <p>AVR 전용 PCB 설계 및 파이(π) 필터 EMI 차단</p>
+        </div>
+      </div>
+
+      <div class="dc-sub-grid">
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="1.5"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M12.5 9L9.5 13H12L10 17"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">04</span>
+              <h4>무선 배터리 구동</h4>
+            </div>
+          </div>
+          <p>36V 배터리 적용으로 외부 전원 없이 무선 운용</p>
+        </div>
+
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 16a8 8 0 0 1 16 0"/><line x1="12" y1="16" x2="16" y2="10"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">05</span>
+              <h4>X축·Y축 정밀 속도 제어</h4>
+            </div>
+          </div>
+          <p>정밀 계산식 기반 코드로 목표 속도 유지</p>
+        </div>
+
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="4" width="18" height="13" rx="1.5"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="6" y1="8" x2="14" y2="8"/><line x1="6" y1="11.5" x2="18" y2="11.5"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">06</span>
+              <h4>사용자 인터페이스 개선</h4>
+            </div>
+          </div>
+          <p>LCD 화면을 통한 속도·거리·상태 실시간 표시</p>
+        </div>
+
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">07</span>
+              <h4>자동화 기능 추가</h4>
+            </div>
+          </div>
+          <p>자동·수동·일시정지 및 비상정지(E-Stop) 구현</p>
+        </div>
+
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,12 7,12 9,6 13,18 15,12 22,12"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">08</span>
+              <h4>장비 진단 기능</h4>
+            </div>
+          </div>
+          <p>배터리·LED·센서 상태 옵션 메뉴 즉시 확인</p>
+        </div>
+
+        <div class="dc-sub-card">
+          <div class="dc-sub-header">
+            <div class="dc-sub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg></div>
+            <div class="dc-sub-num-title">
+              <span class="dc-sub-num">09</span>
+              <h4>위치 복원 기능</h4>
+            </div>
+          </div>
+          <p>FRAM 적용으로 전원 재투입 시 이전 위치 복구</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-divider"></div>
+
+    <div class="dc-two-col">
+      <div class="dc-panel dc-panel--tech">
+        <h3 class="dc-panel-title dc-panel-title--tech"><span class="dc-panel-mark">STACK</span> 적용 개발 기술</h3>
+        <div class="dc-tags">
+          <span class="dc-tag-chip">제품기획</span>
+          <span class="dc-tag-chip">기구 설계</span>
+          <span class="dc-tag-chip">레일 시스템 설계</span>
+          <span class="dc-tag-chip">전자회로 설계</span>
+          <span class="dc-tag-chip">PCB 설계</span>
+          <span class="dc-tag-chip">펌웨어 개발</span>
+          <span class="dc-tag-chip">모터 및 드라이버 선정</span>
+          <span class="dc-tag-chip">속도 제어 알고리즘</span>
+          <span class="dc-tag-chip">EMI 노이즈 대책</span>
+          <span class="dc-tag-chip">FRAM 데이터 저장</span>
+          <span class="dc-tag-chip">LCD UI 설계</span>
+          <span class="dc-tag-chip">무선 리모컨 제어</span>
+        </div>
+      </div>
+
+      <div class="dc-panel dc-panel--achieve">
+        <h3 class="dc-panel-title dc-panel-title--achieve"><span class="dc-panel-mark">RESULT</span> 주요 개발 성과 &amp; 효과</h3>
+        <ul class="dc-achieve-list">
+          <li><span class="dc-ok">OK</span> 기존 장비의 제어 안정성 개선</li>
+          <li><span class="dc-ok">OK</span> 목표 속도의 정밀 제어 구현</li>
+          <li><span class="dc-ok">OK</span> 자동·수동 운전 지원</li>
+          <li><span class="dc-ok">OK</span> 위치 복원 기능 구현</li>
+          <li><span class="dc-ok">OK</span> 현장 환경에 적합한 레일 이송 시스템 구축</li>
+
+          <li><span class="dc-ok">OK</span> 레일 조립 및 설치 오차 자동 대응</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const galleryContents = [
+    { type: 'video', src: 'https://www.youtube.com/embed/KhmIw8UcdcY' },
+    { type: 'image', src: 'projects/01.jpg' },
+    { type: 'image', src: 'projects/02.jpg' },
+    { type: 'image', src: 'projects/03.jpg' },
+    { type: 'image', src: 'projects/04.jpg' },
+    { type: 'image', src: 'projects/05.jpg' }
+  ];
+
+  function changeGalleryContent(index) {
+    const container = document.getElementById('gallery-main-container');
+    const thumbs = document.querySelectorAll('.dc-gallery-thumb, .dc-gallery-video-thumb');
+    const content = galleryContents[index];
+
+    thumbs.forEach(t => t.classList.remove('active'));
+    thumbs[index].classList.add('active');
+
+    if (content.type === 'video') {
+      container.innerHTML = '<iframe id="gallery-main-iframe" src="' + content.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    } else {
+      container.innerHTML = '<img id="gallery-main-img" src="' + content.src + '" alt="Project Image">';
+    }
+  }
+</script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>
+                    인천광역시 서구 경서동 683 신성테크<br>
+                    Tel : 010-2188-2255 / Mail : sintc2013@naver.com
+                </p>
+                <p class="copyright">
+                    Copyrights &copy; 2013 by 신성테크. all rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons - Mobile -->
+    <div class="floating-buttons-stack mobile-only">
+        <a href="https://pf.kakao.com/_xfPIhX/chat" target="_blank" class="floating-btn mobile-kakaotalk-btn"
+            aria-label="카카오톡">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </a>
+        <a href="tel:010-2188-2255" class="floating-btn phone-btn" aria-label="전화">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Floating Contact Buttons - Desktop -->
+    <div class="floating-buttons-stack desktop-only">
+        <a href="contact.html" target="_self" class="floating-btn mail-btn" aria-label="메일">
+            <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-10 5L2 7"></path>
+            </svg>
+        </a>
+        <div class="floating-btn kakaotalk-btn" aria-label="카카오톡" onclick="openKakaoTalk()">
+            <img src="images/kakaotalk-icon.png" alt="카카오톡" style="width: 40px; height: 40px;">
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+
+    <!-- NAVER ADS CONVERSION TRACKING -->
+    <script>
+    if (location.protocol !== 'file:') {
+        var wcsScript = document.createElement('script');
+        wcsScript.src = '//wcs.naver.net/wcslog.js';
+        wcsScript.onload = function() {
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = "s_2cb9ea2491f7";
+            if (!_nasa) var _nasa={};
+            if(window.wcs){
+                wcs.inflow();
+                wcs_do();
+            }
+        };
+        document.body.appendChild(wcsScript);
+    }
+    </script>
+<!-- Default Statcounter code for home https://sintc.co.kr/ -->
+<script type="text/javascript">
+var sc_project=13335092; 
+var sc_invisible=1; 
+var sc_security="b2a1ce39"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/13335092/0/b2a1ce39/1/" alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+</body>
+</html>
