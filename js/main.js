@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const slideContent = [
         {
             subtitle: "아이디어 기획부터 생산까지",
-            main: "체계적인 원스톱 솔루션",
+            main: "AI 융합 기술 · 스마트 하드웨어 개발",
             description: ""
         },
         {

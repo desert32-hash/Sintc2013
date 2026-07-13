@@ -401,7 +401,7 @@ img {
     display: flex;
     align-items: center;
     height: var(--header-height);
-    padding: 0 15px;
+    padding: 0 18px;
     position: relative;
     transition: all 0.3s;
 }
@@ -475,7 +475,7 @@ img {
 
 /* Portfolio Category Tabs */
 .portfolio-category-tabs {
-    background-color: #f8f9fa;
+    background-color: #f0f2f5;
     border-bottom: 1px solid #e0e0e0;
     padding: 0;
 }
@@ -693,7 +693,7 @@ img {
 /* Gallery Section */
 .gallery-section {
     padding: 40px 0 40px 0;
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
 }
 
 .gallery-title {
@@ -749,7 +749,6 @@ img {
 /* Contact Section */
 .contact-section {
     padding: 50px 0 57px 0;
-    /* 아래쪽 여백을 100px로 대폭 늘림 */
 }
 
 .contact-content {
@@ -766,7 +765,7 @@ img {
 .contact-info {
     flex: 1;
     max-width: 40%;
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
     padding: 30px;
     border-radius: 0;
     border: 1px solid #e0e0e0;
@@ -1340,7 +1339,7 @@ img {
 /* Process Section */
 .process-section {
     padding: 40px 0;
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
 }
 
 .process-title {

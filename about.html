@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -50,9 +50,6 @@
 
         }
 
-
-        }
-
         @media (min-width: 769px) {
             .floating-buttons-stack.mobile-only {
                 display: none !important;
@@ -79,9 +76,15 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html">회사소개</a></li>
-                    <li><a href="Business.html">사업영역</a></li>
-                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown desktop-only">
+    <a href="about.html" class="dropdown-toggle">기업 개요</a>
+    <ul class="dropdown-menu align-offset desktop-only-dropdown">
+        <li><a href="about.html">회사소개</a></li>
+        <li><a href="business.html">사업영역</a></li>
+        <li><a href="process.html">프로세스</a></li>
+    </ul>
+</li>
+                    <li><a href="ai-tech.html">AI융합기술</a></li>
                     <li class="dropdown desktop-only">
     <a href="project.html" class="dropdown-toggle">개발사례</a>
     <ul class="dropdown-menu align-offset desktop-only-dropdown">
@@ -101,9 +104,9 @@
                         </ul>
                     </li>
                     <li><a href="tech.html">기술자료</a></li>
-<li><a href="contact.html">문의하기</a></li>
-<li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
-<li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="메뉴 열기">
@@ -121,6 +124,16 @@
             <div class="container">
                 <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">회사 소개</h2>
                 <h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">회사 소개</h2>
+            </div>
+        </div>
+
+        <div class="portfolio-category-tabs">
+            <div class="container">
+                <div class="category-tabs">
+                    <a href="about.html" class="category-tab active">회사소개</a>
+                    <a href="business.html" class="category-tab">사업영역</a>
+                    <a href="process.html" class="category-tab">프로세스</a>
+                </div>
             </div>
         </div>
 
@@ -155,7 +168,7 @@
                             <p style="font-size: 13px;">고객 만족<br>최우선</p>
                         </div>
                         <div
-                            style="width: 160px; text-align: center; padding: 15px 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #f9f9f9;">
+                            style="width: 160px; text-align: center; padding: 15px 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #f0f2f5;">
                             <h4 style="color: #0056b3; font-size: 16px; margin-bottom: 6px;">QUALITY</h4>
                             <p style="font-size: 13px;">최상의 품질<br>제공</p>
                         </div>
@@ -170,7 +183,7 @@
         </section>
         <!-- History Section -->
         <section class="section history-section"
-            style="background-color: #f0f0f0; padding: 30px 0 40px 0; border-top: 1px solid #e0e0e0; margin-top: 0px;">
+            style="background-color: #f0f2f5; padding: 30px 0 40px 0; margin-top: 0px;">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 20px;">
                     <h3 class="desktop-only" style="font-size: 32px; font-weight: 700; color: #0056b3;">주요 연혁</h3>

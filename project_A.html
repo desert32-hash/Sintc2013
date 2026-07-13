@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -192,15 +192,15 @@
     margin-bottom: 16px;
   }
   .dc-core-card {
-    background: linear-gradient(135deg, #e8f0fe 0%, #d6e4ff 100%);
-    border: 1px solid #b8d0f5;
+    background: #d0d4d8;
+    border: 1px solid #b8bcc0;
     border-radius: 4px;
-    padding: 18px 16px;
+    padding: 18px 16px 24px;
     position: relative;
     transition: box-shadow 0.2s, transform 0.2s;
   }
   .dc-core-card:hover {
-    box-shadow: 0 6px 18px rgba(0,86,179,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     transform: translateY(-2px);
   }
   .dc-core-card::after {
@@ -208,18 +208,18 @@
     position: absolute;
     top: 10px; right: 10px;
     font-family: var(--dc-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
-    color: var(--dc-blue); background: rgba(255,255,255,0.7); border: 1px solid rgba(0,86,179,0.25);
+    color: #888; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.1);
     padding: 1px 5px; border-radius: 3px;
   }
   .dc-core-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .dc-core-icon {
     width: 32px; height: 32px; border-radius: 4px;
-    background: rgba(0, 86, 179, 0.12); color: var(--dc-blue);
+    background: rgba(0,86,179,0.07); color: var(--dc-blue);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .dc-core-icon svg { width: 17px; height: 17px; }
@@ -237,7 +237,7 @@
     font-size: 14px; color: var(--dc-navy); font-weight: 700; margin: 0;
   }
   .dc-core-card p {
-    font-size: 14px; color: #555; line-height: 1.6; margin: 0;
+    font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0 0 0;
   }
 
   .dc-sub-grid {
@@ -246,25 +246,25 @@
     gap: 16px;
   }
   .dc-sub-card {
-    background: #fff;
-    border: 1px solid var(--dc-line);
+    background: #d0d4d8;
+    border: 1px solid #b8bcc0;
     border-radius: 4px;
-    padding: 18px 16px;
+    padding: 18px 16px 24px;
     transition: box-shadow 0.2s, border-color 0.2s;
   }
   .dc-sub-card:hover {
     box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    border-color: #c8d0e0;
+    border-color: #b0b4b8;
   }
   .dc-sub-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .dc-sub-icon {
     width: 32px; height: 32px; border-radius: 4px;
-    background: rgba(0, 86, 179, 0.07); color: var(--dc-blue);
+    background: rgba(0,86,179,0.07); color: var(--dc-blue);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .dc-sub-icon svg { width: 17px; height: 17px; }
@@ -282,7 +282,7 @@
     font-size: 14px; color: var(--dc-navy); font-weight: 700; margin: 0;
   }
   .dc-sub-card p {
-    font-size: 14px; color: #555; line-height: 1.6; margin: 0;
+    font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0 0 0;
   }
 
   .dc-divider { display: flex; align-items: center; gap: 0; margin: 6px 0 28px 0; color: var(--dc-line); }
@@ -337,6 +337,21 @@
     .dc-two-col { flex-direction: column; }
     .dc-panel { min-width: 100%; }
   }
+
+  /* Floating Buttons */
+  @media (max-width: 768px) {
+    .floating-buttons-stack.mobile-only {
+      display: flex !important;
+      bottom: 80px !important;
+      right: 15px !important;
+    }
+    .floating-buttons-stack.desktop-only { display: none !important; }
+    .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+  }
+  @media (min-width: 769px) {
+    .floating-buttons-stack.mobile-only { display: none !important; }
+    .floating-buttons-stack.desktop-only { display: flex !important; }
+  }
 </style>
 </head>
 <body>
@@ -351,9 +366,15 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html" target="_self">회사소개</a></li>
-                    <li><a href="Business.html" target="_self">사업영역</a></li>
-                    <li><a href="process.html" target="_self">프로세스</a></li>
+                    <li class="dropdown desktop-only">
+    <a href="about.html" class="dropdown-toggle">기업 개요</a>
+    <ul class="dropdown-menu align-offset desktop-only-dropdown">
+        <li><a href="about.html">회사소개</a></li>
+        <li><a href="business.html">사업영역</a></li>
+        <li><a href="process.html">프로세스</a></li>
+    </ul>
+</li>
+                    <li><a href="ai-tech.html">AI융합기술</a></li>
                     <li class="dropdown desktop-only">
     <a href="project.html" class="dropdown-toggle">개발사례</a>
     <ul class="dropdown-menu align-offset desktop-only-dropdown">
@@ -362,18 +383,18 @@
     </ul>
 </li>
                     <li class="dropdown">
-                        <a href="design.html" class="dropdown-toggle" target="_self">포트폴리오</a>
+                        <a href="design.html" class="dropdown-toggle">포트폴리오</a>
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
-                            <li><a href="design.html" target="_self">디자인</a></li>
-                            <li><a href="mechanical.html" target="_self">기구설계</a></li>
-                            <li><a href="circuit.html" target="_self">전자제어</a></li>
-                            <li><a href="prototype.html" target="_self">시제품</a></li>
-                            <li><a href="machine.html" target="_self">자동화기계</a></li>
-                            <li><a href="jig.html" class="jig-menu-item" target="_self">지그제작</a></li>
+                            <li><a href="design.html">디자인</a></li>
+                            <li><a href="mechanical.html">기구설계</a></li>
+                            <li><a href="circuit.html">전자제어</a></li>
+                            <li><a href="prototype.html">시제품</a></li>
+                            <li><a href="machine.html">자동화기계</a></li>
+                            <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
                         </ul>
                     </li>
-                    <li><a href="tech.html" target="_self">기술자료</a></li>
-                    <li><a href="contact.html" target="_self">문의하기</a></li>
+                    <li><a href="tech.html">기술자료</a></li>
+                    <li><a href="contact.html">문의하기</a></li>
                     <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
                     <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
@@ -434,8 +455,8 @@
           <div class="dc-gallery-video-thumb active" data-index="0" onclick="changeGalleryContent(0)">
             <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.81zM9.55 15.5V8.5l6.27 3.5-6.27 3.5z"/></svg>
           </div>
-          <img src="projects/06.jpg" class="dc-gallery-thumb" data-index="1" onclick="changeGalleryContent(1)">
-          <img src="projects/07.jpg" class="dc-gallery-thumb" data-index="2" onclick="changeGalleryContent(2)">
+          <img src="images/projects/06.jpg" class="dc-gallery-thumb" data-index="1" onclick="changeGalleryContent(1)">
+          <img src="images/projects/07.jpg" class="dc-gallery-thumb" data-index="2" onclick="changeGalleryContent(2)">
         </div>
         <div class="dc-gallery-main" id="gallery-main-container">
           <iframe id="gallery-main-iframe" src="https://www.youtube.com/embed/_82Pluv6kew" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -465,7 +486,7 @@
 
   </div> <!-- .container.dc-container -->
 
-  <div style="background-color: #f0f0f0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 30px 0 0px 0; margin-bottom: 40px;">
+  <div style="background-color: #f0f2f5; padding: 30px 0 10px 0; margin-bottom: 40px;">
     <div class="container dc-container">
     <div class="dc-solutions-block">
       <h3 class="dc-section-title">핵심 해결 방안</h3>
@@ -578,8 +599,8 @@
 <script>
   const galleryContents = [
     { type: 'video', src: 'https://www.youtube.com/embed/_82Pluv6kew' },
-    { type: 'image', src: 'projects/06.jpg' },
-    { type: 'image', src: 'projects/07.jpg' }
+    { type: 'image', src: 'images/projects/06.jpg' },
+    { type: 'image', src: 'images/projects/07.jpg' }
   ];
 
   function changeGalleryContent(index) {
@@ -675,6 +696,13 @@ href="https://statcounter.com/" target="_blank"><img class="statcounter"
 src="https://c.statcounter.com/13335092/0/b2a1ce39/1/" alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
+
+<script>
+function openKakaoTalk() {
+    if (window.innerWidth < 769) { return; }
+    window.open('https://pf.kakao.com/_xfPIhX/chat', '_blank');
+}
+</script>
 
 </body>
 </html>

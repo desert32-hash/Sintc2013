@@ -215,9 +215,15 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html">회사소개</a></li>
-                    <li><a href="Business.html">사업영역</a></li>
-                    <li><a href="process.html">프로세스</a></li>
+                    <li class="dropdown desktop-only">
+    <a href="about.html" class="dropdown-toggle">기업 개요</a>
+    <ul class="dropdown-menu align-offset desktop-only-dropdown">
+        <li><a href="about.html">회사소개</a></li>
+        <li><a href="business.html">사업영역</a></li>
+        <li><a href="process.html">프로세스</a></li>
+    </ul>
+</li>
+                    <li><a href="ai-tech.html">AI융합기술</a></li>
                     <li class="dropdown desktop-only">
     <a href="project.html" class="dropdown-toggle">개발사례</a>
     <ul class="dropdown-menu align-offset desktop-only-dropdown">
@@ -304,7 +310,7 @@
                 <div class="mobile-hero-slide active" data-index="0">
                     <div class="mobile-hero-content">
                         <span class="mobile-hero-subtitle">아이디어 기획부터 생산까지</span>
-                        <strong class="mobile-hero-main">체계적인 원스톱 솔루션</strong>
+                        <strong class="mobile-hero-main">AI융합기술 · 스마트 하드웨어개발</strong>
                     </div>
                 </div>
                 <div class="mobile-hero-slide" data-index="1">
@@ -343,7 +349,7 @@
 
                 <!-- Tab Navigation -->
                 <ul class="manufacturing-tabs">
-                    <li class="tab-item active" data-tab="design">
+                    <li class="tab-item" data-tab="design">
                         <a href="#" class="tab-link">
                             <span class="tab-text-desktop">디자인</span>
                             <span class="tab-text-mobile">디자인</span>
@@ -355,12 +361,13 @@
                             <span class="tab-text-mobile">기구설계</span>
                         </a>
                     </li>
-                    <li class="tab-item" data-tab="circuit">
+                    <li class="tab-item active" data-tab="circuit">
                         <a href="#" class="tab-link">
                             <span class="tab-text-desktop">전자제어</span>
                             <span class="tab-text-mobile">전자제어</span>
                         </a>
                     </li>
+
                     <li class="tab-item" data-tab="prototyping">
                         <a href="#" class="tab-link">
                             <span class="tab-text-desktop">시제품 제작</span>
@@ -384,13 +391,14 @@
                 <!-- Tab Content -->
                 <div class="tab-content-container">
                     <!-- Design Tab -->
-                    <div class="tab-pane active" id="design">
+                    <div class="tab-pane" id="design">
                         <div class="tab-content">
                             <div class="content-wrapper">
-                                <h3 class="content-headline">Design - 아이디어를 현실로 만드는 디자인</h3>
+                                <h3 class="content-headline desktop-only">Design - 아이디어를 현실로 만드는 디자인</h3>
+<h3 class="content-headline mobile-only">Design - 아이디어를 현실로 만드는 디자인</h3>
                                 <p class="content-description desktop-only">단순 외형을 넘어 실제 양산이 가능한 최적의 기구 구조를 설계합니다.</p>
 <p class="content-description mobile-only">단순 외형을 넘어 실제 양산이 가능한<br>최적의 기구 구조를 설계합니다.</p>
-                                <a href="Business.html" class="portfolio-link">
+                                <a href="business.html" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -403,10 +411,11 @@
                     <div class="tab-pane" id="engineering">
                         <div class="tab-content">
                             <div class="content-wrapper">
-                                <h3 class="content-headline">Engineering - 정밀한 기구 설계 및 최적화</h3>
+                                <h3 class="content-headline desktop-only">Engineering - 정밀한 기구 설계 및 최적화</h3>
+<h3 class="content-headline mobile-only">정밀한 기구 설계 및 최적화</h3>
                                 <p class="content-description desktop-only">메커니즘 분석과 시뮬레이션을 통한 최적의 기구 설계 솔루션을 제공합니다.</p>
 <p class="content-description mobile-only">메커니즘 분석과 시뮬레이션을 통한 최적의<br>기구 설계 솔루션을 제공합니다.</p>
-                                <a href="Business.html#mechanical" class="portfolio-link">
+                                <a href="business.html#mechanical" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -416,13 +425,14 @@
                     </div>
 
                     <!-- Circuit Control Tab -->
-                    <div class="tab-pane" id="circuit">
+                    <div class="tab-pane active" id="circuit">
                         <div class="tab-content">
                             <div class="content-wrapper">
-                                <h3 class="content-headline">Electronics - 맞춤형 회로 및 제어 솔루션</h3>
-                                <p class="content-description desktop-only">하드웨어 회로 설계부터 제어 펌웨어 개발까지 통합 전자 제어 솔루션을 제공합니다.</p>
-<p class="content-description mobile-only">하드웨어 회로 설계부터 제어 펌웨어 개발까지<br>통합 전자 제어 솔루션을 제공합니다.</p>
-                                <a href="Business.html#circuit" class="portfolio-link">
+                                <h3 class="content-headline desktop-only">Electronics - 맞춤형 회로 및 AI 지능형 제어 솔루션</h3>
+<h3 class="content-headline mobile-only">맞춤형 회로 및 지능형 제어 솔루션</h3>
+                                <p class="content-description desktop-only">회로 설계부터 AI 기술 연동 펌웨어 개발까지, 통합 전자 제어 솔루션을 제공합니다.</p>
+<p class="content-description mobile-only">회로 설계부터 AI 연동 펌웨어 개발까지<br>통합 전자 제어 솔루션을 제공합니다.</p>
+                                <a href="business.html#circuit" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -436,10 +446,10 @@
                         <div class="tab-content">
                             <div class="content-wrapper">
                                 <h3 class="content-headline desktop-only">Prototyping - 빠른 시제품 제작으로 검증 단계 단축</h3>
-<h3 class="content-headline mobile-only">Prototyping - 빠른 시제품 제작으로 검증 단축</h3>
+<h3 class="content-headline mobile-only">빠른 시제품 제작으로 검증 단축</h3>
                                 <p class="content-description desktop-only">3D 프린팅과 워킹 목업을 통해 아이디어를 빠르게 실체화합니다.</p>
 <p class="content-description mobile-only">3D 프린팅과 워킹 목업을 통해 아이디어를<br>빠르게 실체화합니다.</p>
-                                <a href="Business.html#prototyping" class="portfolio-link">
+                                <a href="business.html#prototyping" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -452,10 +462,11 @@
                     <div class="tab-pane" id="automation">
                         <div class="tab-content">
                             <div class="content-wrapper">
-                                <h3 class="content-headline">Automation - 생산성 극대화 자동화 시스템</h3>
-                                <p class="content-description desktop-only">전용 자동화 라인과 시스템 구축으로 생산 효율을 혁신합니다.</p>
-<p class="content-description mobile-only">전용 자동화 라인과 시스템 구축으로<br>생산 효율을 혁신합니다.</p>
-                                <a href="Business.html#automation" class="portfolio-link">
+                                <h3 class="content-headline desktop-only">Automation - AI 기술 연동형 스마트 자동화 솔루션</h3>
+<h3 class="content-headline mobile-only">AI 기술 연동형 스마트 자동화 솔루션</h3>
+                                <p class="content-description desktop-only">최신 AI 기능을 하드웨어와 결합하여 고도화된 자동화 기기 기술을 구현합니다.</p>
+<p class="content-description mobile-only">AI 기능을 하드웨어와 결합하여 고도화된<br>자동화 기기 기술을 구현합니다.</p>
+                                <a href="business.html#automation" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -468,10 +479,11 @@
                     <div class="tab-pane" id="jig">
                         <div class="tab-content">
                             <div class="content-wrapper">
-                                <h3 class="content-headline">Jig & Fixture - 생산성 향상 맞춤형 지그</h3>
+                                <h3 class="content-headline desktop-only">Jig & Fixture - 생산성 향상 맞춤형 지그</h3>
+<h3 class="content-headline mobile-only">Jig & Fixture - 생산성 향상<br>맞춤형 지그</h3>
                                 <p class="content-description desktop-only">현장 환경에 최적화된 맞춤형 지그 및 치공구를 제작합니다.</p>
 <p class="content-description mobile-only">현장 환경에 최적화된 맞춤형<br>지그 및 치공구를 제작합니다.</p>
-                                <a href="Business.html#jig" class="portfolio-link">
+                                <a href="business.html#jig" class="portfolio-link">
                                     <자세히 보기>
                                 </a>
                                 <br>
@@ -485,7 +497,7 @@
 
         <!-- Process Section - Two Cards -->
         <section class="process-section"
-            style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 30px 0;">
+            style="padding: 30px 0;">
             <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
                 <h2 class="process-title">프로세스</h2>
 
@@ -612,9 +624,8 @@
                         </p>
                     </div>
                     <div class="technical-skills-item">
-                        <h3 class="technical-skills-item-title desktop-only">지그 및 자동화 솔루션 <span class="title-description">정밀 전용 지그와
-                                소형 자동화로 제조 공정 효율 정점 구현</span></h3>
-<h3 class="technical-skills-item-title mobile-only">지그 및 자동화 솔루션<br><span class="title-description">정밀 지그와 소형 자동화로<br>공정 효율 정점 구현</span></h3>
+                        <h3 class="technical-skills-item-title desktop-only">지그 및 지능형 솔루션 <span class="title-description">정밀 전용 지그와 AI 기술을 결합한 스마트 자동화로 공정 효율 극대화</span></h3>
+<h3 class="technical-skills-item-title mobile-only">지그 및 지능형 솔루션<br><span class="title-description">정밀 전용 지그와 AI 기술을 결합한<br>스마트 자동화로 공정 효율 극대화</span></h3>
                         <p class="technical-skills-item-description">
                         </p>
                     </div>
@@ -623,7 +634,7 @@
         </section>
 
         <!-- Gallery Section -->
-        <section class="gallery-section" style="border-top: 1px solid #e0e0e0;">
+        <section class="gallery-section">
             <div class="container">
                 <h2 class="gallery-title">프로젝트 진행 사례</h2>
             </div>
