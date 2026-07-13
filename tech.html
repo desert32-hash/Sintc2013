@@ -396,27 +396,14 @@ permalink: /tech.html
                             <th class="col-date">등록일</th>
                         </tr>
                     </thead>
-                    <tbody id="post-tbody">
-                        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-                        {% for post in sorted_posts %}
-                        <tr class="post-row" data-category="{{ post.categories | first }}">
-                            <td class="col-num">{{ forloop.rindex }}</td>
-                            <td class="col-title">
-                                <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
-                            </td>
-                            <td class="col-author">{{ post.author | default: '관리자' }}</td>
-                            <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
-                        </tr>
-                        {% endfor %}
-                        {% if site.posts.size == 0 %}
-                        <tr class="no-posts">
-                            <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
-                                <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-                                <p>등록된 글이 없습니다.</p>
-                            </td>
-                        </tr>
-                        {% endif %}
-                    </tbody>
+                 <tbody id="post-tbody">
+    <tr class="no-posts">
+        <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
+            <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+            <p>데이터를 불러오는 중입니다...</p>
+        </td>
+    </tr>
+</tbody>
                 </table>
 
                 <div class="pagination" id="pagination">
