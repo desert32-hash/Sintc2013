@@ -1,9 +1,4 @@
-﻿---
-layout: null
-permalink: /tech.html
----
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -397,25 +392,6 @@ permalink: /tech.html
                         </tr>
                     </thead>
                     <tbody id="post-tbody">
-                        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-                        {% for post in sorted_posts %}
-                        <tr class="post-row" data-category="{{ post.categories | first }}">
-                            <td class="col-num">{{ forloop.length | plus: 1 | minus: forloop.index }}</td>
-                            <td class="col-title">
-                                <a href="{{ site.baseurl }}{{ post.url }}" class="post-link">{{ post.title }}</a>
-                            </td>
-                            <td class="col-author">{{ post.author | default: '관리자' }}</td>
-                            <td class="col-date">{{ post.date | date: "%y.%m.%d" }}</td>
-                        </tr>
-                        {% endfor %}
-                        {% if site.posts.size == 0 %}
-                        <tr class="no-posts">
-                            <td colspan="4" style="text-align: center; padding: 60px 20px; color: #888;">
-                                <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
-                                <p>등록된 글이 없습니다.</p>
-                            </td>
-                        </tr>
-                        {% endif %}
                     </tbody>
                 </table>
 
@@ -450,16 +426,25 @@ permalink: /tech.html
                     }
 
                     const posts = [
-                        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-                    {% for post in sorted_posts %}
-                    {
-                        title: "{{ post.title | escape }}",
-                            category: "{{ post.categories | first }}",
-                                date: "{{ post.date | date: '%y.%m.%d' }}",
-                                    url: "{{ site.baseurl }}{{ post.url }}"
-                    } {% unless forloop.last %}, {% endunless %}
-                    {% endfor %}
-                    ];
+    {
+        title: "신성테크 공식 홈페이지 리뉴얼 및 기술자료실 오픈 안내",
+        category: "공지사항",
+        date: "26.02.01",
+        url: "posts/2024-01-15-welcome.html"
+    },
+    {
+        title: "제품기획부터 양산까지의 개발 프로세스: 제품기획이란?",
+        category: "제품기획",
+        date: "26.06.30",
+        url: "posts/2026-06-30-plan-process.html"
+    },
+    {
+        title: "포트폴리오 콘텐츠 업데이트 안내",
+        category: "공지사항",
+        date: "26.06.30",
+        url: "posts/2026-06-30-portfolio-update.html"
+    }
+];
 
                     function renderPosts() {
                         const filteredPosts = posts.filter(post => post.category === currentCategory);
