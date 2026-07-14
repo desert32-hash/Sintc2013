@@ -362,15 +362,16 @@
   @media (max-width: 992px) {
     .dc-core-row { grid-template-columns: repeat(2, 1fr); }
     .dc-sub-grid { grid-template-columns: repeat(2, 1fr); }
-    .dc-gallery { flex-direction: column; }
+    .dc-gallery { flex-direction: column-reverse; }
     .dc-gallery-thumbs {
       width: 100%;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      overflow-x: visible;
     }
-    .dc-gallery-thumb { width: 80px; flex-shrink: 0; }
-    .dc-gallery-video-thumb { width: 80px; flex-shrink: 0; }
+    .dc-gallery-thumb { width: 100%; flex-shrink: 1; }
+    .dc-gallery-video-thumb { width: 100%; flex-shrink: 1; }
     .dc-gallery-main { height: 400px; }
   }
   @media (max-width: 640px) {
@@ -380,7 +381,13 @@
     .dc-panel { padding: 26px; min-width: 100%; }
     .dc-core-row { grid-template-columns: 1fr; }
     .dc-sub-grid { grid-template-columns: 1fr; }
-    .dc-gallery-main { height: 280px; }
+    .dc-gallery-main { height: 180px !important; min-height: 180px !important; }
+    .dc-core-card { padding: 10px 12px 14px; }
+    .dc-core-card p { margin: 6px 0 0 0; }
+    .dc-sub-card { padding: 10px 12px 14px; }
+    .dc-sub-card p { margin: 6px 0 0 0; }
+    .dc-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .dc-tag-chip { text-align: center; font-size: 12px; padding: 6px 4px; }
   }
   @media (max-width: 768px) {
     .dc-two-col { flex-direction: column; }
@@ -491,16 +498,24 @@
 
       <div class="dc-hero-inner">
         <span class="dc-tag">PROJECT NO. 02</span>
-        <h1 class="dc-title">무선 넥밴드형 고출력 LED 플래시 및 배터리 시스템 개발</h1>
+        <h1 class="dc-title desktop-only">무선 넥밴드형 고출력 LED 플래시 및 배터리 시스템 개발</h1>
+        <h1 class="dc-title mobile-only">무선 넥밴드형 고출력 LED 시스템 개발</h1>
 
         <div class="dc-hero-text">
-          <p class="dc-hero-p">
+          <p class="dc-hero-p desktop-only">
             컨셉 기획 단계부터 신체 착용성과 현장 활용성을 고려한 무선 전원 공급형 조명 디바이스로 기획되었습니다. </br>
             제품의 컴팩트한 외형을 구현하기 위해 내부 공간 효율을 극대화하여 대용량 배터리를 안정적으로 탑재하였습니다. </br>
             LED의 하우징 방열 설계와 각도 조절용 관절 수납 구조, 원터치 도브테일 탈착 메커니즘을 구현하였습니다.
           </p>
-          <p class="dc-hero-p dc-hero-p--highlight">
+          <p class="dc-hero-p mobile-only">
+            착용성과 활용성을 극대화한 무선 조명 디바이스입니다. </br>사이즈를 최소화 했습니다. </br> 
+            방열, 관절구조, 도브테일 착탈 구조를 구현했습니다. 
+          </p>
+          <p class="dc-hero-p dc-hero-p--highlight desktop-only">
             컨셉 기획부터 기구 설계, 회로 시스템 구축까지 전 과정을 수행하여 신뢰성 높은 무선 넥밴드 조명 시스템을 완성하였습니다.
+          </p>
+          <p class="dc-hero-p dc-hero-p--highlight mobile-only">
+            컨셉 기획부터 기구·회로 설계까지 전 과정을 원스톱으로 수행
           </p>
         </div>
 
@@ -605,7 +620,7 @@
               <h4>원터치 도브테일 탈착 구조 구현</h4>
             </div>
           </div>
-          <p>한 손 분리·결합이 가능한 슬라이드식 착탈 구조 적용</p>
+          <p><span class="desktop-only">한 손 분리·결합이 가능한 슬라이드식 착탈 구조 적용</span><span class="mobile-only">한 손 슬라이드 착탈 메커니즘</span></p>
         </div>
 
         <div class="dc-sub-card">
@@ -616,7 +631,7 @@
               <h4>워킹 목업 및 3D 프린팅 검증</h4>
             </div>
           </div>
-          <p>착용감 및 탈착 편의성 검증을 위한 정밀 시제품 제작</p>
+          <p><span class="desktop-only">착용감 및 탈착 편의성 검증을 위한 정밀 시제품 제작</span><span class="mobile-only">편의성 검증용 정밀 시제품 제작</span></p>
         </div>
       </div>
     </div>
@@ -629,16 +644,16 @@
       <div class="dc-panel dc-panel--tech">
         <h3 class="dc-panel-title dc-panel-title--tech"><span class="dc-panel-mark">STACK</span> 적용 개발 기술</h3>
         <div class="dc-tags">
-          <span class="dc-tag-chip">제품기획</span>
-          <span class="dc-tag-chip">기구 설계</span>
-          <span class="dc-tag-chip">공간 최적화</span>
-          <span class="dc-tag-chip">전자회로 설계</span>
-          <span class="dc-tag-chip">PCB 설계</span>
-          <span class="dc-tag-chip">펌웨어 개발</span>
-          <span class="dc-tag-chip">방열 설계</span>
-          <span class="dc-tag-chip">관절 메커니즘</span>
-          <span class="dc-tag-chip">도브테일</span>
-          <span class="dc-tag-chip">3D 프린팅</span>
+          <span class="dc-tag-chip"><span class="desktop-only">제품기획</span><span class="mobile-only">제품기획</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">기구 설계</span><span class="mobile-only">기구설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">공간 최적화</span><span class="mobile-only">최적화설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">전자회로 설계</span><span class="mobile-only">회로설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">PCB 설계</span><span class="mobile-only">시스템설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">펌웨어 개발</span><span class="mobile-only">내장제어</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">방열 설계</span><span class="mobile-only">방열설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">관절 메커니즘</span><span class="mobile-only">관절구조</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">도브테일</span><span class="mobile-only">도브테일</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">3D 프린팅</span><span class="mobile-only">시제품제작</span></span>
         </div>
       </div>
 
@@ -647,7 +662,7 @@
         <ul class="dc-achieve-list">
           <li><span class="dc-ok">OK</span> 무선 일체형 넥밴드 구조 최초 개발</li>
           <li><span class="dc-ok">OK</span> 마모 없는 안정적인 각도 조절 관절 확립</li>
-          <li><span class="dc-ok">OK</span> 고출력 LED 발열 해소 및 하우징 변형 방지</li>
+          <li><span class="dc-ok">OK</span> <span class="desktop-only">고출력 LED 발열 해소 및 하우징 변형 방지</span><span class="mobile-only">LED 발열 해소 및 하우징 보호</span></li>
           <li><span class="dc-ok">OK</span> 원터치 슬라이드식 정밀 착탈 구조 완성</li>
         </ul>
       </div>

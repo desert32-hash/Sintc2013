@@ -362,15 +362,16 @@
   @media (max-width: 992px) {
     .dc-core-row { grid-template-columns: repeat(2, 1fr); }
     .dc-sub-grid { grid-template-columns: repeat(2, 1fr); }
-    .dc-gallery { flex-direction: column; }
+    .dc-gallery { flex-direction: column-reverse; }
     .dc-gallery-thumbs {
       width: 100%;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      overflow-x: visible;
     }
-    .dc-gallery-thumb { width: 80px; flex-shrink: 0; }
-    .dc-gallery-video-thumb { width: 80px; flex-shrink: 0; }
+    .dc-gallery-thumb { width: 100%; flex-shrink: 1; }
+    .dc-gallery-video-thumb { width: 100%; flex-shrink: 1; }
     .dc-gallery-main { height: 400px; }
   }
   @media (max-width: 640px) {
@@ -380,7 +381,13 @@
     .dc-panel { padding: 26px; min-width: 100%; }
     .dc-core-row { grid-template-columns: 1fr; }
     .dc-sub-grid { grid-template-columns: 1fr; }
-    .dc-gallery-main { height: 280px; }
+    .dc-gallery-main { height: 190px !important; min-height: 190px !important; }
+    .dc-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .dc-tag-chip { text-align: center; font-size: 12px; padding: 6px 4px; }
+    .dc-core-card { padding: 10px 12px 14px; }
+    .dc-core-card p { margin: 6px 0 0 0; }
+    .dc-sub-card { padding: 10px 12px 14px; }
+    .dc-sub-card p { margin: 6px 0 0 0; }
   }
   @media (max-width: 768px) {
     .dc-two-col { flex-direction: column; }
@@ -494,13 +501,19 @@
         <h1 class="dc-title">무선 레일 이송 자동 제어 시스템 개발</h1>
 
         <div class="dc-hero-text">
-          <p class="dc-hero-p">
+          <p class="dc-hero-p desktop-only">
             컨셉 단계부터 현장 특성을 반영한 맞춤형 메커니즘으로 기획되었습니다. </br>
             바닥이 없는 현장 구조물에 맞춰 안정적인 주행이 가능하도록 하드웨어와 소프트웨어를 완전히 새롭게 설계하였으며, </br>
             무선 운용과 자동 제어 기능을 완벽히 구현하였습니다.
           </p>
-          <p class="dc-hero-p dc-hero-p--highlight">
+          <p class="dc-hero-p mobile-only">
+            바닥이 없는 특수 구조물에서도 안정적인 주행이 가능하도록 하드웨어와 소프트웨어를 완전히 새롭게 설계했습니다.
+          </p>
+          <p class="dc-hero-p dc-hero-p--highlight desktop-only">
             컨셉 제안부터 설계, 제작, 제어 시스템 구축까지 전 과정을 수행하여 최적화된 레일 이송 자동화 시스템을 완성하였습니다.
+          </p>
+          <p class="dc-hero-p dc-hero-p--highlight mobile-only">
+            컨셉 기획부터 무선 운용, 자동 제어 시스템까지 원스톱 구축
           </p>
         </div>
 
@@ -530,7 +543,7 @@
       <div class="dc-panel dc-panel--issue">
         <h3 class="dc-panel-title dc-panel-title--issue"><span class="dc-panel-mark">ISSUE</span> 주요 문제점</h3>
         <ul class="dc-list dc-list--issue">
-          <li>X축 제어가 불안정하고 Y축 구동이 불가능함</li>
+          <li><span class="desktop-only">X축 제어가 불안정하고 Y축 구동이 불가능함</span><span class="mobile-only">X축 제어 불안정·Y축 구동 불가</span></li>
           <li>설정한 속도와 실제 속도의 오차 발생</li>
           <li>자동 운전의 신뢰성이 낮음</li>
           <li>장비 상태를 확인하기 어려움</li>
@@ -547,7 +560,7 @@
           <li>속도 변경 기능 제공</li>
           <li>자동 및 수동 운전 지원</li>
           <li>무선으로 운용 가능한 시스템</li>
-          <li>장비 상태를 쉽게 확인할 수 있는 화면 제공</li>
+          <li><span class="desktop-only">장비 상태를 쉽게 확인할 수 있는 화면 제공</span><span class="mobile-only">장비 상태 모니터링 화면 제공</span></li>
         </ul>
       </div>
     </div>
@@ -579,7 +592,7 @@
               <h4>레일 오차 자동 보정 기능</h4>
             </div>
           </div>
-          <p>±10mm 레일 간격 변화 자동 보정 및 주행 안정화</p>
+          <p><span class="desktop-only">±10mm 레일 간격 변화 자동 보정 및 주행 안정화</span><span class="mobile-only">±10mm 레일 간격 보정 및 안정 주행</span></p>
         </div>
 
         <div class="dc-core-card">
@@ -671,18 +684,18 @@
       <div class="dc-panel dc-panel--tech">
         <h3 class="dc-panel-title dc-panel-title--tech"><span class="dc-panel-mark">STACK</span> 적용 개발 기술</h3>
         <div class="dc-tags">
-          <span class="dc-tag-chip">제품기획</span>
-          <span class="dc-tag-chip">기구 설계</span>
-          <span class="dc-tag-chip">레일 시스템 설계</span>
-          <span class="dc-tag-chip">전자회로 설계</span>
-          <span class="dc-tag-chip">PCB 설계</span>
-          <span class="dc-tag-chip">펌웨어 개발</span>
-          <span class="dc-tag-chip">모터 및 드라이버 선정</span>
-          <span class="dc-tag-chip">속도 제어 알고리즘</span>
-          <span class="dc-tag-chip">EMI 노이즈 대책</span>
-          <span class="dc-tag-chip">FRAM 데이터 저장</span>
-          <span class="dc-tag-chip">LCD UI 설계</span>
-          <span class="dc-tag-chip">무선 리모컨 제어</span>
+          <span class="dc-tag-chip"><span class="desktop-only">제품기획</span><span class="mobile-only">제품기획</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">기구 설계</span><span class="mobile-only">기구설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">레일 시스템 설계</span><span class="mobile-only">레일설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">전자회로 설계</span><span class="mobile-only">회로설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">PCB 설계</span><span class="mobile-only">기판설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">펌웨어 개발</span><span class="mobile-only">제어개발</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">모터 및 드라이버 선정</span><span class="mobile-only">모터선정</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">속도 제어 알고리즘</span><span class="mobile-only">속도제어</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">EMI 노이즈 대책</span><span class="mobile-only">필터설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">FRAM 데이터 저장</span><span class="mobile-only">자료저장</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">LCD UI 설계</span><span class="mobile-only">화면설계</span></span>
+          <span class="dc-tag-chip"><span class="desktop-only">무선 리모컨 제어</span><span class="mobile-only">무선제어</span></span>
         </div>
       </div>
 
@@ -693,7 +706,7 @@
           <li><span class="dc-ok">OK</span> 목표 속도의 정밀 제어 구현</li>
           <li><span class="dc-ok">OK</span> 자동·수동 운전 지원</li>
           <li><span class="dc-ok">OK</span> 위치 복원 기능 구현</li>
-          <li><span class="dc-ok">OK</span> 현장 환경에 적합한 레일 이송 시스템 구축</li>
+          <li><span class="dc-ok">OK</span> <span class="desktop-only">현장 환경에 적합한 레일 이송 시스템 구축</span><span class="mobile-only">현장 맞춤형 레일 이송 시스템 구축</span></li>
 
           <li><span class="dc-ok">OK</span> 레일 조립 및 설치 오차 자동 대응</li>
         </ul>
