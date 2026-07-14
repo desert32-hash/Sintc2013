@@ -14,6 +14,58 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dropdown.css">
     <style>
+        /* Mobile Menu - 9 items compact (inline override) */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+                padding: 10px !important;
+                background-color: #ffffff !important;
+            }
+
+            .main-nav ul li.desktop-only {
+                display: none !important;
+            }
+
+            .main-nav ul li.mobile-only {
+                display: block !important;
+                border: none !important;
+                border-radius: 4px !important;
+                overflow: hidden !important;
+                min-width: 0 !important;
+                background-color: #0056b3 !important;
+            }
+
+            .main-nav ul li.mobile-only a {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                height: 42px !important;
+                min-height: 42px !important;
+                padding: 4px 6px !important;
+                box-sizing: border-box !important;
+                background-color: #0056b3 !important;
+                color: #ffffff !important;
+                font-weight: 500 !important;
+                font-size: 14px !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .main-nav ul li.mobile-only a:hover {
+                background-color: #003d82 !important;
+                color: #ffffff !important;
+            }
+
+            header .main-nav .dropdown-menu,
+            header .main-nav .desktop-only-dropdown {
+                display: none !important;
+            }
+        }
+    </style>
+    <style>
         @media (max-width: 768px) {
             .floating-buttons-stack.mobile-only {
                 display: flex !important;
@@ -288,28 +340,26 @@
                     <img src="images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
-            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
-                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
-            </a>
             <nav class="main-nav">
                 <ul>
+                    <!-- Desktop Menu -->
                     <li class="dropdown desktop-only">
-    <a href="about.html" class="dropdown-toggle">기업 개요</a>
-    <ul class="dropdown-menu align-offset desktop-only-dropdown">
-        <li><a href="about.html">회사소개</a></li>
-        <li><a href="business.html">사업영역</a></li>
-        <li><a href="process.html">프로세스</a></li>
-    </ul>
-</li>
-                    <li><a href="ai-tech.html">AI융합기술</a></li>
+                        <a href="about.html" class="dropdown-toggle">기업 개요</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="about.html">회사소개</a></li>
+                            <li><a href="business.html">사업영역</a></li>
+                            <li><a href="process.html">프로세스</a></li>
+                        </ul>
+                    </li>
+                    <li class="desktop-only"><a href="ai-tech.html">AI융합기술</a></li>
                     <li class="dropdown desktop-only">
-    <a href="project.html" class="dropdown-toggle">개발사례</a>
-    <ul class="dropdown-menu align-offset desktop-only-dropdown">
-        <li><a href="project.html">프로젝트_1</a></li>
-        <li><a href="project_A.html">프로젝트_2</a></li>
-    </ul>
-</li>
-                    <li class="dropdown">
+                        <a href="project.html" class="dropdown-toggle">개발사례</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="project.html">프로젝트_1</a></li>
+                            <li><a href="project_A.html">프로젝트_2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown desktop-only">
                         <a href="design.html" class="dropdown-toggle">포트폴리오</a>
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="design.html">디자인</a></li>
@@ -320,9 +370,18 @@
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
                         </ul>
                     </li>
-                    <li><a href="tech.html">기술자료</a></li>
-                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="desktop-only"><a href="tech.html">기술자료</a></li>
+                    <li class="desktop-only"><a href="contact.html">문의하기</a></li>
                     <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <!-- Mobile Menu (9 items) -->
+                    <li class="mobile-only"><a href="index.html">Home</a></li>
+                    <li class="mobile-only"><a href="about.html">회사소개</a></li>
+                    <li class="mobile-only"><a href="business.html">사업영역</a></li>
+                    <li class="mobile-only"><a href="process.html">프로세스</a></li>
+                    <li class="mobile-only"><a href="ai-tech.html">AI융합기술</a></li>
+                    <li class="mobile-only"><a href="project.html">개발사례</a></li>
+                    <li class="mobile-only"><a href="design.html">포트폴리오</a></li>
+                    <li class="mobile-only"><a href="contact.html">문의하기</a></li>
                     <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>

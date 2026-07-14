@@ -11,10 +11,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/dropdown.css">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Noto Sans KR',sans-serif; background:#ffffff; color:#333; }
-  .container { max-width:1100px; margin:0 auto; padding:0 20px; }
-
   .dc-container {
     --dc-navy: #0f2247;
     --dc-blue: #0056b3;
@@ -85,6 +81,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px 40px;
   }
+  .dc-list--issue.desktop-only { display: grid !important; }
   .dc-list--issue li::before { content: '✕'; color: var(--dc-red); font-weight: 700; margin-right: 10px; }
   .dc-panel--req { border-top: 3px solid var(--dc-teal); }
 
@@ -354,10 +351,54 @@
     }
     .floating-buttons-stack.desktop-only { display: none !important; }
     .floating-buttons-stack.mobile-only .phone-btn { background-color: #4CAF50 !important; }
+
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+
+    .main-nav ul {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 15px !important;
+      padding: 10px !important;
+      background-color: #ffffff !important;
+    }
+    .main-nav ul li.desktop-only { display: none !important; }
+    .main-nav ul li.mobile-only {
+      display: block !important;
+      border: none !important;
+      border-radius: 4px !important;
+      overflow: hidden !important;
+      min-width: 0 !important;
+      background-color: #0056b3 !important;
+    }
+    .main-nav ul li.mobile-only a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 42px !important;
+      min-height: 42px !important;
+      padding: 4px 6px !important;
+      box-sizing: border-box !important;
+      background-color: #0056b3 !important;
+      color: #ffffff !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    .main-nav ul li.mobile-only a:hover {
+      background-color: #003d82 !important;
+      color: #ffffff !important;
+    }
+    header .main-nav .dropdown-menu,
+    header .main-nav .desktop-only-dropdown { display: none !important; }
   }
   @media (min-width: 769px) {
     .floating-buttons-stack.mobile-only { display: none !important; }
     .floating-buttons-stack.desktop-only { display: flex !important; }
+    .desktop-only { display: block !important; }
+    .mobile-only { display: none !important; }
   }
   /* --- AI 융합기술 페이지 전용 --- */
   .dc-panel--why { border-top: 3px solid var(--dc-navy); }
@@ -391,7 +432,7 @@
     position: relative;
     overflow: hidden;
     background: #e2e5e9;
-    border-radius: 10px;
+    border-radius: 0;
     padding: 40px 48px;
     margin-top: 0;
     margin-bottom: 32px;
@@ -560,14 +601,42 @@
   }
 
   @media (max-width: 640px) {
-    .ai-gallery { flex-direction: column; }
-    .ai-gallery-thumbs { flex-direction: row; width: 100%; }
-    .ai-gallery-thumb { width: 100px; height: 70px; flex-shrink: 0; }
-    .ai-gallery-thumb img { height: 70px; }
+    .ai-gallery { flex-direction: column-reverse; }
+    .ai-gallery-thumbs {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+      gap: 8px;
+    }
+    .ai-gallery-thumb { width: 74px; height: 60px; flex-shrink: 0; }
+    .ai-gallery-thumb img { height: 60px; }
+    .ai-gallery-main img {
+      height: auto;
+      max-height: 260px;
+      object-fit: cover;
+    }
+    .ai-spec-row { gap: 14px; margin-top: 8px; padding-top: 16px; }
+
+    /* 모바일 전용 캔버스 위치 - 중앙 우측 */
+    .ai-hero {
+      --canvas-margin-left: 50%;
+      --canvas-margin-right: 0px;
+      padding: 40px 24px;
+    }
+    .ai-hero-title { font-size: 26px; }
+    .ai-hero-inner { max-width: 100%; }
+    .dc-list--issue { grid-template-columns: 1fr; gap: 12px; }
+    .dc-list--issue.desktop-only { display: none !important; }
+    .dc-list--issue.mobile-only { display: grid !important; }
+    .ai-step { flex-direction: column; align-items: center; text-align: center; gap: 0; padding: 14px 10px; }
+    .ai-step-icon { margin-bottom: 10px; }
+    .ai-step-badge { display: none; }
+    .ai-step-num { display: none; }
+    .ai-step h4 { font-size: 14px; margin-bottom: 6px; }
+    .ai-step p { font-size: 12px; }
+    .ai-timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   }
 </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
@@ -575,29 +644,33 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html" target="_self">
+                <a href="index.html">
                     <img src="images/logo.png" alt="SINSUNG" class="logo-image">
                 </a>
             </div>
+            <a href="https://m.blog.naver.com/ymn10" target="_blank" class="mobile-header-blog" aria-label="블로그">
+                <img src="images/blog_icon.png" alt="Blog" class="mobile-blog-icon">
+            </a>
             <nav class="main-nav">
                 <ul>
+                    <!-- Desktop Menu -->
                     <li class="dropdown desktop-only">
-    <a href="about.html" class="dropdown-toggle">기업 개요</a>
-    <ul class="dropdown-menu align-offset desktop-only-dropdown">
-        <li><a href="about.html">회사소개</a></li>
-        <li><a href="business.html">사업영역</a></li>
-        <li><a href="process.html">프로세스</a></li>
-    </ul>
-</li>
-                    <li><a href="ai-tech.html">AI융합기술</a></li>
+                        <a href="about.html" class="dropdown-toggle">기업 개요</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="about.html">회사소개</a></li>
+                            <li><a href="business.html">사업영역</a></li>
+                            <li><a href="process.html">프로세스</a></li>
+                        </ul>
+                    </li>
+                    <li class="desktop-only"><a href="ai-tech.html">AI융합기술</a></li>
                     <li class="dropdown desktop-only">
-    <a href="project.html" class="dropdown-toggle">개발사례</a>
-    <ul class="dropdown-menu align-offset desktop-only-dropdown">
-        <li><a href="project.html">프로젝트_1</a></li>
-        <li><a href="project_A.html">프로젝트_2</a></li>
-    </ul>
-</li>
-                    <li class="dropdown">
+                        <a href="project.html" class="dropdown-toggle">개발사례</a>
+                        <ul class="dropdown-menu align-offset desktop-only-dropdown">
+                            <li><a href="project.html">프로젝트_1</a></li>
+                            <li><a href="project_A.html">프로젝트_2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown desktop-only">
                         <a href="design.html" class="dropdown-toggle">포트폴리오</a>
                         <ul class="dropdown-menu align-offset desktop-only-dropdown">
                             <li><a href="design.html">디자인</a></li>
@@ -608,9 +681,18 @@
                             <li><a href="jig.html" class="jig-menu-item">지그제작</a></li>
                         </ul>
                     </li>
-                    <li><a href="tech.html">기술자료</a></li>
-                    <li><a href="contact.html">문의하기</a></li>
+                    <li class="desktop-only"><a href="tech.html">기술자료</a></li>
+                    <li class="desktop-only"><a href="contact.html">문의하기</a></li>
                     <li class="desktop-only"><a href="https://blog.naver.com/ymn10" target="_blank">블로그</a></li>
+                    <!-- Mobile Menu (9 items) -->
+                    <li class="mobile-only"><a href="index.html">Home</a></li>
+                    <li class="mobile-only"><a href="about.html">회사소개</a></li>
+                    <li class="mobile-only"><a href="business.html">사업영역</a></li>
+                    <li class="mobile-only"><a href="process.html">프로세스</a></li>
+                    <li class="mobile-only"><a href="ai-tech.html">AI융합기술</a></li>
+                    <li class="mobile-only"><a href="project.html">개발사례</a></li>
+                    <li class="mobile-only"><a href="design.html">포트폴리오</a></li>
+                    <li class="mobile-only"><a href="contact.html">문의하기</a></li>
                     <li class="mobile-only"><a href="https://m.blog.naver.com/ymn10" target="_blank">블로그</a></li>
                 </ul>
             </nav>
@@ -625,7 +707,8 @@
 <main style="padding-bottom: 0;">
   <div class="page-title-header" style="background-color: #0056b3; padding: 5px 0; color: white; text-align: center;">
     <div class="container">
-      <h2 style="font-size: 36px; margin-bottom: 0;">AI 융합 기술</h2>
+      <h2 class="desktop-only" style="font-size: 36px; margin-bottom: 0;">AI 융합 기술</h2>
+      <h2 class="mobile-only" style="font-size: 24px; margin-bottom: 0;">AI 융합 기술</h2>
     </div>
   </div>
 
@@ -634,9 +717,10 @@
     <div class="container">
       <div class="ai-hero-inner">
         <span class="ai-hero-tag">AI TECHNOLOGY</span>
-        <h1 class="ai-hero-title">AI 융합 기술 · 스마트 하드웨어 개발</h1>
+        <h1 class="ai-hero-title desktop-only">AI 융합 기술 · 스마트 하드웨어 개발</h1>
+        <h1 class="ai-hero-title mobile-only">AI 융합 ·<br>스마트 하드웨어</h1>
 
-        <div class="ai-hero-text-wrap">
+        <div class="ai-hero-text-wrap desktop-only">
           <p class="ai-hero-p">
             신성테크는 자체 엔지니어링 역량을 바탕으로 스스로 인지하고 판단하는 스마트 시스템을 구축합니다.
           </p>
@@ -644,11 +728,19 @@
             가상공간의 알고리즘에 머무르지 않고, 현장에서 실제 구동될 센서, 제어보드, 구동부까지 원스톱으로 통합 설계하여 즉각 투입 가능한 현장 맞춤형 솔루션을 실현합니다.
           </p>
         </div>
+        <div class="ai-hero-text-wrap mobile-only">
+          <p class="ai-hero-p">
+            신성테크는 스스로 인지하고 판단하는 스마트 시스템을 구축합니다.
+          </p>
+          <p class="ai-hero-p ai-hero-p--highlight">
+            센서부터 제어보드, 구동부까지 원스톱 통합 설계로 현장에 즉시 투입 가능한 맞춤형 솔루션을 실현합니다.
+          </p>
+        </div>
 
         <div class="ai-spec-row">
           <div class="ai-spec">
             <span class="ai-spec-label">APPROACH</span>
-            <span class="ai-spec-value">자체 하드웨어 설계 + AI 결합</span>
+            <span class="ai-spec-value">하드웨어 설계 + AI 결합</span>
           </div>
           <div class="ai-spec">
             <span class="ai-spec-label">COMPUTE</span>
@@ -670,43 +762,49 @@
     const ctx = canvas.getContext('2d');
     let W, H;
     let mouseX = -9999, mouseY = -9999;
-    const MOUSE_RADIUS = 160; // 마우스 영향 반경
+    const MOUSE_RADIUS = 160;
+
+    function isMobile() { return window.innerWidth <= 640; }
 
     function resize() {
       const style = getComputedStyle(heroEl);
-      const ml = parseInt(style.getPropertyValue('--canvas-margin-left')) || 250;
-      const mr = parseInt(style.getPropertyValue('--canvas-margin-right')) || 250;
-      W = canvas.width  = heroEl.offsetWidth - ml - mr;
+      const mlRaw = style.getPropertyValue('--canvas-margin-left').trim();
+      const mrRaw = style.getPropertyValue('--canvas-margin-right').trim();
+      const ml = mlRaw.endsWith('%') ? heroEl.offsetWidth * parseFloat(mlRaw) / 100 : (parseInt(mlRaw) || 0);
+      const mr = mrRaw.endsWith('%') ? heroEl.offsetWidth * parseFloat(mrRaw) / 100 : (parseInt(mrRaw) || 0);
+      W = Math.max(heroEl.offsetWidth - ml - mr, 0);
       H = canvas.height = heroEl.offsetHeight;
+      canvas.width = W;
       canvas.style.width  = W + 'px';
       canvas.style.height = H + 'px';
+      canvas.style.left = ml + 'px';
       buildCubes();
     }
 
-    // 정육면체 8개 꼭짓점 (단위 큐브, 중심=0)
     const BASE_VERTS = [
       [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
       [-1,-1, 1],[1,-1, 1],[1,1, 1],[-1,1, 1]
     ];
-    // 12개 엣지 (꼭짓점 인덱스 쌍)
     const EDGES = [
-      [0,1],[1,2],[2,3],[3,0], // 앞면
-      [4,5],[5,6],[6,7],[7,4], // 뒷면
-      [0,4],[1,5],[2,6],[3,7]  // 연결
+      [0,1],[1,2],[2,3],[3,0],
+      [4,5],[5,6],[6,7],[7,4],
+      [0,4],[1,5],[2,6],[3,7]
     ];
 
     let cubes = [];
 
     function buildCubes() {
       cubes = [];
-      const count = 7;
-      const PAD = 60; // 경계에서 안쪽으로 생성 여백
+      const mobile = isMobile();
+      const count = mobile ? 4 : 7;
+      const PAD = mobile ? 30 : 60;
+      const sizeRange = mobile ? [8, 16] : [12, 26];
       for (let i = 0; i < count; i++) {
-        const size = 12 + Math.random() * 14;
+        const size = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
         cubes.push({
           x: PAD + Math.random() * Math.max(W - PAD * 2, 1),
           y: Math.random() * H - H * 0.5,
-          z: Math.random() * 300 - 150,
+          z: Math.random() * 200 - 100,
           size,
           vy: 0.35 + Math.random() * 0.55,
           rx: Math.random() * Math.PI * 2,
@@ -715,7 +813,7 @@
           drx: (Math.random() - 0.5) * 0.012,
           dry: (Math.random() - 0.5) * 0.016,
           drz: (Math.random() - 0.5) * 0.008,
-          alpha: 0.18 + Math.random() * 0.22,
+          alpha: mobile ? 0.12 + Math.random() * 0.18 : 0.18 + Math.random() * 0.22,
         });
       }
     }
@@ -848,22 +946,26 @@
     {
       src: 'images/ai-tech/ai-tech_1.jpg',
       title: 'AI 비전 인식',
-      desc: '카메라 영상을 실시간 분석해 부품 종류와 위치를 자동으로 식별합니다. 형태·크기가 유사한 부품도 정확하게 구분해냅니다.'
+      desc: '카메라 영상을 실시간 분석해 부품 종류와 위치를 자동으로 식별합니다. 형태·크기가 유사한 부품도 정확하게 구분해냅니다.',
+      descMobile: '실시간 영상 분석으로 유사 부품의 종류와 위치를 정확히 식별합니다.'
     },
     {
       src: 'images/ai-tech/ai-tech_2.jpg',
-      title: 'AI 예지보전',
-      desc: '설비의 소리·진동 패턴을 학습해 고장 징후를 사전에 감지합니다. 이상 발생 전 미리 알아 다운타임을 최소화합니다.'
+      title: 'AI 패턴 제어',
+      desc: '소리나 센서 패턴을 학습하여, 해당 패턴이 감지되었을 때 지정된 공정 동작을 자동으로 수행하는 지능형 시스템을 구축합니다.',
+      descMobile: '특정 음향·신호 패턴 인식 시 지정된 동작 자동 수행합니다.'
     },
     {
       src: 'images/ai-tech/ai-tech_3.jpg',
       title: 'AI 적응형 제어',
-      desc: '온도, 부하 등 환경 변화에 따라 제어값을 실시간으로 스스로 조정합니다. 별도 수동 개입 없이 최적 상태를 유지합니다.'
+      desc: '온도, 부하 등 환경 변화에 따라 제어값을 실시간으로 스스로 조정합니다. 별도 수동 개입 없이 최적 상태를 유지합니다.',
+      descMobile: '환경 변화에 따라 제어값을 실시간으로 스스로 조정합니다.'
     },
     {
       src: 'images/ai-tech/ai-tech_4.png',
       title: 'AI 데이터 최적화',
-      desc: '다양한 공정 조건 조합을 분석해 수율이 가장 높은 최적 조합을 자동으로 도출합니다. 축적된 데이터가 곧 개선의 근거가 됩니다.'
+      desc: '다양한 공정 조건 조합을 분석해 수율이 가장 높은 최적 조합을 자동으로 도출합니다. 축적된 데이터가 곧 개선의 근거가 됩니다.',
+      descMobile: '공정 조건 분석으로 수율 최적 조합을 자동 도출합니다.'
     }
   ];
 
@@ -882,7 +984,9 @@
       mainImg.style.opacity = '1';
     }, 150);
     document.getElementById('ai-gallery-title').textContent = data.title;
-    document.getElementById('ai-gallery-desc').textContent  = data.desc;
+    document.getElementById('ai-gallery-desc').textContent = data.desc;
+    var descM = document.getElementById('ai-gallery-desc-m');
+    if (descM) descM.textContent = data.descMobile || data.desc;
   }
   </script>
 
@@ -890,13 +994,21 @@
 
     <div class="dc-panel dc-panel--issue" style="margin-top: 20px; margin-bottom: 40px;">
       <h3 class="dc-panel-title dc-panel-title--issue"><span class="dc-panel-mark">WHY</span> 이런 고민 있으신가요?</h3>
-      <ul class="dc-list dc-list--issue">
+      <ul class="dc-list dc-list--issue desktop-only">
         <li>육안 검사의 한계 (지속적인 불량 유출)</li>
         <li>예고 없는 위험 (장비 고장으로 라인 마비)</li>
         <li>까다로운 현장 셋팅 (품목 변경시 매번 조건 변화)</li>
         <li>품질 균등화의 어려움 (작업자별 편차 발생)</li>
         <li>운영 데이터 방치 (현장 데이터 실질적 활용 미숙)</li>
         <li>수작업 공정의 병목 현상 (공정 지연 · 생산성 저하)</li>
+      </ul>
+      <ul class="dc-list dc-list--issue mobile-only">
+        <li>육안 검사의 한계 (지속적인 불량 유출)</li>
+        <li>예고 없는 위험 (장비 고장으로 라인 마비)</li>
+        <li>번거로운 셋팅 (품목 변경 시 조건 변화)</li>
+        <li>품질 균등화 애로 (작업자별 편차 발생)</li>
+        <li>데이터 방치 (현장 데이터 활용 미숙)</li>
+        <li>수작업 병목 (공정 지연·생산성 저하)</li>
       </ul>
     </div>
 
@@ -911,32 +1023,40 @@
           <div class="ai-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <span class="ai-step-badge">적용 기술</span>
           <span class="ai-step-num">01</span>
-          <h4>비전 인식</h4>
-          <p>카메라와 학습된 모델로 형상·가공 상태를 인식하여 검사·판별에 활용합니다.</p>
+          <h4 class="desktop-only">비전 인식</h4>
+          <h4 class="mobile-only">비전 인식</h4>
+          <p class="desktop-only">카메라와 학습된 모델로 형상·가공 상태를 인식하여 검사·판별에 활용합니다.</p>
+          <p class="mobile-only">영상 분석을 통한 실시간 형상 검사 및 판별</p>
         </div>
 
         <div class="ai-step ai-step--roadmap">
           <div class="ai-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,12 7,12 9,6 13,18 15,12 22,12"/></svg></div>
           <span class="ai-step-badge">개발 방향</span>
           <span class="ai-step-num">02</span>
-          <h4>예지보수 &amp; 이상 감지</h4>
-          <p>설비의 상태 데이터와 이상 패턴을 학습하여 예기치 못한 고장을 사전에 감지합니다.</p>
+          <h4 class="desktop-only">음향·신호 패턴 제어</h4>
+          <h4 class="mobile-only">음향·신호 패턴 제어</h4>
+          <p class="desktop-only">특정 소리나 신호 패턴을 인식하여 지정된 공정 동작을 자동 실행합니다.</p>
+          <p class="mobile-only">특정 음향·신호 패턴 인식시 지정된 동작 수행</p>
         </div>
 
         <div class="ai-step ai-step--roadmap">
           <div class="ai-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
           <span class="ai-step-badge">현장 맞춤 개발</span>
           <span class="ai-step-num">03</span>
-          <h4>적응형 제어</h4>
-          <p>현장 상황에 맞춰 제어 파라미터를 스스로 최적화하는 것을 목표로 합니다.</p>
+          <h4 class="desktop-only">적응형 제어</h4>
+          <h4 class="mobile-only">적응형 제어</h4>
+          <p class="desktop-only">현장 상황에 맞춰 제어 파라미터를 스스로 최적화하는 것을 목표로 합니다.</p>
+          <p class="mobile-only">현장 상황에 따른 제어 파라미터 자체 최적화</p>
         </div>
 
         <div class="ai-step ai-step--roadmap">
           <div class="ai-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,6"/><polyline points="15,6 21,6 21,12"/></svg></div>
           <span class="ai-step-badge">최적화 개발</span>
           <span class="ai-step-num">04</span>
-          <h4>데이터 기반 최적화</h4>
-          <p>축적된 운영 데이터로 최적의 속도·경로를 자동으로 산출합니다.</p>
+          <h4 class="desktop-only">데이터 기반 최적화</h4>
+          <h4 class="mobile-only">데이터 기반 최적화</h4>
+          <p class="desktop-only">축적된 운영 데이터로 최적의 속도·경로를 자동으로 산출합니다.</p>
+          <p class="mobile-only">운영 데이터 기반의 최적 구동 경로 자동 산출</p>
         </div>
       </div>
       <hr style="border: none; border-top: 1px solid var(--dc-line); margin: 50px 0 50px;">
@@ -952,7 +1072,7 @@
         </div>
         <div class="ai-gallery-thumb" onclick="aiGallerySelect(1, this)">
           <img src="images/ai-tech/ai-tech_2.jpg" alt="AI 예지보전">
-          <span class="ai-gallery-thumb-label">AI 예지보전</span>
+          <span class="ai-gallery-thumb-label">AI 패턴 제어</span>
         </div>
         <div class="ai-gallery-thumb" onclick="aiGallerySelect(2, this)">
           <img src="images/ai-tech/ai-tech_3.jpg" alt="AI 적응형 제어">
@@ -969,17 +1089,24 @@
         <img id="ai-gallery-main-img" src="images/ai-tech/ai-tech_1.jpg" alt="AI 비전 인식">
         <div class="ai-gallery-caption">
           <p class="ai-gallery-caption-title" id="ai-gallery-title">AI 비전 인식</p>
-          <p class="ai-gallery-caption-desc" id="ai-gallery-desc">카메라 영상을 실시간 분석해 부품 종류와 위치를 자동으로 식별합니다. 형태·크기가 유사한 부품도 정확하게 구분해냅니다.</p>
+          <p class="ai-gallery-caption-desc desktop-only" id="ai-gallery-desc">카메라 영상을 실시간 분석해 부품 종류와 위치를 자동으로 식별합니다. 형태·크기가 유사한 부품도 정확하게 구분해냅니다.</p>
+          <p class="ai-gallery-caption-desc mobile-only" id="ai-gallery-desc-m">실시간 영상 분석으로 유사 부품의 종류와 위치를 정확히 식별합니다.</p>
         </div>
       </div>
     </div>
 
     <div class="dc-panel dc-panel--why" style="margin-bottom: 40px;">
       <h3 class="dc-panel-title dc-panel-title--why"><span class="dc-panel-mark">WHY US</span> 왜 신성테크인가</h3>
-      <p style="font-size: 15px; color: #444; line-height: 1.75; margin: 0 0 18px 0;">
+      <p class="desktop-only" style="font-size: 15px; color: #444; line-height: 1.75; margin: 0 0 18px 0;">
         AI 솔루션만 제공하는 회사가 아니라, 하드웨어를 직접 만드는 회사입니다.</br>
         기구설계·회로설계·PCB 제작·펌웨어 개발까지 전 과정을 다루기 때문에, AI 기능을 붙일 때도
         센서 배치·신호 처리·실시간 제어까지 </br>하드웨어 레벨에서 함께 설계할 수 있습니다.
+      </p>
+      <p class="mobile-only" style="font-size: 15px; color: #444; line-height: 1.75; margin: 0 0 18px 0;">
+        단순 AI 솔루션을 넘어 기구설계, 회로, PCB, 펌웨어까지 전 과정을 직접 다룹니다.
+      </p>
+      <p class="mobile-only" style="font-size: 15px; color: #444; line-height: 1.75; margin: 0 0 18px 0;">
+        센서 배치, 신호 처리, 실시간 제어를 하드웨어 레벨에서 AI와 통합 설계합니다.
       </p>
       <ul class="dc-list dc-list--why">
         <li>기구설계·회로설계·펌웨어까지 직접 하는 하드웨어 엔지니어링 역량</li>
@@ -993,7 +1120,7 @@
   <div class="dc-cta-panel">
     <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
       <p>AI 기능이 필요한 프로젝트, 편하게 상담하세요.<br><br></p>
-      <a href="contact.html" class="dc-cta-btn">무료 상담 받기</a>
+      <a href="contact.html" class="dc-cta-btn" target="_self">무료 상담 받기</a>
     </div>
   </div>
 </main>
