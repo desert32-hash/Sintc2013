@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sintc.co.kr/sitemap.xml
